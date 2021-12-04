@@ -1,0 +1,50 @@
+body {
+  background-color: black;
+}
+
+.navigation {
+  border-bottom: 2px solid #fe7fff;
+  box-shadow: 0px 0px 8px white, 0px 10px 30px #bd00ff;
+}
+
+.logo {
+  padding-top: 0px;
+  margin: -25px;
+  margin-top: -20px;
+  margin-left: 0px;
+  color: #fe7fff;
+  font-family: Changa;
+  font-size: 65px;
+  text-shadow: 0px 0px 5px white, 0px 0px 30px #bd00ff, 0px 0px 30px #bd00ff;
+}
+
+.logo:visited {
+  color: #fe7fff;
+  text-shadow: 0px 0px 5px white, 0px 0px 30px #bd00ff, 0px 0px 30px #bd00ff;
+}
+
+.logo:hover {
+  color: #befe3b;
+  text-shadow: 0px 0px 5px white, 0px 0px 30px #00ce00;
+}
+
+.link {
+    color: rgb(196, 196, 196);
+    font-family: Changa;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.link:visited {
+    color:rgb(196, 196, 196);
+}
+
+.link:hover {
+    color: #befe3b !important;
+    text-shadow:  0px 0px 3px white !important;
+} 
+
+.active {
+    color: #befe3b !important;
+    text-shadow:  0px 0px 5px white, 0px 0px 20px #00ce00 !important;
+}
