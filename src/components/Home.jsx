@@ -1,11 +1,14 @@
 import React from 'react'
 
-function home() {
+function Home() {
     return (
-        <div>
+        <div className="home">
+            <div className="welcome">Welcome</div>
+            <div className="to-the">to the</div>
+            <div className="arcade-room">Arcade Room</div>
             
         </div>
     )
 }
 
-export default home
+export default Home

@@ -3,6 +3,8 @@ body {
 }
 
 .navigation {
+  position: relative;
+  z-index: 1000;
   border-bottom: 2px solid #fe7fff;
   box-shadow: 0px 0px 8px white, 0px 10px 30px #bd00ff;
 }
@@ -47,4 +49,31 @@ body {
 .active {
     color: #befe3b !important;
     text-shadow:  0px 0px 5px white, 0px 0px 20px #00ce00 !important;
+}
+
+.home {
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-image: url("./images/black-brick.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.welcome {
+  text-align: center;
+  margin: auto;
+  font-family: Changa;
+  font-size: 15vw;
+  color: #6BF4FF;
+  text-shadow: 0px 0px 10px white, 0px 0px 70px #001AFF, 0px 0px 50px #001AFF;
+}
+
+.to-the {
+  text-align: center;
+  margin: auto;
+  margin-top: -80px;
+  font-family: Changa;
+  font-size: 3vw;
+  color: #befe3b;
+  text-shadow: 0px 0px 10px white, 0px 0px 50px #00FF19, 0px 0px 25px #00FF19;
 }
