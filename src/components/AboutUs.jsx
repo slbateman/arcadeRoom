@@ -2,8 +2,8 @@ import React from 'react'
 
 function AboutUs() {
     return (
-        <div>
-            dawdaegag
+        <div className="about">
+            
         </div>
     )
 }

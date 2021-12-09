@@ -1,11 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-function home() {
+function Home() {
     return (
-        <div>
-            dawda
+        <div className="home">
+            <div className="welcome">Welcome</div>
+            <div className="to-the">to the</div>
+            <div className="arcade-room">Arcade Room</div>
+            <Link to="/chat">
+                <div className="enter">enter</div>
+            </Link>
         </div>
     )
 }
 
-export default home
+export default Home

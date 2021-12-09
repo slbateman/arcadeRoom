@@ -2,8 +2,8 @@ import React from 'react'
 
 function Chat() {
     return (
-        <div>
-            dawd
+        <div className="chat">
+            
         </div>
     )
 }
