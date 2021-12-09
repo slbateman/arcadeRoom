@@ -27,13 +27,13 @@ function Navigation() {
 
   return (
     <div className="navigation">
-      <Navbar collapseOnSelect expand="md" bg="black">
+      <Navbar collapseOnSelect expand="md" bg="black" variant="dark">
         <Container fluid>
           <Link className="nav-link logo" to="/">
             Arcade Room
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
+          <Navbar.Collapse id="responsive-navbar-nav" >
             <Nav default activeKey="/" className="ms-auto">
               <Nav.Link eventKey="chat">
                 <Link className={"link " + chat} to="chat">
