@@ -2,10 +2,12 @@
 //Chatroom Assignment 
 //Array Bootcamp Fall 2021
 //Katie Greenwald, Steve Bateman, Bowen Condelario 
+
 import sloth from '../images/asloth.png';
 import bat from '../images/abat.png';
 import frostpine from '../images/afrostpine.png'; 
-
+import art1 from '../images/arcadeGame.png';
+import art2 from '../images/mfGame.png';
 
 const info  = 
 [
@@ -15,6 +17,8 @@ const info  =
  name: "Frostypine",
  img: frostpine,
  bio: "About Frostypine",
+ art1: art1,
+ art2: art2,
 },
 
 {

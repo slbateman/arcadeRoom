@@ -3,29 +3,69 @@
 //Chatroom Assignment 
 //Array Bootcamp Fall 2021
 //Katie Greenwald, Steve Bateman, Bowen Condelario 
+
+import './Components.css'; 
 import React from 'react'
 import { Card, CardGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import info from './DataFile';
-// import { useState } from 'react';
+import { useState } from 'react';
 // import { useSelector } from 'react-redux';
 // import { selectContent } from '../../state/contentSlice';
+const mf = info[0].art2 ; 
 
 function AboutUs() {
+    const [name, setName] = useState();
+    const [bio, setBio] = useState();
+    const [image, setImage] = useState();
+     //setImage(mf);
+
+    const handleClick = (name, bio, img) => {
+        setName(name);
+        setBio(bio);
+        setImage(img); 
+      }
 
     return (
         <div className="about">
- <CardGroup>
+
+    <div className=' mx-auto gameBox' >     
+<img src={info[0].art1} 
+className="mx-auto arcadeGame" alt="arcade game console" 
+onClick={ () =>  handleClick("mf game","text",  info[0].art2)}
+/>
+
+<Card className="mx-auto aCard "
+style={{ height: '50rem', width: '20rem' }}
+>
+    <Card.Img variant="top" className="mx-auto mfGame" src={image}/>
+    <Card.Body>
+        {/* we could add a link that leads to profile based on name */}
+      <Card.Title className='bio'>{name}</Card.Title>
+      <Card.Text className='bio2' >
+     {bio}
+      </Card.Text >
+    </Card.Body>
+    <Card.Footer>
+    </Card.Footer>
+  </Card>
+  </div>  
+
+ <CardGroup className='threeCards'>
 
  {info.map((data, i) => {
  return ( 
 
-  <Card key={i}>
+  <Card 
+  className='card'
+  key={i}
+  onClick={ () =>  handleClick(data.name, data.bio, data.img)}
+  >
     <Card.Img variant="top" src={data.img} />
     <Card.Body>
       <Card.Title><Link to={`/profile/${data.name}`}>{data.name}</Link></Card.Title>
       <Card.Text>
-      {data.bio}
+      
       </Card.Text>
     </Card.Body>
     <Card.Footer>
