@@ -1,3 +1,8 @@
+//Navigation.jsx
+//Chatroom Assignment 
+//Array Bootcamp Fall 2021
+//Katie Greenwald, Steve Bateman, Bowen Condelario 
+
 import React, { useState, useEffect } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -18,7 +23,7 @@ function Navigation() {
       setAbout("active");
       setChat("");
       setUser("");
-    } else if (location === "/user") {
+    } else if (location === "/user/login") {
       setUser("active");
       setChat("");
       setAbout("");
@@ -36,17 +41,17 @@ function Navigation() {
           <Navbar.Collapse id="responsive-navbar-nav" >
             <Nav default activeKey="/" className="ms-auto">
               <Nav.Link eventKey="chat">
-                <Link className={"link " + chat} to="chat">
+                <Link className={"link " + chat} to="/chat">
                   Chatrooms
                 </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link className={"link " + about} to="about">
+                <Link className={"link " + about} to="/about">
                   About Us
                 </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link className={"link " + user} to="user">
+                <Link className={"link " + user} to="/user/login">
                   Login
                 </Link>
               </Nav.Link>

@@ -1,3 +1,8 @@
+//index.js
+//Chatroom Assignment 
+//Array Bootcamp Fall 2021
+//Katie Greenwald, Steve Bateman, Bowen Condelario 
+
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, } from "react-router-dom";

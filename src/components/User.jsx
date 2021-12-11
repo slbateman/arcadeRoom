@@ -1,27 +1,16 @@
-import React from 'react'
-import { Form, Button } from "react-bootstrap"
+//User.jsx
+//Chatroom Assignment 
+//Array Bootcamp Fall 2021
+//Katie Greenwald, Steve Bateman, Bowen Condelario 
+
+import React from 'react';
+import { Route, Routes } from "react-router-dom"
+import UserLogin from './UserLogin';
 
 function User() {
     return (
         <div className="user">
-            <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                    <Form.Text className="text-muted">
-                        We'll share your email with everyone.
-                    </Form.Text>
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
-
+            
         </div>
     )
 }
