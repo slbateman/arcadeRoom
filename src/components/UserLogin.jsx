@@ -1,3 +1,8 @@
+//UserLogin.jsx
+//Chatroom Assignment 
+//Array Bootcamp Fall 2021
+//Katie Greenwald, Steve Bateman, Bowen Condelario 
+
 import React from 'react';
 import { Link } from "react-router-dom"
 import { Form, InputGroup, FormControl, Button } from "react-bootstrap"
