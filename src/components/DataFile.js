@@ -9,14 +9,28 @@ import frostpine from '../images/afrostpine.png';
 
 const info  = 
 [
+
 {
+ id: 0,
  name: "Frostypine",
- img: frostpine,},
+ img: frostpine,
+ bio: "About Frostypine",
+},
+
 {
+ id: 1,
  name: "Sloth",
  img: sloth,
+ bio: "About Sloth",
 },
+
 { 
+ id: 2,  
  name: "Slobat",
- img: bat,},
+ img: bat,
+ bio: "About Slobat",
+},
 ]
+
+export default info;
+
