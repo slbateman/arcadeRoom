@@ -14,6 +14,7 @@ function User() {
   return (
     <div className="user">
       <UserMenu />
+      <div className="user-menu-vertical-line"></div>
       <Routes>
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/settings" element={<UserSettings />} />

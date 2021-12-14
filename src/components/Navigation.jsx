@@ -3,7 +3,7 @@
 //Array Bootcamp Fall 2021
 //Katie Greenwald, Steve Bateman, Bowen Condelario 
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
