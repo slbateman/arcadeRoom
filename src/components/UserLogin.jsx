@@ -1,32 +1,53 @@
 //UserLogin.jsx
-//Chatroom Assignment 
+//Chatroom Assignment
 //Array Bootcamp Fall 2021
-//Katie Greenwald, Steve Bateman, Bowen Condelario 
+//Katie Greenwald, Steve Bateman, Bowen Condelario
 
-import React from 'react';
-import { Link } from "react-router-dom"
-import { Form, InputGroup, FormControl, Button } from "react-bootstrap"
+import { Link, useNavigate } from "react-router-dom";
+import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
+import { useEffect } from "react";
 
 function UserLogin() {
-    return (
-        <div className="user-login">
-            <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <InputGroup >
-                        <FormControl className="username-input" id="inlineFormInputGroupUsername" placeholder="username" />
-                    </InputGroup>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Control className="password-input" type="password" placeholder="password" />
-                </Form.Group>
-                <Button variant="green" type="submit">
-                    login
-                </Button><br/>
-                <Link to="/user/sign-up"><p  className="sign-up-link">sign up</p></Link>
-            </Form>
+  const loggedIn = false;
+  const navigate = useNavigate();
 
-        </div>
-    )
+  useEffect(() => {
+    if (loggedIn) {
+      navigate("/user/profile");
+    } else {
+      navigate("/user/login");
+    }
+  }, [loggedIn, navigate]);
+
+  return (
+    <div className="user-login">
+      <Form>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <InputGroup>
+            <FormControl
+              className="username-input"
+              id="inlineFormInputGroupUsername"
+              placeholder="username"
+            />
+          </InputGroup>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Control
+            className="password-input"
+            type="password"
+            placeholder="password"
+          />
+        </Form.Group>
+        <Button variant="green" type="submit">
+          login
+        </Button>
+        <br />
+        <Link to="/user/sign-up">
+          <p className="sign-up-link">sign up</p>
+        </Link>
+      </Form>
+    </div>
+  );
 }
 
-export default UserLogin
+export default UserLogin;
