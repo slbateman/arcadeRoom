@@ -27,6 +27,10 @@ function Navigation() {
       setUser("active");
       setChat("");
       setAbout("");
+    } else {
+      setUser("");
+      setChat("");
+      setAbout("");
     }
   }, [location]);
 
