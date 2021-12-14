@@ -22,7 +22,7 @@ function UserLogin() {
                 <Button variant="green" type="submit">
                     login
                 </Button><br/>
-                <Link to="/user/signup"><p  className="signup-link">sign up</p></Link>
+                <Link to="/user/sign-up"><p  className="sign-up-link">sign up</p></Link>
             </Form>
 
         </div>

@@ -1,18 +1,27 @@
 //User.jsx
-//Chatroom Assignment 
+//Chatroom Assignment
 //Array Bootcamp Fall 2021
-//Katie Greenwald, Steve Bateman, Bowen Condelario 
+//Katie Greenwald, Steve Bateman, Bowen Condelario
 
-import React from 'react';
-import { Route, Routes } from "react-router-dom"
-import UserLogin from './UserLogin';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import UserLeaderboard from "./UserLeaderboard";
+import UserMenu from "./UserMenu";
+import UserProfile from "./UserProfile";
+import UserSettings from "./UserSettings";
 
 function User() {
-    return (
-        <div className="user">
-            
-        </div>
-    )
+  return (
+    <div className="user">
+      <UserMenu />
+      <div className="user-menu-vertical-line"></div>
+      <Routes>
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/settings" element={<UserSettings />} />
+        <Route path="/leaderboard" element={<UserLeaderboard />} />
+      </Routes>
+    </div>
+  );
 }
 
-export default User
+export default User;
