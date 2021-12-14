@@ -1,0 +1,104 @@
+.chat {
+    display: grid;
+    height: 849px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 60px 1fr 1fr 1fr 1fr 60px;
+    grid-template-areas: 
+        "r n n n n t"
+        "r m m m m t"
+        "r m m m m t"
+        "r m m m m t"
+        "r m m m m t"
+        "r f f f f t";
+}
+
+.rooms-list {
+    grid-area: r;
+    margin-right: 5px;
+    border-style: solid;
+    border-width: 0px;
+    border-right-width: 2px;
+    border-color: #befe3b;
+    box-shadow: 0px 0px 5px white, 0px 0px 30px #00ce00;
+}
+
+.message-list {
+    grid-area: m;
+    margin: 10px;
+    border-style: solid;
+    border-width:5px;
+    border-color: #6BF4FF;
+    padding: 20px;
+    border-radius: 2%;
+}
+
+.send-message-form {
+    grid-area: f;
+    border-radius: 2%;
+}
+
+.information-list {
+    grid-area: t;
+    margin-left: 5px;
+    border-style: solid;
+    border-width: 0px;
+    border-left-width: 2px;
+    border-color: #FE7FFF;
+    box-shadow: 0px 0px 15px #FFFFFF;;
+
+}
+
+.chat-room-name {
+    grid-area: n;
+    padding-left: 10px;
+    font-size: 45px;
+}
+
+.space {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.text-color {
+    color: #befe3b;
+    text-shadow: 0px 0px 5px white, 0px 0px 30px #00ce00;
+}
+
+.text-color-blue {
+    color: #6BF4FF;
+    text-shadow: 0px 0px 7px #FFFFFF;;
+}
+
+.text-color-pink {
+    color: #FE7FFF;
+    text-shadow: 0px 0px 15px #FFFFFF;;
+}
+
+.text-color-purple {
+    color: #BD00FF;
+    text-shadow: 0px 0px 15px #FFFFFF;;
+}
+
+.message { 
+    width: 100%;
+    
+    background-color: gray;
+    color: white;
+    border-radius: 15px;
+}
+
+#inputID::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+.user-image {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.big-text {
+    text-decoration: underline;
+    font-size: 20px;
+}

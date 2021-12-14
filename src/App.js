@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
-import Chat from './components/Chat';
+import Chat from './components/Chat/Chat';
 import AboutUs from './components/AboutUs';
 import User from './components/User';
 import UserLogin from './components/UserLogin';
