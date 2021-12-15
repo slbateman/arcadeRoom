@@ -238,7 +238,7 @@ h3 {
 }
 
 .user-profile-bio {
-  margin-left: 50px
+  margin-left: 50px;
 }
 
 .user-profile-bio-label {
@@ -259,3 +259,84 @@ h3 {
   color: #bd00ff;
   margin-left: 50px;
 }
+
+.user-settings {
+  margin-top: 40px;
+  margin-left: 50px;
+  width: calc(100vw - 250px - 100px);
+}
+
+.user-settings-headers {
+  color: #befe3b;
+  margin: 20px;
+  margin-left: 50px;
+  margin-bottom: 0px;
+}
+
+.user-settings-color-themes {
+  display: inline-flex;
+}
+
+.user-settings-color-themes:hover {
+  cursor: pointer;
+}
+
+.user-settings-color-theme {
+  margin: 20px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.color-theme-op1 {
+  background-color: #befe3b;
+}
+
+.color-theme-op2 {
+  background-color: #bd00ff;
+}
+
+.color-theme-op3 {
+  background-color: #6bf4ff;
+}
+
+.color-theme-op4 {
+  background-color: #fe7fff;
+}
+
+.color-theme-op5 {
+  background-color: #001aff;
+}
+
+.op1-active {
+  box-shadow: 0 0 15px white;
+}
+
+.user-settings-message-density-bar,
+.user-settings-message-brightness-bar {
+  margin: 20px;
+  width: 50%;
+  max-width: 535px;
+  min-width: 150px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 5px;
+  background: #bd00ff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 white;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border: 2px solid black;
+  border-radius: 50%;
+  background: #befe3b;
+  cursor: ew-resize;
+  box-shadow: 0 0 10px 0 white;
+}
+
