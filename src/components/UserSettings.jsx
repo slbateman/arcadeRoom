@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Chat() {
+function UserSettings() {
     return (
-        <div className="chat">
+        <div>
             
         </div>
     )
 }
 
-export default Chat
+export default UserSettings

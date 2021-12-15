@@ -1,3 +1,9 @@
+/* App.css
+   Chatroom Assignment 
+   Array Bootcamp Fall 2021
+   Katie Greenwald, Steve Bateman, Bowen Condelario 
+color: lightblue;*/
+
 body {
   background-color: black;
 }
@@ -31,24 +37,24 @@ body {
 }
 
 .link {
-    color: rgb(196, 196, 196);
-    font-family: Changa;
-    font-size: 1.5rem;
-    text-decoration: none;
+  color: rgb(196, 196, 196);
+  font-family: Changa;
+  font-size: 1.5rem;
+  text-decoration: none;
 }
 
 .link:visited {
-    color:rgb(196, 196, 196);
+  color: rgb(196, 196, 196);
 }
 
 .link:hover {
-    color: #befe3b !important;
-    text-shadow:  0px 0px 3px white !important;
-} 
+  color: #befe3b !important;
+  text-shadow: 0px 0px 3px white !important;
+}
 
 .active {
-    color: #befe3b !important;
-    text-shadow:  0px 0px 5px white, 0px 0px 20px #00ce00 !important;
+  color: #befe3b !important;
+  text-shadow: 0px 0px 5px white, 0px 0px 20px #00ce00 !important;
 }
 
 .home {
@@ -64,8 +70,8 @@ body {
   margin: auto;
   font-family: Changa;
   font-size: 10vw;
-  color: #6BF4FF;
-  text-shadow: 0px 0px 10px white, 0px 0px 70px #001AFF, 0px 0px 50px #001AFF;
+  color: #6bf4ff;
+  text-shadow: 0px 0px 10px white, 0px 0px 70px #001aff, 0px 0px 50px #001aff;
 }
 
 .to-the {
@@ -75,7 +81,7 @@ body {
   font-family: Changa;
   font-size: 3vw;
   color: #befe3b;
-  text-shadow: 0px 0px 10px white, 0px 0px 50px #00FF19, 0px 0px 25px #00FF19;
+  text-shadow: 0px 0px 10px white, 0px 0px 50px #00ff19, 0px 0px 25px #00ff19;
 }
 
 .arcade-room {
@@ -96,7 +102,8 @@ body {
   text-shadow: 0px 0px 10px white;
 }
 
-.user-login {
+.user-login,
+.user-sign-up {
   margin: auto;
   margin-top: 80px;
   width: 50%;
@@ -105,18 +112,150 @@ body {
 
 .btn-green {
   background-color: #befe3b;
-  box-shadow: 0px 0px 7px white, 0px 0px 15px #00FF19;
+  box-shadow: 0px 0px 7px white, 0px 0px 15px #00ff19;
 }
 
-.username-input, .password-input {  
+.username-input,
+.password-input,
+.email-input {
   color: #bd00ff !important;
   background-color: black;
-  border: 2px solid #6BF4FF;
+  border: 2px solid #6bf4ff;
   border-radius: 7px;
   box-shadow: 0px 0px 8px white;
 }
 
-.signup-link {
+.sign-up-link {
   margin-top: 20px;
   color: #bd00ff;
+}
+
+.user {
+  display: inline-flex;
+}
+
+.user-menu-vertical-line {
+  margin-top: 40px;
+  width: 3px;
+  height: calc(100vh - 150px);
+  background-color: #befe3b;
+}
+
+.user-menu {
+  margin-top: 30px;
+  width: 250px;
+  text-align: center;
+}
+
+.user-menu-item,
+.user-menu-item:visited,
+.user-menu-item:hover {
+  font-family: Changa;
+  font-size: 2rem;
+  text-decoration: none;
+  color: #fe7fff;
+}
+
+h3 {
+  margin-top: 40px;
+  margin-bottom: 15px;
+}
+
+.user-menu-item:hover {
+  text-shadow: 0px 0px 8px white;
+}
+
+.user-menu-item-active {
+  color: #6bf4ff !important;
+}
+
+.user-menu-hr {
+  margin: auto;
+  width: 200px;
+  color: #fe7fff;
+}
+
+.user-profile {
+  margin: auto;
+  margin-top: 10px;
+  width: calc(100vw - 253px);
+  height: calc(100vh - 90px);
+  overflow-y: scroll;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  border: 1px solid #6bf4ff;
+  box-shadow: inset 0 0 5px white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #4f4f4f;
+  border-radius: 10px;
+  border: 1px solid #6bf4ff;
+  box-shadow: 0 0 5px white;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #656565;
+}
+
+.user-profile-identification {
+  display: inline-flex;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+.user-profile-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 15px white;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+.user-profile-username {
+  font-family: Changa;
+  color: white;
+  margin: 20px;
+}
+
+.user-profile-lvl,
+.user-profile-rank,
+.user-profile-badges {
+  color: white;
+  margin: 10px;
+  margin-left: 20px;
+}
+
+.user-profile-bio {
+  margin-left: 50px
+}
+
+.user-profile-bio-label {
+  padding-left: 20px;
+}
+
+.user-profile-bio-textbox {
+  border-radius: 10px;
+  margin-right: 50px;
+}
+
+.user-profile-bio-text {
+  color: white;
+  padding: 5px;
+}
+
+.user-profile-email {
+  color: #bd00ff;
+  margin-left: 50px;
 }
