@@ -11,16 +11,16 @@ import UserProfile from "./UserProfile";
 import UserSettings from "./UserSettings";
 
 function User() {
-  const loggedIn = true;
-  const navigate = useNavigate();
+  // const loggedIn = true;
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    if (loggedIn) {
-      navigate("/user/profile");
-    } else {
-      navigate("/user/login");
-    }
-  }, [loggedIn, navigate]);
+  // useEffect(() => {
+  //   if (loggedIn) {
+  //     navigate("/user/profile");
+  //   } else {
+  //     navigate("/user/login");
+  //   }
+  // }, [loggedIn, navigate]);
 
   return (
     <div className="user">
