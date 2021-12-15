@@ -7,6 +7,7 @@ function UserProfile() {
       <div className="user-profile-identification">
         <img
           className="user-profile-avatar"
+          style={{ border: `3px solid ${DataFile[userIndex].color}` }}
           src={DataFile[userIndex].img}
           alt="avatar"
         />
@@ -18,11 +19,27 @@ function UserProfile() {
         </div>
       </div>
       <div className="user-profile-bio">
-          <h3 className="user-profile-bio-label">bio</h3>
-          <div className="user-profile-bio-textbox">
-              <p className="user-profile-bio-text">{DataFile[userIndex].bio}</p>
-          </div>
-
+        <h3
+          className="user-profile-bio-label"
+          style={{ color: `${DataFile[userIndex].color}` }}
+        >
+          bio
+        </h3>
+        <div
+          className="user-profile-bio-textbox"
+          style={{ border: `3px solid ${DataFile[userIndex].color}` }}
+        >
+          <p className="user-profile-bio-text">{DataFile[userIndex].bio}</p>
+        </div>
+        <br/>
+        <br/>
+        <div>
+          <span className="user-profile-email">email</span>
+          <br />
+          <span className="user-profile-email">
+            {DataFile[userIndex].email}
+          </span>
+        </div>
       </div>
     </div>
   );
