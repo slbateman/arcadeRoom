@@ -2,10 +2,22 @@
    Chatroom Assignment 
    Array Bootcamp Fall 2021
    Katie Greenwald, Steve Bateman, Bowen Condelario 
-color: lightblue;*/ 
+*/ 
+.cardImage{
+    height: 10rem;
+    width: 10rem;
+}
+
+body{
+    color: #fe7fff;
+    font-family: Changa;
+    font-size: 65px;
+    text-shadow: 0px 0px 5px white, 0px 0px 30px #bd00ff, 0px 0px 30px #bd00ff;
+}
+
 .bio{
    padding-top: 35rem; 
-   width : 25rem; 
+   width : 75rem; 
     top: 20rem;
    z-index: 3;
    text-align: center;
@@ -13,7 +25,12 @@ color: lightblue;*/
 }
  .bio2 {
     font-size: 3rem;
-    
+    width : 75rem; 
+    height: 35rem;
+    padding-right: 20rem;
+    overflow: scroll;
+    overflow-x: hidden; 
+    left: 50rem;
 }
 .arcadeGame{
     left: 24rem;
@@ -47,7 +64,7 @@ color: lightblue;*/
 }
 
 .gameBox {
-    top: 2rem; 
+    top: 0rem; 
     left:0;
     position: relative;
 }
@@ -55,4 +72,14 @@ color: lightblue;*/
 .threeCards, .card {
 background-color: black;
 color: lightblue;
+
+}
+
+.threeCards{
+    top:10rem; 
+    display: flex;
+    flex: 1 1 auto;
+    left: 22rem; 
+    position: relative;
+    padding-bottom: 10rem;
 }

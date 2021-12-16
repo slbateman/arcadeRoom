@@ -13,7 +13,7 @@ import { useState } from 'react';
 // import { useSelector } from 'react-redux';
 // import { selectContent } from '../../state/contentSlice';
 const mf = info[0].art2 ; 
-
+//mx-auto
 function AboutUs() {
     const [name, setName] = useState();
     const [bio, setBio] = useState();
@@ -29,16 +29,16 @@ function AboutUs() {
     return (
         <div className="about">
 
-    <div className=' mx-auto gameBox' >     
+    <div className='  gameBox' >     
 <img src={info[0].art1} 
-className="mx-auto arcadeGame" alt="arcade game console" 
+className=" arcadeGame" alt="arcade game console" 
 onClick={ () =>  handleClick("mf game","text",  info[0].art2)}
 />
 
-<Card className="mx-auto aCard "
+<Card className="aCard "
 style={{ height: '50rem', width: '20rem' }}
 >
-    <Card.Img variant="top" className="mx-auto mfGame" src={image}/>
+    <Card.Img variant="top" className=" mfGame" src={image}/>
     <Card.Body>
         {/* we could add a link that leads to profile based on name */}
       <Card.Title className='bio'>{name}</Card.Title>
@@ -51,7 +51,7 @@ style={{ height: '50rem', width: '20rem' }}
   </Card>
   </div>  
 
- <CardGroup className='threeCards'>
+ <div className='threeCards'>
 
  {info.map((data, i) => {
  return ( 
@@ -61,11 +61,11 @@ style={{ height: '50rem', width: '20rem' }}
   key={i}
   onClick={ () =>  handleClick(data.name, data.bio, data.img)}
   >
-    <Card.Img variant="top" src={data.img} />
+    <Card.Img variant="top" src={data.img} className='cardImage' />
     <Card.Body>
       <Card.Title><Link to={`/profile/${data.name}`}>{data.name}</Link></Card.Title>
       <Card.Text>
-      
+      {data.blurb}
       </Card.Text>
     </Card.Body>
     <Card.Footer>
@@ -75,7 +75,7 @@ style={{ height: '50rem', width: '20rem' }}
 })}
 
   
-</CardGroup>
+</div>
         </div>
     );
 }
