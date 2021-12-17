@@ -1,4 +1,4 @@
-import DataFile from "./DataFile";
+import DataFile from "../DataFile";
 
 function UserProfile() {
   const userIndex = 2;
