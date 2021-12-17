@@ -10,9 +10,9 @@ import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import Chat from "./components/Chat/Chat";
 import AboutUs from "./components/AboutUs";
-import User from "./components/User";
-import UserLogin from "./components/UserLogin";
-import UserSignUp from "./components/UserSignUp";
+import User from "./components/User/User";
+import UserLogin from "./components/User/UserLogin";
+import UserSignUp from "./components/User/UserSignUp";
 
 function App() {
   return (

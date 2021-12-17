@@ -3,21 +3,10 @@
 //Array Bootcamp Fall 2021
 //Katie Greenwald, Steve Bateman, Bowen Condelario
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
-import { useEffect } from "react";
 
 function UserLogin() {
-  const loggedIn = false;
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (loggedIn) {
-      navigate("/user/profile");
-    } else {
-      navigate("/user/login");
-    }
-  }, [loggedIn, navigate]);
 
   return (
     <div className="user-login">
