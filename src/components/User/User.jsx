@@ -13,7 +13,7 @@ import UserSettings from "./UserSettings";
 import UserSignUp from "./UserSignUp";
 
 function User() {
-  const loggedIn = true;
+  const loggedIn = false;
 
   return (
     <>
