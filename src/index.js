@@ -7,16 +7,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, } from "react-router-dom";
 import { Provider } from "react-redux";
-import Store from "./store";
+import store from "./state/store/store";
 import App from "./App";
 import "./index.css";
-import ScrollToTop from "react-scroll-to-top";
+//import ScrollToTop from "react-scroll-to-top";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store ={Store}>
+    <Provider store ={store}>
       <BrowserRouter>
-      <ScrollToTop smooth />
+      {/* <ScrollToTop smooth /> */}
         <App />
       </BrowserRouter>
   </Provider>

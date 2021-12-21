@@ -1,7 +1,8 @@
 
 
 import {createSlice} from '@reduxjs/toolkit';
-import data from '../App/components/data';
+import data from '../components/DataFile';
+
 let content = []
 let storedContent = JSON.parse(localStorage.getItem("storedContent"));
 storedContent ? content = storedContent :  content = data; 
