@@ -3,9 +3,9 @@
 import {createSlice} from '@reduxjs/toolkit';
 import data from '../components/DataFile';
 
-let content = []
-let storedContent = JSON.parse(localStorage.getItem("storedContent"));
-storedContent ? content = storedContent :  content = data; 
+// let content = []
+// let storedContent = JSON.parse(localStorage.getItem("storedContent"));
+// storedContent ? content = storedContent :  content = data; 
 
 export const contentSlice = createSlice ({
     name: 'content',

@@ -1,6 +1,10 @@
-import DataFile from "../DataFile";
+//import DataFile from "../DataFile";
+import { useSelector } from 'react-redux';
+import { selectContent } from '../../state/contentSlice';
 
 function UserProfile() {
+  const DataFile = useSelector(selectContent);
+  
   const userIndex = 2;
   return (
     <div className="user-profile">

@@ -6,9 +6,12 @@
 import { Link } from "react-router-dom";
 import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
 import { useState } from "react";
-import users from "../DataFile"
+//import users from "../DataFile"
+import { useSelector } from 'react-redux';
+import { selectContent } from '../../state/contentSlice';
 
 function UserLogin() {
+  const users = useSelector(selectContent);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
