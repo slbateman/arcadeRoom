@@ -17,6 +17,7 @@ const info = [
     img: frostpine,
     color: "#001aff",
     blurb: "this is a tree",
+  
     bio: "Frostypine is a tree that lives in the mountains, in eternal winter even in the summer. The pinecone sometimes seen is a fake pinecone shaped rock and was placed on herself for decoration",
     art1: art1,
     art2: art2,
