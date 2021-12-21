@@ -2,11 +2,13 @@
 
 import {configureStore } from '@reduxjs/toolkit';
 import contentReducer from '../contentSlice'; 
-import messageReducer from '../messagetSlice';
+import messageReducer from '../messageSlice';
 
-export const store = configureStore({
+ const store = configureStore({
     reducer:{
         content: contentReducer,
-        message: messageReducer
+        message: messageReducer,
     }
 });
+
+export default store; 
