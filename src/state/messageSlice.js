@@ -13,7 +13,7 @@ export const messageSlice = createSlice ({
       messages:   messages
     },
     reducers: {
-       addmMessages: (state, action) => {
+       addMessages: (state, action) => {
         console.log(action.payload); 
         state.messages = action.payload;
         localStorage.setItem('storedMessages', JSON.stringify(state.messages));

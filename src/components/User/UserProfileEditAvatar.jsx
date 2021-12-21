@@ -10,7 +10,8 @@ function UserProfileEditAvatar({
   const [avatar, setAvatar] = useState(DataFile[userIndex].img);
   const closeEditAvatar = () => setShowEditAvatar(false);
 
-  const imageUpload = () => {
+  const imageUpload = (e) => {
+    // e.preventDefault();
     // Creates an array of all files from the file input form
     // however, only one file is able to be selected in the form
     const imgFiles = document.getElementById("imageFile").files;
@@ -18,12 +19,15 @@ function UserProfileEditAvatar({
     let imgFile = imgFiles[0];
     // Creates a new Object that enables it to be read
     const reader = new FileReader();
-    closeEditAvatar();
-    reader.addEventListener("load", (event) => {
-      // Reads the image file
-      //   gridContainer.style.backgroundImage = `url(${event.target.result})`;
-    });
     reader.readAsDataURL(imgFile);
+    reader.onload = () => {
+      setAvatar(reader.result);
+    };
+  };
+
+  const saveAvatar = (e) => {
+    e.preventDefault();
+    closeEditAvatar();
   };
 
   return (
@@ -33,14 +37,9 @@ function UserProfileEditAvatar({
           <Modal.Title>Edit Avatar</Modal.Title>
         </Modal.Header>
         <Modal.Body className="edit-modals">
-          <Form
-            enctype="multipart/form-data"
-            action="/upload/image"
-            method="post"
-            onSubmit={() => imageUpload()}
-          >
+          <Form onSubmit={(e) => saveAvatar(e)}>
             <img src={avatar} alt="avatar" />
-            <input id="imageFile" type="file" accept=".jpg, .jpeg, .png" />
+            <input id="imageFile" type="file" accept=".jpg, .jpeg, .png" onInput={()=>imageUpload()}/>
             <br />
             <br />
             <Button variant="primary" type="submit">
