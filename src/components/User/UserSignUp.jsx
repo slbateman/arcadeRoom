@@ -1,9 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
-import users from "../DataFile";
+//import users from "../DataFile";
+import { useSelector } from 'react-redux';
+import { selectContent } from '../../state/contentSlice';
 
 function UserSignUp() {
+  const users = useSelector(selectContent);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password1, setPassword1] = useState("");

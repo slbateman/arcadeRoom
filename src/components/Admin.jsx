@@ -5,14 +5,15 @@
 
 
 import './Components.css';
-import { Form, Modal, Container, Button, FloatingLabel } from 'react-bootstrap';
+import { Form, Modal, Container, Button} from 'react-bootstrap';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContent, selectContent } from '../../state/contentSlice';
-import info from './DataFile';
+
 
 
 const Admin = ({ defaultContent, setShow, show }) => {
+ 
     const dispatch = useDispatch();
     const content = useSelector(selectContent);
     //const info = useSelector(selectContent);

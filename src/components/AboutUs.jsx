@@ -5,15 +5,17 @@
 
 import './Components.css'; 
 import React from 'react'
-import { Card, CardGroup } from 'react-bootstrap';
+import { Card} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import info from './DataFile';
 import { useState } from 'react';
-// import { useSelector } from 'react-redux';
-// import { selectContent } from '../../state/contentSlice';
-const mf = info[0].art2 ; 
+import { useSelector } from 'react-redux';
+import { selectContent } from '../state/contentSlice';
+
+
 //mx-auto
 function AboutUs() {
+  const info = useSelector(selectContent);
+  // const mf = info[0].art2 ; 
     const [name, setName] = useState();
     const [bio, setBio] = useState();
     const [image, setImage] = useState();

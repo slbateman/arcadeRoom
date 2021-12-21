@@ -1,11 +1,17 @@
-import DataFile from "../DataFile";
+
+
+import { useSelector } from 'react-redux';
+import { selectContent } from '../../state/contentSlice';
 import editIcon from "../../images/editIcon.png";
 import { useState } from "react";
 import UserProfileEditAvatar from "./UserProfileEditAvatar";
 import UserProfileEditBio from "./UserProfileEditBio";
 import UserProfileEditEmail from "./UserProfileEditEmail";
 
+
 function UserProfile() {
+  const DataFile = useSelector(selectContent);
+  
   const userIndex = 2;
 
   const [showEditAvatar, setShowEditAvatar] = useState(false)
