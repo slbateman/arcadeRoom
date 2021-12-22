@@ -1,14 +1,33 @@
 //Navigation.jsx
-//Chatroom Assignment 
+//Chatroom Assignment
 //Array Bootcamp Fall 2021
-//Katie Greenwald, Steve Bateman, Bowen Condelario 
+//Katie Greenwald, Steve Bateman, Bowen Condelario
 
 import { useState, useEffect } from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, NavDropdown, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser, selectLocalUserInfo, selectUsers } from "../state/usersSlice";
 
 function Navigation() {
+  const dispatch = useDispatch()
+  const localUserInfo = useSelector(selectLocalUserInfo);
+  const loggedIn = localUserInfo.loggedIn;
+  const users = useSelector(selectUsers);
+  const userIndex = localUserInfo.userIndex;
+
+  const logout = () => {
+    dispatch(loginUser(
+      {
+        userIndex: users.length,
+        username: `user${users.length}`,
+        loggedIn: false,
+      }
+    ))
+    console.log("logged out");
+  };
+
   const [chat, setChat] = useState("");
   const [about, setAbout] = useState("");
   const [user, setUser] = useState("");
@@ -42,7 +61,7 @@ function Navigation() {
             Arcade Room
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav" >
+          <Navbar.Collapse id="responsive-navbar-nav">
             <Nav default activeKey="/" className="ms-auto">
               <Nav.Link eventKey="chat">
                 <Link className={"link " + chat} to="/chat">
@@ -54,11 +73,50 @@ function Navigation() {
                   About Us
                 </Link>
               </Nav.Link>
-              <Nav.Link>
-                <Link className={"link " + user} to="/user/login">
-                  Login
-                </Link>
-              </Nav.Link>
+              {loggedIn ? (
+                <Nav.Link>
+                  <div className="nav-profile-dropdown">
+                    <img
+                      className="nav-profile-pic"
+                      style={{ border: `1px solid ${users[userIndex].color}` }}
+                      src={users[userIndex].avatar}
+                      alt=""
+                    />
+                    <NavDropdown className="dropdown" id="basic-nav-dropdown">
+                      <NavDropdown.Item>
+                        <Link className="dropdown-item" to="/user/profile">
+                          Profile
+                        </Link>
+                      </NavDropdown.Item>
+                      <NavDropdown.Item>
+                        <Link className="dropdown-item" to="/user/settings">
+                          Settings
+                        </Link>
+                      </NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item>
+                        <Link className="dropdown-item" to="/user/leaderboard">
+                          Leaderboard
+                        </Link>
+                      </NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item
+                        onClick={() => {
+                          logout();
+                        }}
+                      >
+                        Logout
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  </div>
+                </Nav.Link>
+              ) : (
+                <Nav.Link>
+                  <Link className={"link " + user} to="/user/login">
+                    Login
+                  </Link>
+                </Nav.Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

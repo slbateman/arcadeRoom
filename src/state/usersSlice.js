@@ -28,6 +28,10 @@ export const usersSlice = createSlice({
     localUserInfo,
   },
   reducers: {
+    loginUser: (state, action) => {
+      state.localUserInfo = action.payload
+      localStorage.setItem("localUserInfo", JSON.stringify(state.localUserInfo))
+    },
     addUser: (state, action) => {
       console.log(action.payload);
       state.users.push(action.payload);
@@ -66,6 +70,7 @@ export const usersSlice = createSlice({
 });
 
 export const {
+  loginUser,
   addUser,
   deleteUser,
   editUserAvatar,
