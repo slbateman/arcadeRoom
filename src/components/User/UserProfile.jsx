@@ -10,8 +10,8 @@ import UserProfileEditEmail from "./UserProfileEditEmail";
 function UserProfile() {
   const users = useSelector(selectUsers);
   const localUserInfo = useSelector(selectLocalUserInfo)
-  const userIndex = 0
-  // const userIndex = localUserInfo.userIndex;
+  // const userIndex = 0
+  const userIndex = localUserInfo.userIndex;
 
   const [showEditAvatar, setShowEditAvatar] = useState(false)
   const [showEditBio, setShowEditBio] = useState(false)
