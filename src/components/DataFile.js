@@ -15,13 +15,13 @@ const info = [
     name: "Frostypine",
     email: "",
     img: frostpine,
-    color: "#001aff",
+    color: "#62eef8",
     blurb: "this is a tree",
     bio: "Frostypine is a tree that lives in the mountains, in eternal winter even in the summer. The pinecone sometimes seen is a fake pinecone shaped rock and was placed on herself for decoration",
     art1: art1,
     art2: art2,
     mf: "Mountain Friends Game",
-    mfg: "text text text",
+    mfg: "A game concisting of three strange friends and a pinecone shaped rock.",
   },
 
   {
