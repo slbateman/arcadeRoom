@@ -5,7 +5,7 @@
 
 import './Components.css'; 
 import React from 'react'
-import { Card} from 'react-bootstrap';
+import { Container, Row, Col, Card} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -32,6 +32,22 @@ function AboutUs() {
 
     return (
         <div className="mx-auto about">
+
+<Container>
+  <Row>
+    <Col>1 of 2</Col>
+    <Col>2 of 2</Col>
+  </Row>
+  <Row>
+    <Col>1 of 3</Col>
+    <Col>2 of 3</Col>
+    <Col>3 of 3</Col>
+  </Row>
+</Container>
+
+
+
+
 
     <div className=' mx-auto gameBox' >     
 <img src={info[0].art1} 
