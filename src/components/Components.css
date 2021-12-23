@@ -8,6 +8,17 @@
     width: 10rem;
 }
 
+.card-text {
+    left: -0rem; 
+    padding-right: 0rem;
+}
+
+
+.cardBody{
+    left:0rem; 
+    padding-right:0rem;
+    text-align: center;
+}
 body{
     /* color: #fe7fff;
     font-family: Changa;
@@ -15,10 +26,28 @@ body{
     text-shadow: 0px 0px 5px white, 0px 0px 30px #bd00ff, 0px 0px 30px #bd00ff; */
 }
 
+.cardTitle{
+    font-size: 4rem;
+}
+
+.cardText {
+    left: -50rem; 
+}
+
+.cardText, .cardTitle{
+    padding-right: 0; 
+    left: 0; 
+}
+
+
+.bio, .bio2{
+    padding-right: 20rem;
+    left:1000rem; 
+}
 .bio{
    padding-top: 35rem; 
    width : 75rem; 
-    top: 20rem;
+    top: 0rem;
    z-index: 3;
    text-align: center;
    font-size: 3.5rem;
@@ -30,7 +59,7 @@ body{
     padding-right: 20rem;
     overflow: scroll;
     overflow-x: hidden; 
-    left: 50rem;
+    left: 0rem;
 }
 .arcadeGame{
     left: 24rem;
@@ -65,7 +94,7 @@ body{
 
 .gameBox {
     top: 0rem; 
-    left:0;
+    left:0rem;
     position: relative;
 }
 
@@ -79,7 +108,7 @@ color: lightblue;
     top:10rem; 
     display: flex;
     flex: 1 1 auto;
-    left: 22rem; 
+    left:0rem; 
     position: relative;
     padding-bottom: 10rem;
 }

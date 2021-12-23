@@ -1,4 +1,7 @@
-
+//contentSlice.js
+//Chatroom Assignment 
+//Array Bootcamp Fall 2021
+//Katie Greenwald, Steve Bateman, Bowen Condelario 
 
 import {createSlice} from '@reduxjs/toolkit';
 import data from '../components/DataFile';

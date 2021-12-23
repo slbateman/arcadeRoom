@@ -1,3 +1,10 @@
+
+//UserProfile.jsx
+//Chatroom Assignment
+//Array Bootcamp Fall 2021
+//Katie Greenwald, Steve Bateman, Bowen Condelario
+
+
 import { useSelector } from 'react-redux';
 import { selectLocalUserInfo, selectUsers } from '../../state/usersSlice';
 import editIcon from "../../images/editIcon.png";
@@ -8,10 +15,13 @@ import UserProfileEditEmail from "./UserProfileEditEmail";
 
 
 function UserProfile() {
+
+ // const DataFile = useSelector(selectContent);
   const users = useSelector(selectUsers);
   const localUserInfo = useSelector(selectLocalUserInfo)
   // const userIndex = 0
   const userIndex = localUserInfo.userIndex;
+
 
   const [showEditAvatar, setShowEditAvatar] = useState(false)
   const [showEditBio, setShowEditBio] = useState(false)
