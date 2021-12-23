@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { selectUsers, selectLocalUserInfo, editUserEmail} from "../../state/usersSlice"
 
 function UserProfileEditEmail({ showEditEmail, setShowEditEmail }) {
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
   const users = useSelector(selectUsers);
   const localUserInfo = useSelector(selectLocalUserInfo);
   const userIndex = localUserInfo.userIndex;
@@ -22,6 +22,12 @@ function UserProfileEditEmail({ showEditEmail, setShowEditEmail }) {
           <Form
             onSubmit={(e) => {
               e.preventDefault();
+              dispatch(editUserEmail(
+                {
+                  index: userIndex,
+                  email: emailText
+                }
+              ))
               closeEditEmail();
             }}
           >

@@ -7,7 +7,7 @@ function UserProfileEditAvatar({
   showEditAvatar,
   setShowEditAvatar,
 }) {
-  const dispath = useDispatch()
+  const dispatch = useDispatch()
   const users = useSelector(selectUsers)
   const localUserInfo = useSelector(selectLocalUserInfo)
   const userIndex = localUserInfo.userIndex
@@ -31,6 +31,12 @@ function UserProfileEditAvatar({
 
   const saveAvatar = (e) => {
     e.preventDefault();
+    dispatch(editUserAvatar(
+      {
+        index: userIndex,
+        avatar: avatar,
+      }
+    ))
     closeEditAvatar();
   };
 

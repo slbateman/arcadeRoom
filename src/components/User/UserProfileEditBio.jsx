@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { selectUsers, selectLocalUserInfo, editUserBio } from "../../state/usersSlice"
 
 function UserProfileEditBio({ showEditBio, setShowEditBio }) {
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
   const users = useSelector(selectUsers);
   const localUserInfo = useSelector(selectLocalUserInfo);
   const userIndex = localUserInfo.userIndex;
@@ -22,6 +22,12 @@ function UserProfileEditBio({ showEditBio, setShowEditBio }) {
           <Form
             onSubmit={(e) => {
               e.preventDefault();
+              dispatch(editUserBio(
+                {
+                  index: userIndex,
+                  bio: bioText,
+                }
+              ))
               closeEditBio();
             }}
           >
