@@ -1,11 +1,12 @@
 import React from 'react'
 import './chat.css'
-import { name } from './RoomsList'
+import { roomName } from './RoomsList'
+
 
 function ChatRoomName() {
     return (
         <div className='chat-room-name text-color-blue'>
-            {name}
+            {roomName}
         </div>
     )
 }

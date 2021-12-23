@@ -4,16 +4,18 @@
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 60px 1fr 1fr 1fr 1fr 60px;
     grid-template-areas: 
-        "r n n n n t"
-        "r m m m m t"
-        "r m m m m t"
-        "r m m m m t"
-        "r m m m m t"
-        "r f f f f t";
+        "r n n n n n t"
+        "r m m m m m t"
+        "r m m m m m t"
+        "r m m m m m t"
+        "r m m m m m t"
+        "r f f f f f t";
 }
 
 .rooms-list {
     grid-area: r;
+    z-index: 9999;
+    max-width: 200px;
     margin-right: 5px;
     border-style: solid;
     border-width: 0px;
@@ -24,6 +26,7 @@
 
 .message-list {
     grid-area: m;
+    z-index: 0;
     margin: 10px;
     border-style: solid;
     border-width:5px;
@@ -34,11 +37,14 @@
 
 .send-message-form {
     grid-area: f;
+    z-index: 0;
     border-radius: 2%;
 }
 
 .information-list {
     grid-area: t;
+    z-index: 0;
+    width: 150px;
     margin-left: 5px;
     border-style: solid;
     border-width: 0px;
@@ -50,6 +56,7 @@
 
 .chat-room-name {
     grid-area: n;
+    z-index: 0;
     padding-left: 10px;
     font-size: 45px;
 }
