@@ -6,7 +6,7 @@
 import { useState, useEffect } from "react";
 import { Navbar, NavDropdown, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addUser,
@@ -20,6 +20,7 @@ function Navigation() {
   const loggedIn = localUserInfo.loggedIn;
   const users = useSelector(selectUsers);
   const userIndex = localUserInfo.userIndex;
+  
 
   const logout = () => {
     dispatch(
@@ -34,6 +35,7 @@ function Navigation() {
   const [about, setAbout] = useState("");
   const [user, setUser] = useState("");
   const location = useLocation().pathname;
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (location === "/chat") {
@@ -83,6 +85,7 @@ function Navigation() {
                       style={{ border: `1px solid ${users[userIndex].color}` }}
                       src={users[userIndex].avatar}
                       alt=""
+                      onClick={()=> {navigate('/user/profile')}}
                     />
                     <NavDropdown className="dropdown" id="basic-nav-dropdown">
                       <NavDropdown.Item>

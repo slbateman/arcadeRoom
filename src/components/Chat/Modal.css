@@ -1,4 +1,4 @@
-* {
+/* * {
     z-index: 9999;
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@
     z-index: 9999;
     font-family: Arial, Helvetica, sans-serif;
   }
-  
+   */
   .btn-openModal {
     z-index: 9999;
     position: absolute;
