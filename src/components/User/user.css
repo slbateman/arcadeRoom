@@ -77,6 +77,10 @@ h3 {
   color: #fe7fff;
 }
 
+.edit-modals {
+  background-color: #4f4f4f;
+}
+
 .user-profile {
   margin: auto;
   margin-top: 10px;
@@ -125,6 +129,23 @@ h3 {
   overflow: hidden;
 }
 
+.user-profile-edit-icon {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.user-profile-edit-icon:hover {
+  box-shadow: 0 0 5px 0 white;
+}
+
+.user-profile-edit-icon-avatar {
+  left: -25px;
+  top: 160px;
+}
+
 .user-profile-username {
   font-family: Changa;
   color: white;
@@ -154,7 +175,7 @@ h3 {
 
 .user-profile-bio-text {
   color: white;
-  padding: 5px;
+  padding: 10px;
 }
 
 .user-profile-email {
@@ -241,4 +262,3 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: ew-resize;
   box-shadow: 0 0 10px 0 white;
 }
-
