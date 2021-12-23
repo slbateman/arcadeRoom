@@ -15,11 +15,8 @@ import UserProfileEditEmail from "./UserProfileEditEmail";
 
 
 function UserProfile() {
-
- // const DataFile = useSelector(selectContent);
   const users = useSelector(selectUsers);
   const localUserInfo = useSelector(selectLocalUserInfo)
-  // const userIndex = 0
   const userIndex = localUserInfo.userIndex;
 
 
@@ -48,7 +45,7 @@ function UserProfile() {
           onClick={()=>editAvatar()}
         />
         <div>
-          <h2 className="user-profile-username">{users[userIndex].name}</h2>
+          <h2 className="user-profile-username">{users[userIndex].username}</h2>
           <div className="user-profile-lvl">lvl: </div>
           <div className="user-profile-rank">rank: </div>
           <div className="user-profile-badges">badges: </div>

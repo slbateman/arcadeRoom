@@ -226,27 +226,7 @@ h3 {
   border: 2px solid white;
 }
 
-.color-theme-op1 {
-  background-color: #befe3b;
-}
-
-.color-theme-op2 {
-  background-color: #bd00ff;
-}
-
-.color-theme-op3 {
-  background-color: #6bf4ff;
-}
-
-.color-theme-op4 {
-  background-color: #fe7fff;
-}
-
-.color-theme-op5 {
-  background-color: #001aff;
-}
-
-.op1-active {
+.color-active {
   box-shadow: 0 0 15px white;
 }
 
@@ -275,4 +255,29 @@ input[type="range"]::-webkit-slider-thumb {
   background: #befe3b;
   cursor: ew-resize;
   box-shadow: 0 0 10px 0 white;
+}
+
+.settings-message-example {
+  margin: 30px;
+  margin-top: 50px;
+}
+
+.message-user-info {
+  display: inline-flex;
+}
+
+.message-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.message-block {
+  margin-left: 10px
+}
+
+.message-text {
+  border-radius: 10px;
+  padding: 5px
 }
