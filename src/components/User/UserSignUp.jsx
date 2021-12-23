@@ -6,8 +6,6 @@
 import React from "react";
 import { useState } from "react";
 import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
-
-//import users from "../DataFile";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, selectUsers } from "../../state/usersSlice";
 import defaultAvatar from "../../images/defaultAvatar.png"
@@ -41,6 +39,9 @@ function UserSignUp() {
         color: "#ffffff",
         msgDensity: 16,
         msgBrightness: "#ffffff",
+        charTtl: 0,
+        msgTtl: 0,
+        rmsCreated: 0,
       })
     );
   };

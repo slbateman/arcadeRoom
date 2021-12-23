@@ -71,16 +71,16 @@ export const usersSlice = createSlice({
       localStorage.setItem("users", JSON.stringify(state.users));
     },
     editUserColor: (state, action) => {
-      state.users[action.payload.index].color = action.payload.color;
+      state.users[action.payload.userIndex].color = action.payload.color;
       localStorage.setItem("users", JSON.stringify(state.users));
     },
     editUserMsgDensity: (state, action) => {
-      state.users[action.payload.index].MsgDensity = action.payload.MsgDensity;
+      state.users[action.payload.userIndex].msgDensity = action.payload.msgDensity;
       localStorage.setItem("users", JSON.stringify(state.users));
     },
     editUserMsgBrightness: (state, action) => {
-      state.users[action.payload.index].MsgBrightness =
-        action.payload.MsgBrightness;
+      state.users[action.payload.userIndex].msgBrightness =
+        action.payload.msgBrightness;
       localStorage.setItem("users", JSON.stringify(state.users));
     },
   },
