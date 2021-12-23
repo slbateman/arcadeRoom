@@ -33,15 +33,27 @@ function AboutUs() {
     return (
         <div className="mx-auto about">
 
+          
+
 <Container>
   <Row>
     <Col>1 of 2</Col>
-    <Col>2 of 2</Col>
+    <Col>
+    arcade
+    
+    </Col>
+	<Col>3 of 3</Col>
   </Row>
   <Row>
-    <Col>1 of 3</Col>
-    <Col>2 of 3</Col>
-    <Col>3 of 3</Col>
+  {info.map((data, i) => {
+ return ( 
+
+    <Col  key={i}>{i} of 2
+    
+    </Col>
+
+    );
+})}
   </Row>
 </Container>
 
