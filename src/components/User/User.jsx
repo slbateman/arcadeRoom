@@ -11,9 +11,12 @@ import UserMenu from "./UserMenu";
 import UserProfile from "./UserProfile";
 import UserSettings from "./UserSettings";
 import UserSignUp from "./UserSignUp";
+import { useSelector } from "react-redux";
+import { selectLocalUserInfo } from "../../state/usersSlice";
 
 function User() {
-  const loggedIn = true;
+  const localUserInfo = useSelector(selectLocalUserInfo)
+  const loggedIn = localUserInfo.loggedIn
 
   return (
     <>

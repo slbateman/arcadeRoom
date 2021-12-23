@@ -114,6 +114,20 @@ h3 {
   background: #656565;
 }
 
+.nav-profile-pic {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.nav-profile-dropdown {
+  display: inline-flex
+}
+
+.dropdown-menu[data-bs-popper]{
+  left: -125px;
+}
 .user-profile-identification {
   display: inline-flex;
   margin-top: 50px;

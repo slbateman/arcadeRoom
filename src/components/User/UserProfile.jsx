@@ -1,10 +1,12 @@
+
 //UserProfile.jsx
 //Chatroom Assignment
 //Array Bootcamp Fall 2021
 //Katie Greenwald, Steve Bateman, Bowen Condelario
 
+
 import { useSelector } from 'react-redux';
-import { selectContent } from '../../state/contentSlice';
+import { selectLocalUserInfo, selectUsers } from '../../state/usersSlice';
 import editIcon from "../../images/editIcon.png";
 import { useState } from "react";
 import UserProfileEditAvatar from "./UserProfileEditAvatar";
@@ -13,9 +15,13 @@ import UserProfileEditEmail from "./UserProfileEditEmail";
 
 
 function UserProfile() {
-  const DataFile = useSelector(selectContent);
 
-  const userIndex = 2;
+ // const DataFile = useSelector(selectContent);
+  const users = useSelector(selectUsers);
+  const localUserInfo = useSelector(selectLocalUserInfo)
+  // const userIndex = 0
+  const userIndex = localUserInfo.userIndex;
+
 
   const [showEditAvatar, setShowEditAvatar] = useState(false)
   const [showEditBio, setShowEditBio] = useState(false)
@@ -31,8 +37,8 @@ function UserProfile() {
       <div className="user-profile-identification">
         <img
           className="user-profile-avatar"
-          style={{ border: `3px solid ${DataFile[userIndex].color}` }}
-          src={DataFile[userIndex].img}
+          style={{ border: `3px solid ${users[userIndex].color}` }}
+          src={users[userIndex].avatar}
           alt="avatar"
         />
         <img
@@ -42,7 +48,7 @@ function UserProfile() {
           onClick={()=>editAvatar()}
         />
         <div>
-          <h2 className="user-profile-username">{DataFile[userIndex].name}</h2>
+          <h2 className="user-profile-username">{users[userIndex].name}</h2>
           <div className="user-profile-lvl">lvl: </div>
           <div className="user-profile-rank">rank: </div>
           <div className="user-profile-badges">badges: </div>
@@ -51,7 +57,7 @@ function UserProfile() {
       <div className="user-profile-bio">
         <h3
           className="user-profile-bio-label"
-          style={{ color: `${DataFile[userIndex].color}` }}
+          style={{ color: `${users[userIndex].color}` }}
         >
           bio{" "}
           <img
@@ -63,9 +69,9 @@ function UserProfile() {
         </h3>
         <div
           className="user-profile-bio-textbox"
-          style={{ border: `3px solid ${DataFile[userIndex].color}` }}
+          style={{ border: `3px solid ${users[userIndex].color}` }}
         >
-          <p className="user-profile-bio-text">{DataFile[userIndex].bio}</p>
+          <p className="user-profile-bio-text">{users[userIndex].bio}</p>
         </div>
         <br />
         <br />
@@ -81,7 +87,7 @@ function UserProfile() {
           </span>
           <br />
           <span className="user-profile-email">
-            {DataFile[userIndex].email}
+            {users[userIndex].email}
           </span>
         </div>
       </div>

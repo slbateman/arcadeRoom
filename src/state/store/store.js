@@ -3,11 +3,15 @@
 import {configureStore } from '@reduxjs/toolkit';
 import contentReducer from '../contentSlice'; 
 import messageReducer from '../messageSlice';
+import usersReducer from '../usersSlice'
+import chatroomReducer from '../chatroomSlice'
 
  const store = configureStore({
     reducer:{
         content: contentReducer,
         message: messageReducer,
+        users: usersReducer,
+        chatroom: chatroomReducer,
     }
 });
 
