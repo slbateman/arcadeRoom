@@ -31,7 +31,7 @@ const UserData = [
         userID: 2,
         username: "sloth",
         password: "asdf",
-        email: "slot@gmail.com",
+        email: "sloth@gmail.com",
         avatar: asloth,
         blurb: "Is not the known species of sloth found in the jungle, but actually cryptid decended from ice age era giant sloths. can mysteriously make a strange branch to hang on that seems to be infinet in length and floats in mid air.",
         bio: "Is not the known species of sloth found in the jungle, but actually cryptid decended from ice age era giant sloths. can mysteriously make a strange branch to hang on that seems to be infinet in length and floats in mid air.",
