@@ -2,10 +2,15 @@
    Chatroom Assignment 
    Array Bootcamp Fall 2021
    Katie Greenwald, Steve Bateman, Bowen Condelario 
-color: lightblue;*/ 
+color: lightblue;*/
 
 body {
   background-color: black;
+  color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Changa;
 }
 
 .navigation {
@@ -37,24 +42,24 @@ body {
 }
 
 .link {
-    color: rgb(196, 196, 196);
-    font-family: Changa;
-    font-size: 1.5rem;
-    text-decoration: none;
+  color: rgb(196, 196, 196);
+  font-family: Changa;
+  font-size: 1.5rem;
+  text-decoration: none;
 }
 
 .link:visited {
-    color:rgb(196, 196, 196);
+  color: rgb(196, 196, 196);
 }
 
 .link:hover {
-    color: #befe3b !important;
-    text-shadow:  0px 0px 3px white !important;
-} 
+  color: #befe3b !important;
+  text-shadow: 0px 0px 3px white !important;
+}
 
 .active {
-    color: #befe3b !important;
-    text-shadow:  0px 0px 5px white, 0px 0px 20px #00ce00 !important;
+  color: #befe3b !important;
+  text-shadow: 0px 0px 5px white, 0px 0px 20px #00ce00 !important;
 }
 
 .home {
@@ -70,8 +75,8 @@ body {
   margin: auto;
   font-family: Changa;
   font-size: 10vw;
-  color: #6BF4FF;
-  text-shadow: 0px 0px 10px white, 0px 0px 70px #001AFF, 0px 0px 50px #001AFF;
+  color: #6bf4ff;
+  text-shadow: 0px 0px 10px white, 0px 0px 70px #001aff, 0px 0px 50px #001aff;
 }
 
 .to-the {
@@ -81,7 +86,7 @@ body {
   font-family: Changa;
   font-size: 3vw;
   color: #befe3b;
-  text-shadow: 0px 0px 10px white, 0px 0px 50px #00FF19, 0px 0px 25px #00FF19;
+  text-shadow: 0px 0px 10px white, 0px 0px 50px #00ff19, 0px 0px 25px #00ff19;
 }
 
 .arcade-room {
@@ -100,29 +105,4 @@ body {
   font-size: 3vw;
   color: white;
   text-shadow: 0px 0px 10px white;
-}
-
-.user-login {
-  margin: auto;
-  margin-top: 80px;
-  width: 50%;
-  max-width: 300px;
-}
-
-.btn-green {
-  background-color: #befe3b;
-  box-shadow: 0px 0px 7px white, 0px 0px 15px #00FF19;
-}
-
-.username-input, .password-input {  
-  color: #bd00ff !important;
-  background-color: black;
-  border: 2px solid #6BF4FF;
-  border-radius: 7px;
-  box-shadow: 0px 0px 8px white;
-}
-
-.signup-link {
-  margin-top: 20px;
-  color: #bd00ff;
 }
