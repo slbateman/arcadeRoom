@@ -1,4 +1,7 @@
-
+//messageSlice.js
+//Chatroom Assignment 
+//Array Bootcamp Fall 2021
+//Katie Greenwald, Steve Bateman, Bowen Condelario 
 
 import {createSlice} from '@reduxjs/toolkit';
 
@@ -13,7 +16,7 @@ export const messageSlice = createSlice ({
       messages:   messages
     },
     reducers: {
-       addmMessages: (state, action) => {
+       addMessages: (state, action) => {
         console.log(action.payload); 
         state.messages = action.payload;
         localStorage.setItem('storedMessages', JSON.stringify(state.messages));

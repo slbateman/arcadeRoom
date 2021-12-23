@@ -6,11 +6,11 @@
 import React from 'react';
 import './chat.css'
 import InformationList from './InformationList';
-import RoomsList from './RoomsList'
-import MessageList from './MessageList'
-import SendMessageForm from './SendMessageForm'
+import RoomsList from './RoomsList';
+import MessageList from './MessageList';
+import SendMessageForm from './SendMessageForm';
 import ChatRoomName from './ChatRoomName';
-
+import Message from '../Messages'; 
 
 function Chat() {
     return (
@@ -19,6 +19,7 @@ function Chat() {
             <ChatRoomName />
             <MessageList />
             <InformationList />
+            {/* <Message/> */}
             <SendMessageForm />
         </div>
     )

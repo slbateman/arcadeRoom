@@ -1,10 +1,14 @@
-//import DataFile from "../DataFile";
+//UserProfile.jsx
+//Chatroom Assignment
+//Array Bootcamp Fall 2021
+//Katie Greenwald, Steve Bateman, Bowen Condelario
+
 import { useSelector } from 'react-redux';
 import { selectContent } from '../../state/contentSlice';
 
 function UserProfile() {
   const DataFile = useSelector(selectContent);
-  
+
   const userIndex = 2;
   return (
     <div className="user-profile">

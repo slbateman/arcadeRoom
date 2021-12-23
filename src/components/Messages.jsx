@@ -7,14 +7,14 @@ import './Components.css';
 import { Container, Button, Form, Accordion, Card } from 'react-bootstrap';
 import { useDispatch,useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { addMessages, selectMessages } from '../../state/messageslice';
+import { addMessages, selectMessages } from '../state/messageSlice';
 
 const Messages = () => {
     //grab index from the url of the parent component don't need to pass it as it is already here
     const {index} = useParams();
 
     const dispatch = useDispatch(); 
-    const messageList = useSelector(selectMessages); // get list of messages from dedux
+    const messageList = useSelector(selectMessages); // get list of messages from redux
     const storeMessageList = () => dispatch(addMessages([...messageList, message]));
   // local state (component and children)
   const [message, setMessage] = useState({}); 

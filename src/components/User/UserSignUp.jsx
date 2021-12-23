@@ -1,7 +1,11 @@
+//UserSignUp.jsx
+//Chatroom Assignment
+//Array Bootcamp Fall 2021
+//Katie Greenwald, Steve Bateman, Bowen Condelario
+
 import React from "react";
 import { useState } from "react";
 import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
-//import users from "../DataFile";
 import { useSelector } from 'react-redux';
 import { selectContent } from '../../state/contentSlice';
 
