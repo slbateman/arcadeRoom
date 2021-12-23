@@ -21,7 +21,7 @@ const info = [
     art1: art1,
     art2: art2,
     mf: "Mountain Friends Game",
-    mfg: "text text text",
+    mfg: "A game concisting of three strange friends and a pinecone shaped rock.",
   },
 
   {

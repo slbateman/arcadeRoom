@@ -35,21 +35,35 @@ function AboutUs() {
 
           
 
-<Container>
+<Container className="gameBox">
   <Row>
-    <Col>1 of 2</Col>
-    <Col>
-    arcade
-    
+    <Col></Col>
+    <Col><img alt ="" className=" mfGame" src={image}/>
+    <img alt = "arcade console" className="mx-auto arcade" src={info[0].art1} 
+    onClick={ () =>  handleClick(mf, mfg, mfImg)}/>
+      
+      <div className="info">
+    <div className='mx-auto bio cardTitle '>{name}</div>
+ <div className='mx-auto bio2 cardText'>{bio}</div>
+</div>
     </Col>
-	<Col>3 of 3</Col>
+	<Col className='righty'></Col>
   </Row>
-  <Row>
+  <Row className = "threes">
   {info.map((data, i) => {
  return ( 
 
-    <Col  key={i}>{i} of 2
-    
+    <Col  key={i}
+    onClick={ () =>  handleClick(data.name, data.bio, data.img)}
+    >
+      <img alt="" src={data.img} className='mx-auto profilePic' 
+      style={{ height: '18rem', width: '20rem', border: `3px solid ${data.color}` }}
+      />
+ 
+ 
+  <div className='mx-auto cardTitle' ><Link to={`/profile/${data.name}`}>{data.name}</Link></div>
+  <div className='cardText'>  {data.blurb}</div>
+
     </Col>
 
     );
@@ -61,60 +75,7 @@ function AboutUs() {
 
 
 
-    <div className=' mx-auto gameBox' >     
-<img src={info[0].art1} 
-className="mx-auto arcadeGame" alt="arcade game console" 
-onClick={ () =>  handleClick(mf, mfg, mfImg)}
-/>
-
-<Card className="mx-auto aCard "
-style={{ height: '50rem', width: '20rem' }}
->
-    <Card.Img variant="top" className=" mfGame" src={image}/>
-    <Card.Body>
-        {/* we could add a link that leads to profile based on name */}
-      <Card.Title ></Card.Title>
-      <Card.Text  >
-     
-      </Card.Text >
-    </Card.Body>
-    <Card.Footer>
-    </Card.Footer>
-  </Card>
- <div className='mx-auto bio'>{name}</div>
- <div className='mx-auto bio2'>{bio}</div>
-
-  </div>  
-
- <div className='mx-auto threeCards'>
-
- {info.map((data, i) => {
- return ( 
-
-<div
-  className='card'
-  key={i}
-  onClick={ () =>  handleClick(data.name, data.bio, data.img)}>
-  <Card>
-    <Card.Img variant="top" src={data.img} className='mx-auto cardImage' />
-    <Card.Body className='cardBody'>
-      <Card.Title ></Card.Title>
-      <Card.Text >
     
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-    </Card.Footer>
-  </Card>
-  <div className='mx-auto cardTitle' ><Link to={`/profile/${data.name}`}>{data.name}</Link></div>
-  <div className='cardText'>  {data.blurb}</div>
-
-  </div>
-    );
-})}
-
-  
-</div>
         </div>
     );
 }
