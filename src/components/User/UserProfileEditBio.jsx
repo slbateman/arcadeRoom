@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import DataFile from "../DataFile";
+import { useSelector, useDispatch } from "react-redux"
+import { selectUsers, selectLocalUserInfo, editUserBio } from "../../state/usersSlice"
 
-function UserProfileEditBio({ showEditBio, setShowEditBio, userIndex }) {
-  const [bioText, setBioText] = useState(DataFile[userIndex].bio);
+function UserProfileEditBio({ showEditBio, setShowEditBio }) {
+  const dispath = useDispatch();
+  const users = useSelector(selectUsers);
+  const localUserInfo = useSelector(selectLocalUserInfo);
+  const userIndex = localUserInfo.userIndex;
+  const [bioText, setBioText] = useState(users[userIndex].bio);
 
   const closeEditBio = () => setShowEditBio(false);
 
@@ -31,7 +36,7 @@ function UserProfileEditBio({ showEditBio, setShowEditBio, userIndex }) {
                 onChange={(e) => setBioText(e.target.value)}
               />
             </Form.Group>
-            <br/>
+            <br />
             <Button variant="primary" type="submit">
               Save Bio
             </Button>

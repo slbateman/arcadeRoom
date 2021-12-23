@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import DataFile from "../DataFile";
+import { useSelector, useDispatch } from "react-redux"
+import { selectUsers, selectLocalUserInfo, editUserAvatar } from "../../state/usersSlice"
 
 function UserProfileEditAvatar({
   showEditAvatar,
   setShowEditAvatar,
-  userIndex,
 }) {
-  const [avatar, setAvatar] = useState(DataFile[userIndex].img);
+  const dispath = useDispatch()
+  const users = useSelector(selectUsers)
+  const localUserInfo = useSelector(selectLocalUserInfo)
+  const userIndex = localUserInfo.userIndex
+  const [avatar, setAvatar] = useState(users[userIndex].avatar);
   const closeEditAvatar = () => setShowEditAvatar(false);
 
   const imageUpload = (e) => {

@@ -8,24 +8,26 @@ import { Navbar, NavDropdown, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, selectLocalUserInfo, selectUsers } from "../state/usersSlice";
+import {
+  addUser,
+  selectLocalUserInfo,
+  selectUsers,
+} from "../state/usersSlice";
 
 function Navigation() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const localUserInfo = useSelector(selectLocalUserInfo);
   const loggedIn = localUserInfo.loggedIn;
   const users = useSelector(selectUsers);
   const userIndex = localUserInfo.userIndex;
 
   const logout = () => {
-    dispatch(loginUser(
-      {
+    dispatch(
+      addUser({
         userIndex: users.length,
         username: `user${users.length}`,
-        loggedIn: false,
-      }
-    ))
-    console.log("logged out");
+      })
+    );
   };
 
   const [chat, setChat] = useState("");
