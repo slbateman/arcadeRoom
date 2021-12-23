@@ -1,11 +1,16 @@
+//ChatRoomName.js
+//Chatroom Assignment 
+//Array Bootcamp Fall 2021
+//Katie Greenwald, Steve Bateman, Bowen Condelario 
 import React from 'react'
 import './chat.css'
-import { name } from './RoomsList'
+import { roomName } from './RoomsList'
+
 
 function ChatRoomName() {
     return (
         <div className='chat-room-name text-color-blue'>
-            {name}
+            {roomName}
         </div>
     )
 }
