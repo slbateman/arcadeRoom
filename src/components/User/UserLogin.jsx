@@ -22,6 +22,7 @@ function UserLogin() {
     if (password === "") return alert("password cannot be empty");
     let userIndex = users.findIndex((e) => e.username === username);
     if (userIndex < 0) return alert("user not found");
+    if (!users[userIndex].password) alert("you cannot login as an anonymous user")
     if (userIndex >= 0 && password === users[userIndex].password) {
       dispatch(
         loginUser({

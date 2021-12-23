@@ -15,10 +15,11 @@ if (!localUserInfo) {
     loggedIn: false,
   };
   users.push({
-    username: localUserInfo.username
+    userID: localUserInfo.userIndex,
+    username: localUserInfo.username,
   });
-  localStorage.setItem("localUserInfo", JSON.stringify(localUserInfo))
-  localStorage.setItem("users", JSON.stringify(users))
+  localStorage.setItem("localUserInfo", JSON.stringify(localUserInfo));
+  localStorage.setItem("users", JSON.stringify(users));
 }
 
 export const usersSlice = createSlice({
@@ -29,13 +30,29 @@ export const usersSlice = createSlice({
   },
   reducers: {
     loginUser: (state, action) => {
-      state.localUserInfo = action.payload
-      localStorage.setItem("localUserInfo", JSON.stringify(state.localUserInfo))
+      state.localUserInfo = action.payload;
+      localStorage.setItem(
+        "localUserInfo",
+        JSON.stringify(state.localUserInfo)
+      );
     },
     addUser: (state, action) => {
-      console.log(action.payload);
       state.users.push(action.payload);
+      if (!action.payload.password) {
+        state.localUserInfo = { ...action.payload, loggedIn: false };
+      }
+      if (action.payload.password) {
+        state.localUserInfo = {
+          userIndex: action.payload.userID,
+          username: action.payload.username,
+          loggedIn: true,
+        };
+      }
       localStorage.setItem("users", JSON.stringify(state.users));
+      localStorage.setItem(
+        "localUserInfo",
+        JSON.stringify(state.localUserInfo)
+      );
     },
     deleteUser: (state, action) => {
       state.users.splice(action.payload, 1);
