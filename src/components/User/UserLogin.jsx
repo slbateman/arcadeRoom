@@ -7,11 +7,12 @@ import { Link } from "react-router-dom";
 import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
 import { useState } from "react";
 //import users from "../DataFile"
-import { useSelector } from 'react-redux';
-import { selectContent } from '../../state/contentSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser, selectUsers } from "../../state/usersSlice";
 
 function UserLogin() {
-  const users = useSelector(selectContent);
+  const users = useSelector(selectUsers);
+  const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,9 +20,17 @@ function UserLogin() {
     e.preventDefault();
     if (username === "") return alert("username cannot be empty");
     if (password === "") return alert("password cannot be empty");
-    let user = users.find((e) => e.name === username)
-    if (!user) return alert("user not found")
-    alert(user.name);
+    let userIndex = users.findIndex((e) => e.username === username);
+    if (userIndex < 0) return alert("user not found");
+    if (userIndex >= 0 && password === users[userIndex].password) {
+      dispatch(
+        loginUser({
+          userIndex: userIndex,
+          username: users[userIndex].username,
+          loggedIn: true,
+        })
+      );
+    }
   };
 
   return (
@@ -39,7 +48,7 @@ function UserLogin() {
               placeholder="username"
               value={username}
               onChange={(e) => {
-                setUsername(e.target.value);
+                setUsername(e.target.value.toLowerCase());
               }}
             />
           </InputGroup>

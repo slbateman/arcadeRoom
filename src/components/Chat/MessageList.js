@@ -4,7 +4,9 @@ import './chat.css'
 function MessageList() {
     return (
         <div className='message-list text-color'>
-            <div>message</div>
+            <div>
+                
+            </div>
         </div>
     )
 }
