@@ -4,6 +4,14 @@
    Katie Greenwald, Steve Bateman, Bowen Condelario 
 */ 
 
+.AdminButton{
+    padding-top: 10rem;
+    padding-left: 50rem;
+    left: 0rem;
+    top: 0rem;
+    position: relative; 
+}
+
 .mfGame{
     height: 10rem;
     width: 15rem;

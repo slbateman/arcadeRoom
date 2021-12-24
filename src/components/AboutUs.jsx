@@ -33,8 +33,6 @@ function AboutUs() {
     return (
         <div className="mx-auto about">
 
-          
-
 <Container className="gameBox">
   <Row>
     <Col></Col>
@@ -49,6 +47,8 @@ function AboutUs() {
     </Col>
 	<Col className='righty'></Col>
   </Row>
+
+  
   <Row className = "threes">
   {info.map((data, i) => {
  return ( 
@@ -69,6 +69,8 @@ function AboutUs() {
     );
 })}
   </Row>
+
+
 </Container>
 
 

@@ -4,11 +4,15 @@
 //Katie Greenwald, Steve Bateman, Bowen Condelario 
 
 import {createSlice} from '@reduxjs/toolkit';
-
+import messageData from '../components/PM/messageData'; 
 
 let messages =[];
 let storedMessages = JSON.parse(localStorage.getItem("storedMessages"));
 if (storedMessages) messages = storedMessages; 
+if(!messages) {
+messages = messageData; 
+  localStorage.setItem("messages", JSON.stringify(messages))
+}
 
 export const messageSlice = createSlice ({
     name: 'messages',
