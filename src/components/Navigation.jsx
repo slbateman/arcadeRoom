@@ -67,16 +67,12 @@ function Navigation() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav default activeKey="/" className="ms-auto">
-              <Nav.Link eventKey="chat">
                 <Link className={"link " + chat} to="/chat">
                   Chatrooms
                 </Link>
-              </Nav.Link>
-              <Nav.Link>
                 <Link className={"link " + about} to="/about">
                   About Us
                 </Link>
-              </Nav.Link>
               {loggedIn ? (
                 <Nav.Link>
                   <div className="nav-profile-dropdown">
@@ -116,11 +112,9 @@ function Navigation() {
                   </div>
                 </Nav.Link>
               ) : (
-                <Nav.Link>
                   <Link className={"link " + user} to="/user/login">
                     Login
                   </Link>
-                </Nav.Link>
               )}
             </Nav>
           </Navbar.Collapse>

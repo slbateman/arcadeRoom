@@ -41,7 +41,7 @@ function UserLogin() {
           checkAuth(e);
         }}
       >
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3" >
           <InputGroup>
             <FormControl
               className="username-input"
@@ -54,7 +54,7 @@ function UserLogin() {
             />
           </InputGroup>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3" >
           <Form.Control
             className="password-input"
             type="password"
@@ -70,7 +70,7 @@ function UserLogin() {
         </Button>
         <br />
         <Link to="/user/sign-up">
-          <p className="sign-up-link">sign up</p>
+          <span className="sign-up-link">sign up</span>
         </Link>
       </Form>
     </div>
