@@ -200,7 +200,9 @@ h3 {
 .user-settings {
   margin-top: 40px;
   margin-left: 50px;
-  width: calc(100vw - 250px - 100px);
+  width: calc(100vw - 250px - 55px);
+  height: calc(100vh - 120px);
+  overflow-y: scroll;
 }
 
 .user-settings-headers {
@@ -211,7 +213,8 @@ h3 {
 }
 
 .user-settings-color-themes {
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .user-settings-color-themes:hover {
