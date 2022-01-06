@@ -29,6 +29,9 @@ export const usersSlice = createSlice({
     localUserInfo,
   },
   reducers: {
+    allUsers: (state, action) => {
+      state.users = action.payload
+    },
     loginUser: (state, action) => {
       state.localUserInfo = action.payload;
       localStorage.setItem(
@@ -54,7 +57,7 @@ export const usersSlice = createSlice({
         JSON.stringify(state.localUserInfo)
       );
     },
-    deleteUser: (state, action) => {
+    removeUser: (state, action) => {
       state.users.splice(action.payload, 1);
       localStorage.setItem("users", JSON.stringify(state.users));
     },
@@ -89,7 +92,7 @@ export const usersSlice = createSlice({
 export const {
   loginUser,
   addUser,
-  deleteUser,
+  removeUser,
   editUserAvatar,
   editUserBio,
   editUserEmail,
