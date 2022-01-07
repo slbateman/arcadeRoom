@@ -1,15 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './Modal.css';
 
-export const Modal = ({ show, close, submit}) => {
+export const Modal = ({ show, close, submit }) => {
   const [data, setData] = useState(null);
 
   function getName(e) {
     setData(e.target.value)
     console.log(data)
   }
-
-  const newRoomName = data
 
   return (
     <div className="modal-wrapper"
@@ -25,17 +23,18 @@ export const Modal = ({ show, close, submit}) => {
       <div className="modal-content">
         <div className="modal-body">
           <h4>New chat</h4>
-          <form>
+          <form onSubmit={() => { submit(data); close(); }}>
             <input
               onChange={getName}
               type="text"
               placeholder='Room Name'
             />
+            <div className="modal-footer">
+              <button type="submit" className="btn-cancel">submit</button>
+            </div>
           </form>
         </div>
-        <div className="modal-footer">
-          <button onClick={() => {submit(data); close();}} className="btn-cancel">submit</button>
-        </div>
+
       </div>
     </div>
   )

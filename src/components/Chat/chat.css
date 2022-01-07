@@ -1,21 +1,21 @@
 .chat {
     display: grid;
     height: 849px;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(9, 1fr);
     grid-template-rows: 60px 1fr 1fr 1fr 1fr 60px;
     grid-template-areas: 
-        "r n n n n n t"
-        "r m m m m m t"
-        "r m m m m m t"
-        "r m m m m m t"
-        "r m m m m m t"
-        "r f f f f f t";
+        "r n n n n n n n n t"
+        "r m m m m m m m m t"
+        "r m m m m m m m m t"
+        "r m m m m m m m m t"
+        "r m m m m m m m m t"
+        "r f f f f f f f f t";
 }
 
 .rooms-list {
     grid-area: r;
     z-index: 9999;
-    max-width: 200px;
+    width: 150px;
     margin-right: 5px;
     border-style: solid;
     border-width: 0px;
@@ -38,7 +38,7 @@
 .send-message-form {
     grid-area: f;
     z-index: 0;
-    border-radius: 2%;
+    border-radius: 2px;
 }
 
 .information-list {
