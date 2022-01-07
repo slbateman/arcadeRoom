@@ -22,6 +22,7 @@ function UserLogin() {
     if (password === "") return alert("password cannot be empty");
     let userIndex = users.findIndex((e) => e.username === username);
     if (userIndex < 0) return alert("user not found");
+    if (!users[userIndex].password) alert("you cannot login as an anonymous user")
     if (userIndex >= 0 && password === users[userIndex].password) {
       dispatch(
         loginUser({
@@ -40,7 +41,7 @@ function UserLogin() {
           checkAuth(e);
         }}
       >
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3" >
           <InputGroup>
             <FormControl
               className="username-input"
@@ -53,7 +54,7 @@ function UserLogin() {
             />
           </InputGroup>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3" >
           <Form.Control
             className="password-input"
             type="password"
@@ -69,7 +70,7 @@ function UserLogin() {
         </Button>
         <br />
         <Link to="/user/sign-up">
-          <p className="sign-up-link">sign up</p>
+          <span className="sign-up-link">sign up</span>
         </Link>
       </Form>
     </div>

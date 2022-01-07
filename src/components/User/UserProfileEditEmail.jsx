@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import DataFile from "../DataFile";
+import { useSelector, useDispatch } from "react-redux"
+import { selectUsers, selectLocalUserInfo, editUserEmail} from "../../state/usersSlice"
 
-function UserProfileEditEmail({ showEditEmail, setShowEditEmail, userIndex }) {
-  const [emailText, setEmailText] = useState(DataFile[userIndex].email);
+function UserProfileEditEmail({ showEditEmail, setShowEditEmail }) {
+  const dispatch = useDispatch();
+  const users = useSelector(selectUsers);
+  const localUserInfo = useSelector(selectLocalUserInfo);
+  const userIndex = localUserInfo.userIndex;
+  const [emailText, setEmailText] = useState(users[userIndex].email);
 
   const closeEditEmail = () => setShowEditEmail(false);
 
@@ -17,6 +22,12 @@ function UserProfileEditEmail({ showEditEmail, setShowEditEmail, userIndex }) {
           <Form
             onSubmit={(e) => {
               e.preventDefault();
+              dispatch(editUserEmail(
+                {
+                  index: userIndex,
+                  email: emailText
+                }
+              ))
               closeEditEmail();
             }}
           >

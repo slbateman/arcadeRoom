@@ -6,32 +6,36 @@
 import { useState, useEffect } from "react";
 import { Navbar, NavDropdown, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, selectLocalUserInfo, selectUsers } from "../state/usersSlice";
+import {
+  addUser,
+  selectLocalUserInfo,
+  selectUsers,
+} from "../state/usersSlice";
 
 function Navigation() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const localUserInfo = useSelector(selectLocalUserInfo);
   const loggedIn = localUserInfo.loggedIn;
   const users = useSelector(selectUsers);
   const userIndex = localUserInfo.userIndex;
+  
 
   const logout = () => {
-    dispatch(loginUser(
-      {
+    dispatch(
+      addUser({
         userIndex: users.length,
         username: `user${users.length}`,
-        loggedIn: false,
-      }
-    ))
-    console.log("logged out");
+      })
+    );
   };
 
   const [chat, setChat] = useState("");
   const [about, setAbout] = useState("");
   const [user, setUser] = useState("");
   const location = useLocation().pathname;
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (location === "/chat") {
@@ -63,16 +67,12 @@ function Navigation() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav default activeKey="/" className="ms-auto">
-              <Nav.Link eventKey="chat">
                 <Link className={"link " + chat} to="/chat">
                   Chatrooms
                 </Link>
-              </Nav.Link>
-              <Nav.Link>
                 <Link className={"link " + about} to="/about">
                   About Us
                 </Link>
-              </Nav.Link>
               {loggedIn ? (
                 <Nav.Link>
                   <div className="nav-profile-dropdown">
@@ -81,6 +81,7 @@ function Navigation() {
                       style={{ border: `1px solid ${users[userIndex].color}` }}
                       src={users[userIndex].avatar}
                       alt=""
+                      onClick={()=> {navigate('/user/profile')}}
                     />
                     <NavDropdown className="dropdown" id="basic-nav-dropdown">
                       <NavDropdown.Item>
@@ -111,11 +112,9 @@ function Navigation() {
                   </div>
                 </Nav.Link>
               ) : (
-                <Nav.Link>
                   <Link className={"link " + user} to="/user/login">
                     Login
                   </Link>
-                </Nav.Link>
               )}
             </Nav>
           </Navbar.Collapse>

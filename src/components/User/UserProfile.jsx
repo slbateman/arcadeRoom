@@ -1,3 +1,10 @@
+
+//UserProfile.jsx
+//Chatroom Assignment
+//Array Bootcamp Fall 2021
+//Katie Greenwald, Steve Bateman, Bowen Condelario
+
+
 import { useSelector } from 'react-redux';
 import { selectLocalUserInfo, selectUsers } from '../../state/usersSlice';
 import editIcon from "../../images/editIcon.png";
@@ -10,8 +17,8 @@ import UserProfileEditEmail from "./UserProfileEditEmail";
 function UserProfile() {
   const users = useSelector(selectUsers);
   const localUserInfo = useSelector(selectLocalUserInfo)
-  // const userIndex = 0
   const userIndex = localUserInfo.userIndex;
+
 
   const [showEditAvatar, setShowEditAvatar] = useState(false)
   const [showEditBio, setShowEditBio] = useState(false)
@@ -38,7 +45,7 @@ function UserProfile() {
           onClick={()=>editAvatar()}
         />
         <div>
-          <h2 className="user-profile-username">{users[userIndex].name}</h2>
+          <h2 className="user-profile-username">{users[userIndex].username}</h2>
           <div className="user-profile-lvl">lvl: </div>
           <div className="user-profile-rank">rank: </div>
           <div className="user-profile-badges">badges: </div>

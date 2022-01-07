@@ -15,10 +15,11 @@ if (!localUserInfo) {
     loggedIn: false,
   };
   users.push({
-    username: localUserInfo.username
+    userID: localUserInfo.userIndex,
+    username: localUserInfo.username,
   });
-  localStorage.setItem("localUserInfo", JSON.stringify(localUserInfo))
-  localStorage.setItem("users", JSON.stringify(users))
+  localStorage.setItem("localUserInfo", JSON.stringify(localUserInfo));
+  localStorage.setItem("users", JSON.stringify(users));
 }
 
 export const usersSlice = createSlice({
@@ -28,16 +29,35 @@ export const usersSlice = createSlice({
     localUserInfo,
   },
   reducers: {
+    allUsers: (state, action) => {
+      state.users = action.payload
+    },
     loginUser: (state, action) => {
-      state.localUserInfo = action.payload
-      localStorage.setItem("localUserInfo", JSON.stringify(state.localUserInfo))
+      state.localUserInfo = action.payload;
+      localStorage.setItem(
+        "localUserInfo",
+        JSON.stringify(state.localUserInfo)
+      );
     },
     addUser: (state, action) => {
-      console.log(action.payload);
       state.users.push(action.payload);
+      if (!action.payload.password) {
+        state.localUserInfo = { ...action.payload, loggedIn: false };
+      }
+      if (action.payload.password) {
+        state.localUserInfo = {
+          userIndex: action.payload.userID,
+          username: action.payload.username,
+          loggedIn: true,
+        };
+      }
       localStorage.setItem("users", JSON.stringify(state.users));
+      localStorage.setItem(
+        "localUserInfo",
+        JSON.stringify(state.localUserInfo)
+      );
     },
-    deleteUser: (state, action) => {
+    removeUser: (state, action) => {
       state.users.splice(action.payload, 1);
       localStorage.setItem("users", JSON.stringify(state.users));
     },
@@ -54,16 +74,16 @@ export const usersSlice = createSlice({
       localStorage.setItem("users", JSON.stringify(state.users));
     },
     editUserColor: (state, action) => {
-      state.users[action.payload.index].color = action.payload.color;
+      state.users[action.payload.userIndex].color = action.payload.color;
       localStorage.setItem("users", JSON.stringify(state.users));
     },
     editUserMsgDensity: (state, action) => {
-      state.users[action.payload.index].MsgDensity = action.payload.MsgDensity;
+      state.users[action.payload.userIndex].msgDensity = action.payload.msgDensity;
       localStorage.setItem("users", JSON.stringify(state.users));
     },
     editUserMsgBrightness: (state, action) => {
-      state.users[action.payload.index].MsgBrightness =
-        action.payload.MsgBrightness;
+      state.users[action.payload.userIndex].msgBrightness =
+        action.payload.msgBrightness;
       localStorage.setItem("users", JSON.stringify(state.users));
     },
   },
@@ -72,7 +92,7 @@ export const usersSlice = createSlice({
 export const {
   loginUser,
   addUser,
-  deleteUser,
+  removeUser,
   editUserAvatar,
   editUserBio,
   editUserEmail,

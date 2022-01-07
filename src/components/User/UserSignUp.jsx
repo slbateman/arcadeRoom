@@ -1,12 +1,19 @@
+//UserSignUp.jsx
+//Chatroom Assignment
+//Array Bootcamp Fall 2021
+//Katie Greenwald, Steve Bateman, Bowen Condelario
+
 import React from "react";
 import { useState } from "react";
 import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
-//import users from "../DataFile";
-import { useSelector } from 'react-redux';
-import { selectContent } from '../../state/contentSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, selectUsers } from "../../state/usersSlice";
+import defaultAvatar from "../../images/defaultAvatar.png"
+
 
 function UserSignUp() {
-  const users = useSelector(selectContent);
+  const dispatch = useDispatch();
+  const users = useSelector(selectUsers);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password1, setPassword1] = useState("");
@@ -18,9 +25,25 @@ function UserSignUp() {
     if (username === "") return alert("username cannot be empty");
     if (password1 === "") return alert("create password cannot be empty");
     if (password2 === "") return alert("confirm password cannot be empty");
-    let user = users.find((e) => e.name === username);
+    let user = users.find((e) => e.username === username);
     if (user) return alert("username already exists");
-    alert(user.name);
+    if (password1 !== password2) alert("your passwords down't match");
+    dispatch(
+      addUser({
+        userID: users.length,
+        username: username,
+        password: password1,
+        email: email,
+        avatar: defaultAvatar,
+        bio: "",
+        color: "#ffffff",
+        msgDensity: 16,
+        msgBrightness: "#ffffff",
+        charTtl: 0,
+        msgTtl: 0,
+        rmsCreated: 0,
+      })
+    );
   };
 
   return (
