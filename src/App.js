@@ -11,6 +11,7 @@ import Home from "./components/Home";
 import Chat from "./components/Chat/Chat";
 import AboutUs from "./components/AboutUs";
 import User from "./components/User/User";
+import Test from "./components/PM/test";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/chat" element={<Chat />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/user/*" element={<User />} />
+        <Route path="/test" element={<Test/>} />
       </Routes>
     </div>
   );

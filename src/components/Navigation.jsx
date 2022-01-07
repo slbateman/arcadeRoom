@@ -35,6 +35,7 @@ function Navigation() {
   const [about, setAbout] = useState("");
   const [user, setUser] = useState("");
   const location = useLocation().pathname;
+  const [test, setTest] = useState(""); 
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -50,7 +51,13 @@ function Navigation() {
       setUser("active");
       setChat("");
       setAbout("");
-    } else {
+    }
+    else if (location === "/test") {
+      setUser("active");
+      setChat("");
+      setAbout("");
+    }
+    else {
       setUser("");
       setChat("");
       setAbout("");
@@ -100,6 +107,7 @@ function Navigation() {
                           Leaderboard
                         </Link>
                       </NavDropdown.Item>
+                      
                       <NavDropdown.Divider />
                       <NavDropdown.Item
                         onClick={() => {
@@ -116,6 +124,13 @@ function Navigation() {
                     Login
                   </Link>
               )}
+
+           <Nav.Link eventKey="test">
+                <Link className={"link " + test} to="/test">
+                  test
+                </Link>
+              </Nav.Link>
+              
             </Nav>
           </Navbar.Collapse>
         </Container>

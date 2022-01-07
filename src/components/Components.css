@@ -3,6 +3,47 @@
    Array Bootcamp Fall 2021
    Katie Greenwald, Steve Bateman, Bowen Condelario 
 */ 
+/* .aMessage{
+    padding-top: 5rem;
+} */
+.aLeft {background-color:blanchedalmond;
+    /*  */
+}
+.propic{
+    padding-bottom: 0;
+}
+.aPost{
+    text-align: center;
+    height: 20rem; 
+    width: 40rem;   
+  
+    text-shadow: 0 0 3px #9900ff, 0 0 5px #0000FF;;
+    /*  -webkit-text-stroke-width: 1px;border:  background-color:grey; */
+}
+.anImage{
+height: 10rem; 
+width: 10rem; 
+padding-bottom: 0.9rem;
+/* opacity: 0; */
+}
+.card-title{color: black;}
+
+
+.messageBox {
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: 10rem;
+}
+
+
+.AdminButton{
+    padding-top: 10rem;
+    padding-left: 50rem;
+    left: 0rem;
+    top: 0rem;
+    position: relative; 
+}
 
 .mfGame{
     height: 10rem;

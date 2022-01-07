@@ -5,7 +5,7 @@
 
 import './Components.css'; 
 import React from 'react'
-import { Container, Row, Col, Card} from 'react-bootstrap';
+import { Container, Row, Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -33,8 +33,6 @@ function AboutUs() {
     return (
         <div className="mx-auto about">
 
-          
-
 <Container className="gameBox">
   <Row>
     <Col></Col>
@@ -49,6 +47,8 @@ function AboutUs() {
     </Col>
 	<Col className='righty'></Col>
   </Row>
+
+  
   <Row className = "threes">
   {info.map((data, i) => {
  return ( 
@@ -69,6 +69,8 @@ function AboutUs() {
     );
 })}
   </Row>
+
+
 </Container>
 
 
