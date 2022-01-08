@@ -1,51 +1,47 @@
-
 //UserProfile.jsx
 //Chatroom Assignment
 //Array Bootcamp Fall 2021
 //Katie Greenwald, Steve Bateman, Bowen Condelario
 
-
-import { useSelector } from 'react-redux';
-import { selectLocalUserInfo, selectUsers } from '../../state/usersSlice';
+import { useSelector } from "react-redux";
+import { selectLocalUserInfo, selectUsers } from "../../state/usersSlice";
 import editIcon from "../../images/editIcon.png";
 import { useState } from "react";
 import UserProfileEditAvatar from "./UserProfileEditAvatar";
 import UserProfileEditBio from "./UserProfileEditBio";
 import UserProfileEditEmail from "./UserProfileEditEmail";
 
-
 function UserProfile() {
   const users = useSelector(selectUsers);
-  const localUserInfo = useSelector(selectLocalUserInfo)
-  const userIndex = localUserInfo.userIndex;
+  const localUserInfo = useSelector(selectLocalUserInfo);
+  const user = users.find((e) => e._id === localUserInfo.user_id);
 
-
-  const [showEditAvatar, setShowEditAvatar] = useState(false)
-  const [showEditBio, setShowEditBio] = useState(false)
-  const [showEditEmail, setShowEditEmail] = useState(false)
+  const [showEditAvatar, setShowEditAvatar] = useState(false);
+  const [showEditBio, setShowEditBio] = useState(false);
+  const [showEditEmail, setShowEditEmail] = useState(false);
 
   const editAvatar = () => setShowEditAvatar(true);
   const editBio = () => setShowEditBio(true);
   const editEmail = () => setShowEditEmail(true);
 
-
   return (
+    !user ? <div></div> :
     <div className="user-profile">
       <div className="user-profile-identification">
         <img
           className="user-profile-avatar"
-          style={{ border: `3px solid ${users[userIndex].color}` }}
-          src={users[userIndex].avatar}
+          style={{ border: `3px solid ${user.color}` }}
+          src={user.avatar}
           alt="avatar"
         />
         <img
           className="user-profile-edit-icon user-profile-edit-icon-avatar"
           src={editIcon}
           alt="edit"
-          onClick={()=>editAvatar()}
+          onClick={() => editAvatar()}
         />
         <div>
-          <h2 className="user-profile-username">{users[userIndex].username}</h2>
+          <h2 className="user-profile-username">{user.username}</h2>
           <div className="user-profile-lvl">lvl: </div>
           <div className="user-profile-rank">rank: </div>
           <div className="user-profile-badges">badges: </div>
@@ -54,21 +50,21 @@ function UserProfile() {
       <div className="user-profile-bio">
         <h3
           className="user-profile-bio-label"
-          style={{ color: `${users[userIndex].color}` }}
+          style={{ color: `${user.color}` }}
         >
           bio{" "}
           <img
             className="user-profile-edit-icon"
             src={editIcon}
             alt="edit"
-            onClick={()=>editBio()}
+            onClick={() => editBio()}
           />
         </h3>
         <div
           className="user-profile-bio-textbox"
-          style={{ border: `3px solid ${users[userIndex].color}` }}
+          style={{ border: `3px solid ${user.color}` }}
         >
-          <p className="user-profile-bio-text">{users[userIndex].bio}</p>
+          <p className="user-profile-bio-text">{user.bio}</p>
         </div>
         <br />
         <br />
@@ -79,18 +75,25 @@ function UserProfile() {
               className="user-profile-edit-icon"
               src={editIcon}
               alt="edit"
-              onClick={()=>editEmail()}
+              onClick={() => editEmail()}
             />
           </span>
           <br />
-          <span className="user-profile-email">
-            {users[userIndex].email}
-          </span>
+          <span className="user-profile-email">{user.email}</span>
         </div>
       </div>
-      <UserProfileEditAvatar showEditAvatar={showEditAvatar} setShowEditAvatar={setShowEditAvatar} userIndex={userIndex} />
-      <UserProfileEditBio showEditBio={showEditBio} setShowEditBio={setShowEditBio} userIndex={userIndex} />
-      <UserProfileEditEmail showEditEmail={showEditEmail} setShowEditEmail={setShowEditEmail} userIndex={userIndex} />
+      <UserProfileEditAvatar
+        showEditAvatar={showEditAvatar}
+        setShowEditAvatar={setShowEditAvatar}
+      />
+      <UserProfileEditBio
+        showEditBio={showEditBio}
+        setShowEditBio={setShowEditBio}
+      />
+      <UserProfileEditEmail
+        showEditEmail={showEditEmail}
+        setShowEditEmail={setShowEditEmail}
+      />
     </div>
   );
 }

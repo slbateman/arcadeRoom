@@ -11,8 +11,29 @@ import Home from "./components/Home";
 import Chat from "./components/Chat/Chat";
 import AboutUs from "./components/AboutUs";
 import User from "./components/User/User";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getUsers, postUser } from "./actions/userActions";
+import { selectLocalUserInfo } from "./state/usersSlice";
 
 function App() {
+  const dispatch = useDispatch()
+  const localUserInfo = useSelector(selectLocalUserInfo)
+
+  useEffect(() => {
+    if (!localUserInfo.user_id) {
+      const randomNumber = Math.floor(Math.random()*100000000000000)
+      dispatch(postUser({
+      username: `user${randomNumber}`,
+      password: ""
+    }))}
+  }, [])
+
+
+  useEffect(() => {
+    dispatch(getUsers())
+  })
+
   return (
     <div className="App">
       <Navigation />

@@ -5,27 +5,20 @@
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectUsers,
-  selectLocalUserInfo,
-  editUserMsgDensity,
-  editUserMsgBrightness,
-  editUserColor,
-} from "../../state/usersSlice";
+import { getUsers, patchUser } from "../../actions/userActions";
+import { selectUsers, selectLocalUserInfo } from "../../state/usersSlice";
 
 function UserSettings() {
   const dispatch = useDispatch();
   const users = useSelector(selectUsers);
   const localUserInfo = useSelector(selectLocalUserInfo);
-  const userIndex = localUserInfo.userIndex;
-  const [msgDensity, setMsgDensity] = useState(users[userIndex].msgDensity);
+  const user = users.find((e) => e._id === localUserInfo.user_id);
+
+  
+  const [msgDensity, setMsgDensity] = useState(!user ? "" : user.msgDensity);
   const updateMsgDensity = () => {
-    dispatch(
-      editUserMsgDensity({
-        userIndex: userIndex,
-        msgDensity: msgDensity,
-      })
-    );
+    dispatch(patchUser(localUserInfo.user_id, { msgDensity: msgDensity }));
+    dispatch(getUsers());
   };
   const brightnessList = [
     "#696969",
@@ -54,16 +47,12 @@ function UserSettings() {
     "#F8F8F8",
     "#FFFFFF",
   ];
-  const [msgBrightness, setMsgBrightness] = useState(
-    users[userIndex].msgBrightness
-  );
+  const [msgBrightness, setMsgBrightness] = useState(!user ? "" : user.msgBrightness);
   const updateMsgBrightness = () => {
     dispatch(
-      editUserMsgBrightness({
-        userIndex: userIndex,
-        msgBrightness: msgBrightness,
-      })
+      patchUser(localUserInfo.user_id, { msgBrightness: msgBrightness })
     );
+    dispatch(getUsers());
   };
 
   const colorList = [
@@ -77,24 +66,23 @@ function UserSettings() {
   ];
 
   const updateColor = (color) => {
-    dispatch(editUserColor({
-      userIndex: userIndex,
-      color: color
-    }))
-  }
+    dispatch(patchUser(localUserInfo.user_id, { color: color }));
+    dispatch(getUsers());
+  };
 
   return (
+    !user ? <div></div> :
     <div className="user-settings">
       <h4 className="user-settings-headers">color theme</h4>
       <div className="user-settings-color-themes">
         {colorList.map((hexColor, i) => (
           <div
             className={`user-settings-color-theme ${
-              hexColor === users[userIndex].color ? "color-active" : ""
+              hexColor === user.color ? "color-active" : ""
             }`}
             style={{ backgroundColor: `${hexColor}` }}
-            onClick={()=>{
-              updateColor(hexColor)
+            onClick={() => {
+              updateColor(hexColor);
             }}
           ></div>
         ))}
@@ -120,9 +108,7 @@ function UserSettings() {
           type="range"
           min="0"
           max="24"
-          value={brightnessList.findIndex(
-            (e) => e === users[userIndex].msgBrightness
-          )}
+          value={brightnessList[msgBrightness]}
           onChange={(e) => {
             setMsgBrightness(brightnessList[e.target.value]);
             updateMsgBrightness();
@@ -133,18 +119,18 @@ function UserSettings() {
         <div className="message-user-info">
           <img
             className="message-avatar"
-            src={users[userIndex].avatar}
+            src={user.avatar}
             alt=""
-            style={{ border: `2px solid ${users[userIndex].color}` }}
+            style={{ border: `2px solid ${user.color}` }}
           />
           <div className="message-block">
-            <h5>{users[userIndex].username}</h5>
+            <h5>{user.username}</h5>
             <div
               className="message-text"
               style={{
-                border: `2px solid ${users[userIndex].color}`,
-                color: `${users[userIndex].msgBrightness}`,
-                fontSize: `${users[userIndex].msgDensity}px`,
+                border: `2px solid ${user.color}`,
+                color: `${user.msgBrightness}`,
+                fontSize: `${user.msgDensity}px`,
               }}
             >
               Sample text, if you were to make a message, it would look like

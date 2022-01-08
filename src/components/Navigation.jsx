@@ -8,56 +8,54 @@ import { Navbar, NavDropdown, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addUser,
-  selectLocalUserInfo,
-  selectUsers,
-} from "../state/usersSlice";
+import { selectLocalUserInfo, selectUsers } from "../state/usersSlice";
+import { postUser } from "../actions/userActions";
 
 function Navigation() {
   const dispatch = useDispatch();
   const localUserInfo = useSelector(selectLocalUserInfo);
   const loggedIn = localUserInfo.loggedIn;
   const users = useSelector(selectUsers);
-  const userIndex = localUserInfo.userIndex;
-  
+  const user = users.find((e) => e._id === localUserInfo.user_id);
 
   const logout = () => {
+    const randomNumber = Math.floor(Math.random()*100000000000000)
     dispatch(
-      addUser({
-        userIndex: users.length,
-        username: `user${users.length}`,
+      postUser({
+        username: `user${randomNumber}`,
+        password: "",
       })
     );
   };
 
   const [chat, setChat] = useState("");
   const [about, setAbout] = useState("");
-  const [user, setUser] = useState("");
+  const [login, setLogin] = useState("");
   const location = useLocation().pathname;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (location === "/chat") {
       setChat("active");
       setAbout("");
-      setUser("");
+      setLogin("");
     } else if (location === "/about") {
       setAbout("active");
       setChat("");
-      setUser("");
+      setLogin("");
     } else if (location === "/user/login") {
-      setUser("active");
+      setLogin("active");
       setChat("");
       setAbout("");
     } else {
-      setUser("");
+      setLogin("");
       setChat("");
       setAbout("");
     }
   }, [location]);
 
   return (
+    !users ? <div></div> :(
     <div className="navigation">
       <Navbar collapseOnSelect expand="md" bg="black" variant="dark">
         <Container fluid>
@@ -67,21 +65,23 @@ function Navigation() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav default activeKey="/" className="ms-auto">
-                <Link className={"link " + chat} to="/chat">
-                  Chatrooms
-                </Link>
-                <Link className={"link " + about} to="/about">
-                  About Us
-                </Link>
-              {loggedIn ? (
-                <Nav.Link>
+              <Link className={"link " + chat} to="/chat">
+                Chatrooms
+              </Link>
+              <Link className={"link " + about} to="/about">
+                About Us
+              </Link>
+              {!user ? <div></div> : 
+              loggedIn ? (
                   <div className="nav-profile-dropdown">
                     <img
                       className="nav-profile-pic"
-                      style={{ border: `1px solid ${users[userIndex].color}` }}
-                      src={users[userIndex].avatar}
+                      style={{ border: `1px solid ${user.color}` }}
+                      src={user.avatar}
                       alt=""
-                      onClick={()=> {navigate('/user/profile')}}
+                      onClick={() => {
+                        navigate("/user/profile");
+                      }}
                     />
                     <NavDropdown className="dropdown" id="basic-nav-dropdown">
                       <NavDropdown.Item>
@@ -110,17 +110,16 @@ function Navigation() {
                       </NavDropdown.Item>
                     </NavDropdown>
                   </div>
-                </Nav.Link>
               ) : (
-                  <Link className={"link " + user} to="/user/login">
-                    Login
-                  </Link>
+                <Link className={"link " + login} to="/user/login">
+                  Login
+                </Link>
               )}
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </div>
+    </div>)
   );
 }
 
