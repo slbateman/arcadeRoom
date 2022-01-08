@@ -21,6 +21,12 @@ export const chatroomSlice = createSlice({
             localStorage.setItem('chatroom', JSON.stringify(state.chatroom))
         },
 
+        addMessages: (state, action) => {
+            state.chatroom[0].messages.push(action.payload)
+            
+            localStorage.setItem('chatroom', JSON.stringify(state.chatroom))
+        },
+
         deleteChatroom: (state, action) => {
             state.chatroom.splice(action.payload, 1);
             localStorage.setItem('chatroom', JSON.stringify(state.chatroom))
@@ -28,6 +34,6 @@ export const chatroomSlice = createSlice({
     }
 })
 
-export const { addChatroom, deleteChatroom } = chatroomSlice.actions;
+export const { addChatroom, addMessages, deleteChatroom } = chatroomSlice.actions;
 export const selectChatroom = (state) => state.chatroom.chatroom;
 export default chatroomSlice.reducer;

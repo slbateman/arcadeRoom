@@ -9,7 +9,7 @@ import chatroomReducer from '../chatroomSlice'
  const store = configureStore({
     reducer:{
         content: contentReducer,
-        message: messageReducer,
+        messages: messageReducer,
         users: usersReducer,
         chatroom: chatroomReducer,
     }

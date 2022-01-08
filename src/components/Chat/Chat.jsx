@@ -10,7 +10,7 @@ import RoomsList from './RoomsList';
 import MessageList from './MessageList';
 import SendMessageForm from './SendMessageForm';
 import ChatRoomName from './ChatRoomName';
-import Message from '../Messages'; 
+//import Message from '../Messages'; 
 
 function Chat() {
     return (

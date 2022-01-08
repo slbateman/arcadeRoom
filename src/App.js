@@ -16,6 +16,8 @@ import { useEffect } from "react";
 import { getUsers, postUser } from "./actions/userActions";
 import { selectLocalUserInfo } from "./state/usersSlice";
 
+import Test from "./components/PM/test";
+
 function App() {
   const dispatch = useDispatch()
   const localUserInfo = useSelector(selectLocalUserInfo)
@@ -42,6 +44,7 @@ function App() {
         <Route path="/chat" element={<Chat />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/user/*" element={<User />} />
+        <Route path="/test" element={<Test/>} />
       </Routes>
     </div>
   );

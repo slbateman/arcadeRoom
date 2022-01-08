@@ -5,7 +5,7 @@
 import React from 'react'
 import './chat.css'
 import { roomName } from './RoomsList'
-
+import { Modal } from './Modal'
 
 function ChatRoomName() {
     return (

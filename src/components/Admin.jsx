@@ -8,12 +8,13 @@ import './Components.css';
 import { Form, Modal, Container, Button} from 'react-bootstrap';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContent, selectContent } from '../../state/contentSlice';
+import { addContent, selectContent } from '../state/contentSlice';
 
 
 
 const Admin = ({ defaultContent, setShow, show }) => {
- 
+    //const data = useSelector(selectContent);
+
     const dispatch = useDispatch();
     const content = useSelector(selectContent);
     //const info = useSelector(selectContent);
