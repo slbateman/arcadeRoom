@@ -12,6 +12,7 @@ import { loginUser, selectUsers } from "../../state/usersSlice";
 
 function UserLogin() {
   const users = useSelector(selectUsers);
+  console.log(users)
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -20,14 +21,13 @@ function UserLogin() {
     e.preventDefault();
     if (username === "") return alert("username cannot be empty");
     if (password === "") return alert("password cannot be empty");
-    let userIndex = users.findIndex((e) => e.username === username);
-    if (userIndex < 0) return alert("user not found");
-    if (!users[userIndex].password) alert("you cannot login as an anonymous user")
-    if (userIndex >= 0 && password === users[userIndex].password) {
+    const user = users.find((e) => e.username === username)
+    if (!user) return alert("user not found");
+    if (user.password === "") alert("you cannot login as an anonymous user")
+    if (password === user.password) {
       dispatch(
         loginUser({
-          userIndex: userIndex,
-          username: users[userIndex].username,
+          user_id: user._id,
           loggedIn: true,
         })
       );

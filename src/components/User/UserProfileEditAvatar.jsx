@@ -1,17 +1,15 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux"
-import { selectUsers, selectLocalUserInfo, editUserAvatar } from "../../state/usersSlice"
+import { useSelector, useDispatch } from "react-redux";
+import { getUsers, patchUser } from "../../actions/userActions";
+import { selectUsers, selectLocalUserInfo } from "../../state/usersSlice";
 
-function UserProfileEditAvatar({
-  showEditAvatar,
-  setShowEditAvatar,
-}) {
-  const dispatch = useDispatch()
-  const users = useSelector(selectUsers)
-  const localUserInfo = useSelector(selectLocalUserInfo)
-  const userIndex = localUserInfo.userIndex
-  const [avatar, setAvatar] = useState(users[userIndex].avatar);
+function UserProfileEditAvatar({ showEditAvatar, setShowEditAvatar }) {
+  const dispatch = useDispatch();
+  const users = useSelector(selectUsers);
+  const localUserInfo = useSelector(selectLocalUserInfo);
+  const user = users.find((e) => e._id === localUserInfo.user_id);
+  const [avatar, setAvatar] = useState(user.avatar);
   const closeEditAvatar = () => setShowEditAvatar(false);
 
   const imageUpload = (e) => {
@@ -31,13 +29,9 @@ function UserProfileEditAvatar({
 
   const saveAvatar = (e) => {
     e.preventDefault();
-    dispatch(editUserAvatar(
-      {
-        index: userIndex,
-        avatar: avatar,
-      }
-    ))
-    closeEditAvatar();
+    dispatch(patchUser(localUserInfo.user_id, { avatar: avatar }));
+    dispatch(getUsers());
+    window.location.reload();
   };
 
   return (
@@ -49,7 +43,12 @@ function UserProfileEditAvatar({
         <Modal.Body className="edit-modals">
           <Form onSubmit={(e) => saveAvatar(e)}>
             <img src={avatar} alt="avatar" />
-            <input id="imageFile" type="file" accept=".jpg, .jpeg, .png" onInput={()=>imageUpload()}/>
+            <input
+              id="imageFile"
+              type="file"
+              accept=".jpg, .jpeg, .png"
+              onInput={() => imageUpload()}
+            />
             <br />
             <br />
             <Button variant="primary" type="submit">

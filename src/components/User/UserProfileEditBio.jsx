@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux"
-import { selectUsers, selectLocalUserInfo, editUserBio } from "../../state/usersSlice"
+import { useSelector, useDispatch } from "react-redux";
+import { getUsers, patchUser } from "../../actions/userActions";
+import { selectUsers, selectLocalUserInfo } from "../../state/usersSlice";
 
 function UserProfileEditBio({ showEditBio, setShowEditBio }) {
   const dispatch = useDispatch();
   const users = useSelector(selectUsers);
   const localUserInfo = useSelector(selectLocalUserInfo);
-  const userIndex = localUserInfo.userIndex;
-  const [bioText, setBioText] = useState(users[userIndex].bio);
+  const user = users.find((e) => e._id === localUserInfo.user_id);
+  const [bioText, setBioText] = useState(user.bio);
 
   const closeEditBio = () => setShowEditBio(false);
 
@@ -22,13 +23,9 @@ function UserProfileEditBio({ showEditBio, setShowEditBio }) {
           <Form
             onSubmit={(e) => {
               e.preventDefault();
-              dispatch(editUserBio(
-                {
-                  index: userIndex,
-                  bio: bioText,
-                }
-              ))
-              closeEditBio();
+              dispatch(patchUser(localUserInfo.user_id, { bio: bioText }));
+              dispatch(getUsers());
+              window.location.reload();
             }}
           >
             <Form.Group

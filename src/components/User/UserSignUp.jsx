@@ -9,6 +9,7 @@ import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, selectUsers } from "../../state/usersSlice";
 import defaultAvatar from "../../images/defaultAvatar.png"
+import { postUser } from "../../actions/userActions";
 
 
 function UserSignUp() {
@@ -29,19 +30,10 @@ function UserSignUp() {
     if (user) return alert("username already exists");
     if (password1 !== password2) alert("your passwords down't match");
     dispatch(
-      addUser({
-        userID: users.length,
+      postUser({
         username: username,
         password: password1,
         email: email,
-        avatar: defaultAvatar,
-        bio: "",
-        color: "#ffffff",
-        msgDensity: 16,
-        msgBrightness: "#ffffff",
-        charTtl: 0,
-        msgTtl: 0,
-        rmsCreated: 0,
       })
     );
   };

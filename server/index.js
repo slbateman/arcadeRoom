@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors"
 import router from "./routes/router.js"
 
 const app = express();
@@ -15,6 +16,7 @@ mongoose.connect(CONNECTION, (err) => {
 //middlewares
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
+app.use(cors())
 
 //router
 app.use('/api', router)

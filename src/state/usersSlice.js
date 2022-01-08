@@ -1,25 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import UsersData from "./UsersData";
 
-let users = JSON.parse(localStorage.getItem("users"));
+let users = []
+
 let localUserInfo = JSON.parse(localStorage.getItem("localUserInfo"));
 
-if (!users) {
-  users = UsersData;
-  localStorage.setItem("users", JSON.stringify(users));
-}
 if (!localUserInfo) {
   localUserInfo = {
-    userIndex: users.length,
-    username: `user${users.length}`,
     loggedIn: false,
   };
-  users.push({
-    userID: localUserInfo.userIndex,
-    username: localUserInfo.username,
-  });
   localStorage.setItem("localUserInfo", JSON.stringify(localUserInfo));
-  localStorage.setItem("users", JSON.stringify(users));
 }
 
 export const usersSlice = createSlice({
@@ -41,13 +30,12 @@ export const usersSlice = createSlice({
     },
     addUser: (state, action) => {
       state.users.push(action.payload);
-      if (!action.payload.password) {
-        state.localUserInfo = { ...action.payload, loggedIn: false };
+      if (action.payload.password === "") {
+        state.localUserInfo = { user_id: action.payload._id, loggedIn: false };
       }
-      if (action.payload.password) {
+      if (action.payload.password !== "") {
         state.localUserInfo = {
-          userIndex: action.payload.userID,
-          username: action.payload.username,
+          user_id: action.payload._id,
           loggedIn: true,
         };
       }
@@ -90,6 +78,7 @@ export const usersSlice = createSlice({
 });
 
 export const {
+  allUsers,
   loginUser,
   addUser,
   removeUser,

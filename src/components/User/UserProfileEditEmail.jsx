@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { useSelector, useDispatch } from "react-redux"
-import { selectUsers, selectLocalUserInfo, editUserEmail} from "../../state/usersSlice"
+import { useSelector, useDispatch } from "react-redux";
+import { getUsers, patchUser } from "../../actions/userActions";
+import { selectUsers, selectLocalUserInfo } from "../../state/usersSlice";
 
 function UserProfileEditEmail({ showEditEmail, setShowEditEmail }) {
   const dispatch = useDispatch();
+
   const users = useSelector(selectUsers);
   const localUserInfo = useSelector(selectLocalUserInfo);
-  const userIndex = localUserInfo.userIndex;
-  const [emailText, setEmailText] = useState(users[userIndex].email);
+  const user = users.find((e) => e._id === localUserInfo.user_id);
+
+  const [emailText, setEmailText] = useState(user.email);
 
   const closeEditEmail = () => setShowEditEmail(false);
 
@@ -22,13 +25,9 @@ function UserProfileEditEmail({ showEditEmail, setShowEditEmail }) {
           <Form
             onSubmit={(e) => {
               e.preventDefault();
-              dispatch(editUserEmail(
-                {
-                  index: userIndex,
-                  email: emailText
-                }
-              ))
-              closeEditEmail();
+              dispatch(patchUser(localUserInfo.user_id, { email: emailText }));
+              dispatch(getUsers());
+              window.location.reload();
             }}
           >
             <Form.Group className="mb-3" controlId="formBasicEmail">
