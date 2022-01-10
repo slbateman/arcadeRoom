@@ -7,8 +7,7 @@ import React from "react";
 import { useState } from "react";
 import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, selectUsers } from "../../state/usersSlice";
-import defaultAvatar from "../../images/defaultAvatar.png"
+import { selectUsers } from "../../state/usersSlice";
 import { postUser } from "../../actions/userActions";
 
 

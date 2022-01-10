@@ -13,7 +13,6 @@ export const getUsers = async (req, res) => {
 export const postUser = async (req, res) => {
   const user = req.body;
   const existing = await Users.find({ username: req.body.username });
-  console.log(existing.length);
   if (existing < 1) {
     const newUser = new Users({
       ...user,

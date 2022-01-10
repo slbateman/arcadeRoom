@@ -77,6 +77,7 @@ function UserSettings() {
       <div className="user-settings-color-themes">
         {colorList.map((hexColor, i) => (
           <div
+          key={`color${i}`}
             className={`user-settings-color-theme ${
               hexColor === user.color ? "color-active" : ""
             }`}
