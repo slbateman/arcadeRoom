@@ -20,7 +20,10 @@ export const chatroomSlice = createSlice({
 
             localStorage.setItem('chatroom', JSON.stringify(state.chatroom))
         },
-
+        editChatroom: (state, action) => {
+            //this only works if you send the entire chatroom data
+            state.chatroom.map((data) => (data._id === action.payload._id ? action.payload : data))
+        },
         addMessages: (state, action) => {
             state.chatroom[0].messages.push(action.payload)
             

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-let users = []
+let users = [];
 
 let localUserInfo = JSON.parse(localStorage.getItem("localUserInfo"));
 
@@ -19,7 +19,7 @@ export const usersSlice = createSlice({
   },
   reducers: {
     allUsers: (state, action) => {
-      state.users = action.payload
+      state.users = action.payload;
     },
     loginUser: (state, action) => {
       state.localUserInfo = action.payload;
@@ -45,6 +45,8 @@ export const usersSlice = createSlice({
         JSON.stringify(state.localUserInfo)
       );
     },
+    editUser: (state, action) => {
+    },
     removeUser: (state, action) => {
       state.users.splice(action.payload, 1);
       localStorage.setItem("users", JSON.stringify(state.users));
@@ -66,7 +68,8 @@ export const usersSlice = createSlice({
       localStorage.setItem("users", JSON.stringify(state.users));
     },
     editUserMsgDensity: (state, action) => {
-      state.users[action.payload.userIndex].msgDensity = action.payload.msgDensity;
+      state.users[action.payload.userIndex].msgDensity =
+        action.payload.msgDensity;
       localStorage.setItem("users", JSON.stringify(state.users));
     },
     editUserMsgBrightness: (state, action) => {
@@ -81,6 +84,7 @@ export const {
   allUsers,
   loginUser,
   addUser,
+  editUser,
   removeUser,
   editUserAvatar,
   editUserBio,
