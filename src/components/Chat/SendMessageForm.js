@@ -10,7 +10,7 @@ function SendMessageForm() {
     const dispatch = useDispatch();
     const submit = (e) => {
         e.preventDefault()
-        dispatch(addMessages({userIndex: localUserInfo.userIndex, message: messageData}))
+        dispatch(addMessages({user_id: localUserInfo.user_id, message: messageData}))
         setMessageData('')
     }
     
