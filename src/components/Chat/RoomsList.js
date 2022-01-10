@@ -5,6 +5,7 @@ import { Form, InputGroup, FormControl, Button } from "react-bootstrap"
 import { Modal } from './Modal';
 import { useSelector, useDispatch} from 'react-redux'
 import { selectChatroom, addChatroom } from '../../state/chatroomSlice'
+import { selectLocalUserInfo } from '../../state/usersSlice'
 
 
 let roomName = "Mario Bros"
@@ -12,6 +13,7 @@ let roomName = "Mario Bros"
 function RoomsList() {
     const dispatch = useDispatch();
     const chatrooms = useSelector(selectChatroom)
+    const localUserInfo = useSelector(selectLocalUserInfo)
     const submit = (data) => {
         const newRoom = {
             name: data,
@@ -29,8 +31,7 @@ function RoomsList() {
                 <div className='back-drop'>
             { show ? <div onClick={closeModalHandler} 
             className="back-drop"></div> : null }
-
-            <Button variant="green" onClick={(x) => setShow(true)} 
+            <Button style={localUserInfo.loggedIn ? {display: 'block'} : {display: 'none'}} variant="green" onClick={(x) => setShow(true)} 
         
             
         
