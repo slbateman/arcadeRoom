@@ -1,15 +1,26 @@
-//Messages.jsx
+//PrivateMessages.jsx
 //Chatroom Assignment 
 //Array Bootcamp Fall 2021
 //Katie Greenwald, Steve Bateman, Bowen Condelario 
 import React, {useState} from 'react';
 import './Components.css';
-import { Container, Button, Form, Accordion, Card } from 'react-bootstrap';
+import { Container, Button, Form, Modal, Card } from 'react-bootstrap';
 import { useDispatch,useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addMessages, selectMessages } from '../state/messageSlice';
+import Admin from './Admin'; 
+import { addContent, selectContent } from '../state/contentSlice';
 
-const Messages = () => {
+const PrivateMessages = () => {
+    const data = useSelector(selectContent);
+    const [show, setShow] = useState(false);
+    const handleShow = () => {
+      setShow(true); 
+    }
+
+    
+const handleClose = () => setShow(false);
+
     //grab index from the url of the parent component don't need to pass it as it is already here
     const {index} = useParams();
 
@@ -44,15 +55,20 @@ const Messages = () => {
 
     return (
         <div>
+            <Modal show={show} onHide={handleClose}width="100rem">
         <Container className='messageForm'>
-            <Accordion>
+            
                 
-              <Accordion.Header>
+              <header>
                   Leave a message: 
-              </Accordion.Header>
-              <Accordion.Item eventKey="e">
+              </header>
+              <div eventKey="e">
               <Form onSubmit={onSubmit}>
                 <Form.Group className ="mb-3" controlId='exampleForm.ControlInput1'>
+                    {/* obviously instead of entry names it will be the logged in person and 
+                        the person of the pm button that is clicked if it is not the same person maybe
+                        it makes no sense to pm yourself 
+                    */}
                       <Form.Control name="name" placeholder="name" onChange={updateField}/>   
                </Form.Group>   
                 <Form.Group className ="mb-3" controlId='exampleForm.ControlInput2'>
@@ -61,9 +77,9 @@ const Messages = () => {
                 
                    <Button type="Submit">Submit</Button>
               </Form>
-                </Accordion.Item>
+                </div>
 
- <Accordion.Item className="messageBox">
+ <div className="messageBox">
         {messageList.map((entry,i) => {
             if (entry.index === index){// this is to make sure the messages only land on the correct blog
             // 
@@ -78,10 +94,19 @@ const Messages = () => {
     
         )  }}
         )}
- </Accordion.Item>            
- </Accordion>
+ </div>            
+
     </Container>
-        </div>
+     <Admin defaultContent={data} />
+      </Modal>  
+      <div className='PMButton' 
+      onClick={handleShow}
+      >
+      PM
+      </div>
+   
+     <br/>
+      </div>
     )
 }
-export default Messages; 
+export default PrivateMessages; 

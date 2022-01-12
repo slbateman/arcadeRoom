@@ -11,8 +11,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContent, selectContent } from '../state/contentSlice';
 
 
+const Admin = ({defaultContent}) => {
+   
+    const [show, setShow] = useState(false);
+    const handleShow = () => {
+      setShow(true); 
+    }
 
-const Admin = ({ defaultContent, setShow, show }) => {
     //const data = useSelector(selectContent);
 
     const dispatch = useDispatch();
@@ -35,7 +40,7 @@ const Admin = ({ defaultContent, setShow, show }) => {
     //reset site to original content 
     const resetSite = () => {
         handleClose();
-        localStorage.setItem("storedContent", JSON.stringify(defaultContent));
+        localStorage.setItem("storedContent", JSON.stringify({defaultContent}));
         window.location.reload(false);
     }
     const resetMessages = () => {
@@ -77,19 +82,25 @@ const Admin = ({ defaultContent, setShow, show }) => {
                 size="lg" type="text" placeholder="Name:" name="name" onChange={updateField}/>
            <Form.Control className="mx-auto bg-light m-1 text-secondary"  
                 size="lg" type="text" placeholder="password" name="password" onChange={updateField}/>
+               {/* so either a checkmark that asks: are you sure? that must be checked before 
+               anything happens and or an alert that pops up when you click clear or reset
+               that asks are you sure that you want to do this action it is permanent 
                
+               */}
                 </Form>
                 <Modal.Footer className="bg-dark">  
                 <Button size="sm" variant="secondary" onClick={resetMessages}>Clear All Messages</Button>
-                 <Button size="sm" variant="secondary" onClick={resetSite}>Reset Site</Button>
+                 <Button size="sm" variant="secondary" onClick={resetSite}>Reset Data</Button>
                
                  <Button onClick={handleSubmit}>Submit</Button>
                 </Modal.Footer>
             </Modal>
+
+            <Button onClick={handleShow}>Admin</Button>
         </Container>
+
     )
 
 }
 
 export default Admin; 
-
