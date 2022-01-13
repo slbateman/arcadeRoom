@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsers, patchUser } from "../../actions/userActions";
-import { selectUsers, selectLocalUserInfo } from "../../state/usersSlice";
+import {
+  selectUsers,
+  selectLocalUserInfo,
+  editUserEmail,
+} from "../../state/usersSlice";
 
 function UserProfileEditEmail({ showEditEmail, setShowEditEmail }) {
   const dispatch = useDispatch();
@@ -25,9 +28,10 @@ function UserProfileEditEmail({ showEditEmail, setShowEditEmail }) {
           <Form
             onSubmit={(e) => {
               e.preventDefault();
-              dispatch(patchUser(localUserInfo.user_id, { email: emailText }));
-              dispatch(getUsers());
-              window.location.reload();
+              dispatch(
+                editUserEmail({ _id: localUserInfo.user_id, email: emailText })
+              );
+              closeEditEmail();
             }}
           >
             <Form.Group className="mb-3" controlId="formBasicEmail">

@@ -6,13 +6,11 @@
 import { Link } from "react-router-dom";
 import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
 import { useState } from "react";
-//import users from "../DataFile"
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, selectUsers } from "../../state/usersSlice";
 
 function UserLogin() {
   const users = useSelector(selectUsers);
-  console.log(users)
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
