@@ -2,7 +2,7 @@
    Chatroom Assignment 
    Array Bootcamp Fall 2021
    Katie Greenwald, Steve Bateman, Bowen Condelario 
-*/ 
+*/
 
 .user-login,
 .user-sign-up {
@@ -119,14 +119,19 @@ h3 {
   height: 30px;
   object-fit: contain;
   border-radius: 50%;
+  cursor: pointer;
+}
+
+.nav-profile-pic:hover {
+  box-shadow: 0 0 5px white;
 }
 
 .nav-profile-dropdown {
   margin: 10px;
-  display: inline-flex
+  display: inline-flex;
 }
 
-.dropdown-menu[data-bs-popper]{
+.dropdown-menu[data-bs-popper] {
   left: -125px;
 }
 .user-profile-identification {
@@ -278,10 +283,10 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .message-block {
-  margin-left: 10px
+  margin-left: 10px;
 }
 
 .message-text {
   border-radius: 10px;
-  padding: 5px
+  padding: 5px;
 }

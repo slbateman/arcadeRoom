@@ -16,7 +16,7 @@ export const postUser = async (req, res) => {
   if (existing < 1) {
     const newUser = new Users({
       ...user,
-      createdAt: new Date().toISOString,
+      createdAt: new Date().toISOString(),
     });
     try {
       await newUser.save();
@@ -32,8 +32,8 @@ export const patchUser = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send(`No user with id: ${id}`);
   const updatedUser = req.body;
-  await Users.findByIdAndUpdate(id, updatedUser, { new: true });
-  res.json(updatedUser);
+  const user = await Users.findByIdAndUpdate(id, updatedUser, { new: true });
+  res.json(user);
 };
 
 export const deleteUser = async (req, res) => {
