@@ -3,10 +3,16 @@
 //Array Bootcamp Fall 2021
 //Katie Greenwald, Steve Bateman, Bowen Condelario
 
+import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers, patchUser } from "../../actions/userActions";
-import { selectUsers, selectLocalUserInfo } from "../../state/usersSlice";
+import {
+  selectUsers,
+  selectLocalUserInfo,
+  editUserMsgBrightness,
+  editUserMsgDensity,
+  editUserColor,
+} from "../../state/usersSlice";
 
 function UserSettings() {
   const dispatch = useDispatch();
@@ -14,11 +20,11 @@ function UserSettings() {
   const localUserInfo = useSelector(selectLocalUserInfo);
   const user = users.find((e) => e._id === localUserInfo.user_id);
 
-  
-  const [msgDensity, setMsgDensity] = useState(!user ? "" : user.msgDensity);
+  const [msgDensity, setMsgDensity] = useState();
   const updateMsgDensity = () => {
-    dispatch(patchUser(localUserInfo.user_id, { msgDensity: msgDensity }));
-    dispatch(getUsers());
+    dispatch(
+      editUserMsgDensity({ _id: localUserInfo.user_id, msgDensity: msgDensity })
+    );
   };
   const brightnessList = [
     "#696969",
@@ -47,12 +53,14 @@ function UserSettings() {
     "#F8F8F8",
     "#FFFFFF",
   ];
-  const [msgBrightness, setMsgBrightness] = useState(!user ? "" : user.msgBrightness);
+  const [msgBrightness, setMsgBrightness] = useState();
   const updateMsgBrightness = () => {
     dispatch(
-      patchUser(localUserInfo.user_id, { msgBrightness: msgBrightness })
+      editUserMsgBrightness({
+        _id: localUserInfo.user_id,
+        msgBrightness: msgBrightness,
+      })
     );
-    dispatch(getUsers());
   };
 
   const colorList = [
@@ -66,18 +74,32 @@ function UserSettings() {
   ];
 
   const updateColor = (color) => {
-    dispatch(patchUser(localUserInfo.user_id, { color: color }));
-    dispatch(getUsers());
+    dispatch(editUserColor({ _id: localUserInfo.user_id, color: color }));
   };
 
-  return (
-    !user ? <div></div> :
+  useEffect(() => {
+    if (user) {
+      setMsgBrightness(user.msgBrightness);
+      setMsgDensity(user.msgDensity);
+    }
+  }, [user]);
+
+  // useEffect(() => {
+  //   if (user) {
+  //     updateMsgDensity();
+  //     updateMsgBrightness();
+  //   }
+  // }, [msgDensity, msgBrightness]);
+
+  return !user ? (
+    <div></div>
+  ) : (
     <div className="user-settings">
       <h4 className="user-settings-headers">color theme</h4>
       <div className="user-settings-color-themes">
         {colorList.map((hexColor, i) => (
           <div
-          key={`color${i}`}
+            key={`color${i}`}
             className={`user-settings-color-theme ${
               hexColor === user.color ? "color-active" : ""
             }`}
@@ -98,7 +120,7 @@ function UserSettings() {
           value={msgDensity}
           onChange={(e) => {
             setMsgDensity(e.target.value);
-            updateMsgDensity();
+            updateMsgDensity(); 
           }}
         />
       </div>
@@ -109,8 +131,9 @@ function UserSettings() {
           type="range"
           min="0"
           max="24"
-          value={brightnessList[msgBrightness]}
+          value={brightnessList.findIndex((e) => e === msgBrightness)}
           onChange={(e) => {
+            console.log(e.target.value)
             setMsgBrightness(brightnessList[e.target.value]);
             updateMsgBrightness();
           }}

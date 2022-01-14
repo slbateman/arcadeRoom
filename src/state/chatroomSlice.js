@@ -32,7 +32,9 @@ export const chatroomSlice = createSlice({
         },
 
         removeChatroom: (state, action) => {
-            state.chatroom.splice(action.payload, 1);
+
+            state.chatroom.splice(state.chatroom.findIndex((e) => e._id === action.payload, 1));
+
             localStorage.setItem('chatroom', JSON.stringify(state.chatroom))
         }
     }

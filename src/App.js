@@ -20,23 +20,28 @@ import Test from "./components/PM/test";
 import { getChatrooms } from "./actions/chatroomActions";
 
 function App() {
-  const dispatch = useDispatch()
-  const localUserInfo = useSelector(selectLocalUserInfo)
+  const dispatch = useDispatch();
+  // const users = useSelector(selectUsers);
+  const localUserInfo = useSelector(selectLocalUserInfo);
 
   useEffect(() => {
     if (!localUserInfo.user_id) {
-      const randomNumber = Math.floor(Math.random()*100000000000000)
-      dispatch(postUser({
-      username: `user${randomNumber}`,
-      password: ""
-    }))}
-  }, [])
-
+      const randomNumber = Math.floor(Math.random() * 100000000000000);
+      // if (!users.find((e) => e.username === `user${randomNumber}`)) {
+        dispatch(
+          postUser({
+            username: `user${randomNumber}`,
+            password: "",
+          })
+        );
+      // }
+    }
+  }, []);
 
   useEffect(() => {
     dispatch(getUsers());
     dispatch(getChatrooms())
-  })
+  }, []);
 
   return (
     <div className="App">
@@ -46,7 +51,7 @@ function App() {
         <Route path="/chat/*" element={<Chat />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/user/*" element={<User />} />
-        <Route path="/test" element={<Test/>} />
+        <Route path="/test" element={<Test />} />
       </Routes>
     </div>
   );

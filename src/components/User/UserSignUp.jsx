@@ -44,7 +44,7 @@ function UserSignUp() {
           checkAuth(e);
         }}
       >
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3" >
           <Form.Control
             className="email-input"
             type="email"
@@ -55,7 +55,7 @@ function UserSignUp() {
             }}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3" >
           <InputGroup>
             <FormControl
               className="username-input"
@@ -69,7 +69,7 @@ function UserSignUp() {
           </InputGroup>
         </Form.Group>
         <br />
-        <Form.Group className="mb-3" controlId="formBasicCreatePassword">
+        <Form.Group className="mb-3" >
           <Form.Control
             className="password-input"
             type="password"
@@ -80,7 +80,7 @@ function UserSignUp() {
             }}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
+        <Form.Group className="mb-3" >
           <Form.Control
             className="password-input"
             type="password"

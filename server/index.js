@@ -5,7 +5,7 @@ import router from "./routes/router.js"
 
 const app = express();
 const PORT = 5000;
-const CONNECTION = "mongodb://localhost/chatroomDB";
+const CONNECTION = "mongodb+srv://generic:uHMedEbE4s4Qvit@cluster0.dfhml.mongodb.net/chatroomDB?retryWrites=true&w=majority";
 
 //connect to mongodb
 mongoose.connect(CONNECTION, (err) => {

@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { getUsers, patchUser } from "../../actions/userActions";
-import { selectUsers, selectLocalUserInfo } from "../../state/usersSlice";
+import {
+  selectUsers,
+  selectLocalUserInfo,
+  editUserAvatar,
+} from "../../state/usersSlice";
 
 function UserProfileEditAvatar({ showEditAvatar, setShowEditAvatar }) {
   const dispatch = useDispatch();
@@ -29,9 +32,8 @@ function UserProfileEditAvatar({ showEditAvatar, setShowEditAvatar }) {
 
   const saveAvatar = (e) => {
     e.preventDefault();
-    dispatch(patchUser(localUserInfo.user_id, { avatar: avatar }));
-    dispatch(getUsers());
-    window.location.reload();
+    dispatch(editUserAvatar({ _id: localUserInfo.user_id, avatar: avatar }));
+    closeEditAvatar();
   };
 
   return (
