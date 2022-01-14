@@ -5,6 +5,7 @@ import contentReducer from '../contentSlice';
 import messageReducer from '../messageSlice';
 import usersReducer from '../usersSlice'
 import chatroomReducer from '../chatroomSlice'
+import pmReducer from '../pmSlice'
 
  const store = configureStore({
     reducer:{
@@ -12,6 +13,7 @@ import chatroomReducer from '../chatroomSlice'
         messages: messageReducer,
         users: usersReducer,
         chatroom: chatroomReducer,
+        pms: pmReducer,
     }
 });
 
