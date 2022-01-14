@@ -13,7 +13,7 @@ export const pmSlice = createSlice({
         allPMs: (state,action) => {
             console.log(action.payload)
             state.pms = action.payload
-            console.log(state.pm)
+            console.log(state.pms)
         },
         addPM: (state, action) => {
             console.log(action.payload)

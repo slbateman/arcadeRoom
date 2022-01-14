@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { selectChatroom, addChatroom } from '../../state/chatroomSlice'
+import { selectPMs, addChatroom } from '../../state/pmSlice'
 import { selectUsers, selectLocalUserInfo } from '../../state/usersSlice'
 
 
@@ -9,10 +9,23 @@ const UserMessageList = () => {
   const [messageData, setMessageData] = useState("");
   const submit = () => {};
   
-  const PM = useSelector(selectChatroom)
+  const PM = useSelector(selectPMs)
+  console.log(PM)
+
   const users = useSelector(selectUsers)
   const localUserInfo = useSelector(selectLocalUserInfo)
   const localUser = users.find((e) => e._id === localUserInfo.user_id)
+  const myPMs = [];
+  if(PM){
+    PM.map((data) => {
+      if(data.users.includes(localUser.user_id))
+      {
+          myPMs.push(data); 
+      } 
+         }  ) 
+  }
+
+  console.log(myPMs)
   const messageElement = useRef(null)
   const obj = document.getElementById("messageBox");
  
