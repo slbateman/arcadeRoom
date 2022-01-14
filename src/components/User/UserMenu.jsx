@@ -43,6 +43,10 @@ function UserMenu() {
         <h3>Settings</h3>
       </Link>
       <hr className="user-menu-hr"/>
+      <Link className={"user-menu-item " + settings } to="/user/messages">
+        <h3>Messages</h3>
+      </Link>
+      <hr className="user-menu-hr"/>
       <Link className={"user-menu-item " + leaderboard } to="/user/leaderboard">
         <h3>Leaderboard</h3>
       </Link>

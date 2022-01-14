@@ -5,18 +5,19 @@ import { useSelector } from 'react-redux';
 import { selectContent } from '../../state/contentSlice';
 import { Container, Row, Col} from 'react-bootstrap';
 import PrivateMessages from '../PrivateMessages';
-import { selectLocalUserInfo } from '../../state/usersSlice';
+import { selectLocalUserInfo, selectUsers } from '../../state/usersSlice';
 
 const AvatarCard = () => 
 {
-   // const data = useSelector(selectLocalUserInfo());
-   // console.log(data)
-//   const name = data[0].name; 
-//   const image = data[0].img; 
-//    const color =data[0].color; 
+    const users = useSelector(selectUsers)
+    const localUserInfo = useSelector(selectLocalUserInfo);
+    const user = users.find((e) => e._id === localUserInfo.user_id)
+    const name = !user ? '' : user.username;
+    const image = !user ? '' : user.avatar; 
+    const color = !user ? '' : user.color; 
     return (
     
-     {/*   <Container className='posty'
+        <Container className='posty'
         style = {{  height: "8.8rem", width: '10rem', color: `${color}` }}
         >
          
@@ -38,7 +39,8 @@ const AvatarCard = () =>
            
            </div> 
         
-        </Container>*/}
+        </Container>
+     
         
         
         );

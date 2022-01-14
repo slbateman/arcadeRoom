@@ -10,6 +10,7 @@ import UserLogin from "./UserLogin";
 import UserMenu from "./UserMenu";
 import UserProfile from "./UserProfile";
 import UserSettings from "./UserSettings";
+import UserMessages from "./UserMessages";
 import UserSignUp from "./UserSignUp";
 import { useSelector } from "react-redux";
 import { selectLocalUserInfo } from "../../state/usersSlice";
@@ -43,6 +44,7 @@ function User() {
                   }
                 />
                 <Route path="/settings" element={<UserSettings />} />
+                <Route path="/messages" element={<UserMessages />} />
                 <Route path="/leaderboard" element={<UserLeaderboard />} />
               </Routes>
             </div>
