@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './Modal.css';
 
 export const Modal = ({ show, close, submit }) => {
   const [data, setData] = useState(null);

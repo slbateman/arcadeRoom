@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './chat.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectChatroom, addChatroom } from '../../state/chatroomSlice'
-import { roomName } from './RoomsList'
+import { UserModal } from './UserModal'
 import { selectUsers, selectLocalUserInfo } from '../../state/usersSlice'
+import { Button } from 'react-bootstrap'
 
 // user/userSettings
 // create a modal to send the user to either the users profile or a personal message room
@@ -16,7 +17,9 @@ function MessageList({ chatroom }) {
     const localUser = users.find((e) => e._id === localUserInfo.user_id)
     const messageElement = useRef(null)
     const obj = document.getElementById("messageBox");
-    
+
+    const [show, setShow] = useState(false);
+    const closeModalHandler = () => setShow(false);
 
     useEffect(() => {
         if(chatroom) {
@@ -38,12 +41,17 @@ function MessageList({ chatroom }) {
                         !user ? <div></div> :
                             <div key={`message${i}`}>
                             <div className="message-user-info">
-                                <img
-                                    className="message-avatar"
+                                
+                                <img 
+                                    className="message-avatar user-button"
+                                    onClick={(x) => setShow(true)}
                                     src={user.avatar}
                                     alt=""
                                     style={{ border: `2px solid ${user.color}` }}
                                 />
+                                
+                                <UserModal show={show} close={closeModalHandler}/>
+
                                 <div className="message-block">
                                     <h5>{user.username}</h5>
                                     <div

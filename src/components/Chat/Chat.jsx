@@ -13,6 +13,7 @@ import ChatRoomName from './ChatRoomName';
 import { useSelector} from 'react-redux'
 import { selectChatroom} from '../../state/chatroomSlice'
 import { useLocation } from 'react-router-dom';
+import './Modal.css'
 
 
 function Chat() {
@@ -26,9 +27,10 @@ function Chat() {
     return (
         !chatrooms ? <div></div> :
         <div className="chat">
+            <MessageList chatroom = {chatroom} />
             <RoomsList chatroom = {chatroom}/>
             <ChatRoomName chatroom = {chatroom}/>
-            <MessageList chatroom = {chatroom} />
+            
             <InformationList />
             {/* <Message/> */}
             <SendMessageForm chatroom = {chatroom}/>
