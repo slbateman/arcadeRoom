@@ -17,6 +17,7 @@ function MessageList({ chatroom }) {
     const localUser = users.find((e) => e._id === localUserInfo.user_id)
     const messageElement = useRef(null)
     const obj = document.getElementById("messageBox");
+    const [modalUser, setModalUser] = useState()
 
     const [show, setShow] = useState(false);
     const closeModalHandler = () => setShow(false);
@@ -34,23 +35,27 @@ function MessageList({ chatroom }) {
         <div className='message-list' ref = {messageElement} id='messageBox' >
             <div>
                 
+                <UserModal  show={show} close={closeModalHandler} userID={modalUser}/>
+                
                 {chatroom.messages.map((data, i) => {
                     const user = users.find((e) => e._id === data.user_id)
-
+                    
+                    
                     return (
                         !user ? <div></div> :
                             <div key={`message${i}`}>
                             <div className="message-user-info">
                                 
                                 <img 
+                                    key={`modal${i}`}
                                     className="message-avatar user-button"
-                                    onClick={(x) => setShow(true)}
+                                    onClick={(x) => {setShow(true); setModalUser(user._id)}}
                                     src={user.avatar}
                                     alt=""
                                     style={{ border: `2px solid ${user.color}` }}
                                 />
                                 
-                                <UserModal show={show} close={closeModalHandler}/>
+                                
 
                                 <div className="message-block">
                                     <h5>{user.username}</h5>
@@ -82,3 +87,4 @@ function MessageList({ chatroom }) {
 
 
 export default MessageList
+ 
