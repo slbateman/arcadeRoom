@@ -25,7 +25,8 @@ export const chatroomSlice = createSlice({
             state.chatroom.map((data) => (data._id === action.payload._id ? action.payload : data))
         },
         addMessages: (state, action) => {
-            state.chatroom[0].messages.push(action.payload)
+            const index = state.chatroom.findIndex((e) => e.name === action.payload.name)
+            state.chatroom[index].messages.push({user_id: action.payload.user_id, message: action.payload.message})
             
             localStorage.setItem('chatroom', JSON.stringify(state.chatroom))
         },

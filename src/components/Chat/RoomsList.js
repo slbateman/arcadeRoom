@@ -6,9 +6,10 @@ import { Modal } from './Modal';
 import { useSelector, useDispatch} from 'react-redux'
 import { selectChatroom, addChatroom } from '../../state/chatroomSlice'
 import { selectLocalUserInfo } from '../../state/usersSlice'
+import { Link } from 'react-router-dom'
 
 
-let roomName = "Mario Bros"
+let roomName = "General"
 
 function RoomsList() {
     const dispatch = useDispatch();
@@ -47,10 +48,14 @@ function RoomsList() {
                     Active Chatrooms
                 </div>
                 <div className=' text-color-pink'>
-                    {chatrooms.map((room) => (
+                    
+                        {chatrooms.map((room) => (
+                        <Link to={`/chat/${room.name}`}>
                         <div>{room.name}</div>
-                    )
-                    )}
+                        </Link>
+                        )
+                        )}
+                    
                 </div>
                 <div className='space text-color-purple big-text'>
                     Inactive Chatrooms

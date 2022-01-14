@@ -1,6 +1,6 @@
 const defaultChatroom = [
     {
-    name: 'Mario Bros',
+    name: 'general',
     messages: []
 }
 ]
