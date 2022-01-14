@@ -1,3 +1,4 @@
+//Post.jsx
 import { useSelector } from 'react-redux';
 import { selectContent } from '../../state/contentSlice';
 import { Container, Row, Col} from 'react-bootstrap';
