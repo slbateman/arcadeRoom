@@ -17,8 +17,6 @@ import { useEffect } from "react";
 import { getUsers, postUser } from "./actions/userActions";
 import { getChatrooms } from "./actions/chatroomActions";
 import { selectLocalUserInfo } from "./state/usersSlice";
-import Test from "./components/PM/test";
-import { getChatrooms } from "./actions/chatroomActions";
 import { getPMs } from "./actions/pmActions"
 
 function App() {
