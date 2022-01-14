@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './chat.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectChatroom, addChatroom } from '../../state/chatroomSlice'
@@ -13,15 +13,21 @@ function MessageList({ chatroom }) {
     const users = useSelector(selectUsers)
     const localUserInfo = useSelector(selectLocalUserInfo)
     const localUser = users.find((e) => e._id === localUserInfo.user_id)
+    const messageElement = useRef(null)
+    const obj = document.getElementById("messageBox");
+    
+
     useEffect(() => {
-        window.scrollTo({
-            top: document.documentElement.scrollHeight, 
-            behavior: "auto"
-        })
-    }, [chatrooms])
+        if(chatroom) {
+            const objDiv = document.getElementById("messageBox");
+            objDiv.scrollTop = objDiv.scrollHeight;
+        }
+        
+    }, [chatroom])
 
     return (
-        <div className='message-list'>
+        !chatroom ? <div></div> :
+        <div className='message-list' ref = {messageElement} id='messageBox' >
             <div>
                 {chatroom.messages.map((data) => {
                     const user = users.find((e) => e._id === data.user_id)
@@ -53,7 +59,9 @@ function MessageList({ chatroom }) {
                             </div>
                             <br /><br />
                         </div>
+                        
                     )
+                    
                 }
                 )}
                 

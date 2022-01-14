@@ -3,12 +3,12 @@ import {
   allChatrooms,
   addChatroom,
   removeChatroom,
-  editChatroom,
+
 } from "../state/chatroomSlice.js";
 
-export const getUsers = () => async (dispatch) => {
+export const getChatrooms = () => async (dispatch) => {
   try {
-    const { data } = await api.readChatroom;
+    const { data } = await api.readChatrooms;
     dispatch(allChatrooms(data));
   } catch (error) {
     console.log(error);
@@ -26,8 +26,8 @@ export const postChatroom = (newChatroom) => async (dispatch) => {
 
 export const patchChatroom = (id, updatedChatroom) => async (dispatch) => {
     try {
-        const {data} = await api.updateChatroom(id, updatedChatroom)
-        dispatch(editChatroom(data))
+        await api.updateChatroom(id, updatedChatroom)
+
     } catch (error) {
         console.log(error)
     }
@@ -35,7 +35,7 @@ export const patchChatroom = (id, updatedChatroom) => async (dispatch) => {
 
 export const deleteChatroom = (id) => async (dispatch) => {
     try {
-        const {data} = await api.removeChatroom(id)
+        const {data} = await api.deleteChatroom(id)
         dispatch(removeChatroom(data))
     } catch (error) {
         console.log(error)

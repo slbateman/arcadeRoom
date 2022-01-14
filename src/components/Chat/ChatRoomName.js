@@ -9,6 +9,7 @@ import { Modal } from './Modal'
 
 function ChatRoomName({chatroom}) {
     return (
+        !chatroom ? <div></div> :
         <div className='chat-room-name text-color-blue'>
             {chatroom.name}
         </div>

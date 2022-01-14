@@ -1,10 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import defaultChatroom from '../components/Chat/content'
-let chatroom = JSON.parse(localStorage.getItem('chatroom'))
-if(!chatroom) {
-    chatroom = defaultChatroom
-    localStorage.setItem("chatroom", JSON.stringify(chatroom))
-}
+let chatroom = []
+
 
 export const chatroomSlice = createSlice({
     name: 'chatroom',
@@ -13,6 +10,9 @@ export const chatroomSlice = createSlice({
     },
 
     reducers: {
+        allChatrooms: (state,action) => {
+            state.chatroom = action.payload
+        },
         addChatroom: (state, action) => {
             console.log(action.payload)
 
@@ -31,13 +31,13 @@ export const chatroomSlice = createSlice({
             localStorage.setItem('chatroom', JSON.stringify(state.chatroom))
         },
 
-        deleteChatroom: (state, action) => {
+        removeChatroom: (state, action) => {
             state.chatroom.splice(action.payload, 1);
             localStorage.setItem('chatroom', JSON.stringify(state.chatroom))
         }
     }
 })
 
-export const { addChatroom, addMessages, deleteChatroom } = chatroomSlice.actions;
+export const { allChatrooms, addChatroom, addMessages, removeChatroom } = chatroomSlice.actions;
 export const selectChatroom = (state) => state.chatroom.chatroom;
 export default chatroomSlice.reducer;

@@ -9,9 +9,8 @@ import { selectLocalUserInfo } from '../../state/usersSlice'
 import { Link } from 'react-router-dom'
 
 
-let roomName = "General"
 
-function RoomsList() {
+function RoomsList({chatroom}) {
     const dispatch = useDispatch();
     const chatrooms = useSelector(selectChatroom)
     const localUserInfo = useSelector(selectLocalUserInfo)
@@ -26,7 +25,7 @@ function RoomsList() {
     const closeModalHandler = () => setShow(false);
 
     return (
-        
+        !chatrooms ? <div></div> :
         <div className='rooms-list '>
             <div className='space'>
                 <div className='back-drop'>
@@ -68,4 +67,3 @@ function RoomsList() {
 
 
 export default RoomsList
-export {roomName}

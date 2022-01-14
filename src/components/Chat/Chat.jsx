@@ -25,10 +25,11 @@ function Chat() {
     
 
     return (
+        !chatrooms ? <div></div> :
         <div className="chat">
-            <RoomsList />
+            <RoomsList chatroom = {chatroom}/>
             <ChatRoomName chatroom = {chatroom}/>
-            <MessageList chatroom = {chatroom}/>
+            <MessageList chatroom = {chatroom} />
             <InformationList />
             {/* <Message/> */}
             <SendMessageForm chatroom = {chatroom}/>
