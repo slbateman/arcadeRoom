@@ -73,7 +73,7 @@ function Navigation() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav default activeKey="/" className="ms-auto">
-              <Link className={"link " + chat} to="/chat">
+              <Link className={"link " + chat} to="/chat/general">
                 Chatrooms
               </Link>
               <Link className={"link " + about} to="/about">

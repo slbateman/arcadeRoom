@@ -13,7 +13,7 @@ function Home() {
             <div className="welcome">Welcome</div>
             <div className="to-the">to the</div>
             <div className="arcade-room">Arcade Room</div>
-            <Link to="/chat">
+            <Link to="/chat/general">
                 <div className="enter">enter</div>
             </Link>
         </div>

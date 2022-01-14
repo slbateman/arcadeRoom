@@ -7,10 +7,10 @@ import './chat.css'
 import { roomName } from './RoomsList'
 import { Modal } from './Modal'
 
-function ChatRoomName() {
+function ChatRoomName({chatroom}) {
     return (
         <div className='chat-room-name text-color-blue'>
-            {roomName}
+            {chatroom.name}
         </div>
     )
 }

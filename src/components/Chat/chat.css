@@ -32,7 +32,7 @@
 .message-list {
     grid-area: m;
     z-index: 0;
-    height: calc(100vh - 250px);
+    height: calc(100vh - 200px);
     overflow-y: scroll;
     margin: 10px;
     border-style: solid;
@@ -45,7 +45,9 @@
 .send-message-form {
     grid-area: f;
     z-index: 0;
-    height: 60px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 30px;
     border-radius: 2px;
 }
 

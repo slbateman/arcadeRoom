@@ -5,13 +5,14 @@ import { addMessages } from '../../state/chatroomSlice'
 import { roomName } from './RoomsList'
 import { selectLocalUserInfo } from '../../state/usersSlice'
 
-function SendMessageForm() {
+function SendMessageForm({chatroom}) {
 
     const dispatch = useDispatch();
     const submit = (e) => {
         e.preventDefault()
-        dispatch(addMessages({user_id: localUserInfo.user_id, message: messageData}))
+        dispatch(addMessages({name: chatroom.name, user_id: localUserInfo.user_id, message: messageData}))
         setMessageData('')
+        
     }
     
     const localUserInfo = useSelector(selectLocalUserInfo)
@@ -31,13 +32,7 @@ function SendMessageForm() {
     //     console.log(messageData)
     // }
 
-    const enter = (event) => {
-        // setState(event.key);
-        // console.log(state)
-        // if (event.keyPressed === "Enter") {
-        //     submit(messageData)
-        // }
-     }
+
 
     return (
         <div className='send-message-form'>
@@ -53,7 +48,6 @@ function SendMessageForm() {
                 color = "white"
                 value = {messageData}
                 />
-                <button type="submit">submit</button>
             </form>
         </div>
     )
