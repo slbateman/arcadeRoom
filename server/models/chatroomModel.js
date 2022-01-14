@@ -6,8 +6,10 @@ const chatroomSchema = mongoose.Schema({
   description: { type: String, default: "" },
   color: {type: String, default: "#ffffff"},
   messages: {
+    type: Array, 
     user_id: { type: String },
     message: { type: String },
+    default: []
   },
 });
 

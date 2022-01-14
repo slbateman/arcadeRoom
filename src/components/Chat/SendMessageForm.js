@@ -10,7 +10,7 @@ function SendMessageForm({chatroom}) {
     const dispatch = useDispatch();
     const submit = (e) => {
         e.preventDefault()
-        dispatch(addMessages({name: chatroom.name, user_id: localUserInfo.user_id, message: messageData}))
+        dispatch(addMessages({_id: chatroom._id, messages: [...chatroom.messages, {user_id: localUserInfo.user_id, message: messageData}]}))
         setMessageData('')
     }
     

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import defaultChatroom from '../components/Chat/content'
+import { updateChatroom } from '../api/chatroomAPI';
 let chatroom = []
 
 
@@ -11,7 +11,9 @@ export const chatroomSlice = createSlice({
 
     reducers: {
         allChatrooms: (state,action) => {
+            console.log(action.payload)
             state.chatroom = action.payload
+            console.log(state.chatroom)
         },
         addChatroom: (state, action) => {
             console.log(action.payload)
@@ -25,9 +27,9 @@ export const chatroomSlice = createSlice({
             state.chatroom.map((data) => (data._id === action.payload._id ? action.payload : data))
         },
         addMessages: (state, action) => {
-            const index = state.chatroom.findIndex((e) => e.name === action.payload.name)
-            state.chatroom[index].messages.push({user_id: action.payload.user_id, message: action.payload.message})
-            
+            const index = state.chatroom.findIndex((e) => e._id === action.payload._id)
+            state.chatroom[index].messages = action.payload.messages
+            updateChatroom(action.payload._id, {messages: action.payload.messages})
             localStorage.setItem('chatroom', JSON.stringify(state.chatroom))
         },
 
