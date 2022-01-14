@@ -6,6 +6,7 @@ import { roomName } from './RoomsList'
 import { selectUsers, selectLocalUserInfo } from '../../state/usersSlice'
 
 // user/userSettings
+// create a modal to send the user to either the users profile or a personal message room
 
 function MessageList({ chatroom }) {
 
