@@ -18,6 +18,7 @@ import { selectLocalUserInfo } from "./state/usersSlice";
 
 import Test from "./components/PM/test";
 import { getChatrooms } from "./actions/chatroomActions";
+import { getPMs } from "./actions/pmActions"
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ function App() {
   useEffect(() => {
     dispatch(getUsers());
     dispatch(getChatrooms())
+    dispatch(getPMs())
   }, []);
 
   return (
