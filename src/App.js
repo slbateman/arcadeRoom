@@ -17,6 +17,7 @@ import { getUsers, postUser } from "./actions/userActions";
 import { selectLocalUserInfo } from "./state/usersSlice";
 
 import Test from "./components/PM/test";
+import { getChatrooms } from "./actions/chatroomActions";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getUsers());
+    dispatch(getChatrooms())
   }, []);
 
   return (

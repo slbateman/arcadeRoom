@@ -12,7 +12,6 @@ function SendMessageForm({chatroom}) {
         e.preventDefault()
         dispatch(addMessages({name: chatroom.name, user_id: localUserInfo.user_id, message: messageData}))
         setMessageData('')
-        
     }
     
     const localUserInfo = useSelector(selectLocalUserInfo)
@@ -42,7 +41,6 @@ function SendMessageForm({chatroom}) {
                 onChange={(e) => setMessageData(e.target.value)}
                 className='message'
                 id = "inputID"
-                placeholder-color = "white"
                 placeholder = "Message"
                 type = "text"
                 color = "white"
