@@ -8,12 +8,13 @@ import PrivateMessages from '../PrivateMessages';
 import '../Components.css'; 
 import AvatarCard from './AvatarCard';
 import Post from './Post'; 
-
+import SendMessageForm from '../Chat/SendMessageForm'; 
+import UserMessageList from '../User/UserMessageList'; 
 const Test = () => {
 
   return (  
  <div>
-  <Post/>
+  {/* <UserMessageList/><SendMessageForm/> */}
 
 </div>
 
