@@ -1,4 +1,4 @@
-//PrivateMessages.jsx
+//components/PrivateMessages.jsx
 //Chatroom Assignment 
 //Array Bootcamp Fall 2021
 //Katie Greenwald, Steve Bateman, Bowen Condelario 

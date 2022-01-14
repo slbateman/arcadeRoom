@@ -9,8 +9,8 @@ import { selectLocalUserInfo } from '../../state/usersSlice';
 
 const AvatarCard = () => 
 {
-    const data = useSelector(selectLocalUserInfo());
-    console.log(data)
+   // const data = useSelector(selectLocalUserInfo());
+   // console.log(data)
 //   const name = data[0].name; 
 //   const image = data[0].img; 
 //    const color =data[0].color; 

@@ -8,12 +8,12 @@ import PrivateMessages from '../PrivateMessages';
 import '../Components.css'; 
 import AvatarCard from './AvatarCard';
 import Post from './Post'; 
-
+import SendMessageForm from '../Chat/SendMessageForm'; 
 const Test = () => {
 
   return (  
  <div>
-  <Post/>
+  <SendMessageForm/>
 
 </div>
 
