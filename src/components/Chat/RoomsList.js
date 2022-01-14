@@ -7,6 +7,7 @@ import { useSelector, useDispatch} from 'react-redux'
 import { selectChatroom, addChatroom } from '../../state/chatroomSlice'
 import { selectLocalUserInfo } from '../../state/usersSlice'
 import { Link } from 'react-router-dom'
+import { postChatroom } from '../../actions/chatroomActions';
 
 
 
@@ -17,9 +18,10 @@ function RoomsList({chatroom}) {
     const submit = (data) => {
         const newRoom = {
             name: data,
-            messages: []
+            messages: [],
+            owner: localUserInfo.user_id
         }
-        dispatch(addChatroom(newRoom))
+        dispatch(postChatroom(newRoom))
     }
     const [show, setShow] = useState(false);
     const closeModalHandler = () => setShow(false);

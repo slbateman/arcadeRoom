@@ -8,7 +8,8 @@ import {
 
 export const getChatrooms = () => async (dispatch) => {
   try {
-    const { data } = await api.readChatrooms;
+    const { data } = await api.readChatrooms();
+    console.log(data)
     dispatch(allChatrooms(data));
   } catch (error) {
     console.log(error);

@@ -29,12 +29,13 @@ function MessageList({ chatroom }) {
         !chatroom ? <div></div> :
         <div className='message-list' ref = {messageElement} id='messageBox' >
             <div>
-                {chatroom.messages.map((data) => {
+                
+                {chatroom.messages.map((data, i) => {
                     const user = users.find((e) => e._id === data.user_id)
 
                     return (
                         !user ? <div></div> :
-                            <div>
+                            <div key={`message${i}`}>
                             <div className="message-user-info">
                                 <img
                                     className="message-avatar"

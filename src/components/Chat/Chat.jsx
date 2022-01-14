@@ -3,17 +3,16 @@
 //Array Bootcamp Fall 2021
 //Katie Greenwald, Steve Bateman, Bowen Condelario 
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import './chat.css'
 import InformationList from './InformationList';
 import RoomsList from './RoomsList';
 import MessageList from './MessageList';
 import SendMessageForm from './SendMessageForm';
 import ChatRoomName from './ChatRoomName';
-import { useSelector, useDispatch} from 'react-redux'
-import { selectChatroom, addChatroom } from '../../state/chatroomSlice'
+import { useSelector} from 'react-redux'
+import { selectChatroom} from '../../state/chatroomSlice'
 import { useLocation } from 'react-router-dom';
-//import Message from '../Messages'; 
 
 
 function Chat() {
