@@ -19,6 +19,7 @@ import { getChatrooms } from "./actions/chatroomActions";
 import { selectLocalUserInfo } from "./state/usersSlice";
 import { getPMs } from "./actions/pmActions"
 import Profiles from "./components/Profiles";
+import PMChatBox from "./components/PM/PMChatBox";
 
 function App() {
   const dispatch = useDispatch();
@@ -55,6 +56,7 @@ function App() {
         <Route path="/user/*" element={<User />} />
         {/* <Route path="/test" element={<Test />} /> */}
         <Route path="/profiles/*" element={<Profiles />} />
+        <Route path="/pms/*" element={<PMChatBox />} />
       </Routes>
     </div>
   );

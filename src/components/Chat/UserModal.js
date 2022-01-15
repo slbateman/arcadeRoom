@@ -45,7 +45,7 @@ export const UserModal = ({ show, close, modalUser, localUser }) => {
                   newConvo();
                 }}
               >
-                send message
+               <Link className="link" to = {`../pm/${modalUser.username}`}> send message</Link>
               </div>
             </div>
           </div>
