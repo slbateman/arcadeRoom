@@ -14,7 +14,9 @@ const Test = () => {
 
   return (  
  <div>
-  {/* <UserMessageList/><SendMessageForm/> */}
+   <br/> <br/>
+   <PrivateMessages/>
+  {/* <UserMessageList/><SendMessageForm/>  */}
 
 </div>
 

@@ -4,7 +4,7 @@ import { selectLocalUserInfo, selectUsers } from '../../state/usersSlice'
 import { useLocation } from 'react-router-dom';
 import './PM.css';
 import { selectMessages, addMessages, deleteMessages } from '../../state/messageSlice';
-
+ 
 
 const PMChatBox = () => {
 
@@ -106,7 +106,7 @@ const PMChatBox = () => {
           </form>
 
         </div>
-
+ 
       </>
   );
 }

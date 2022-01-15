@@ -8,11 +8,11 @@ import messageData from '../components/PM/messageData';
 
 let messages =[];
 let storedMessages = JSON.parse(localStorage.getItem("storedMessages"));
-if (storedMessages) messages = storedMessages; 
-if(!messages) {
-messages = messageData; 
-  localStorage.setItem("messages", JSON.stringify(messages))
-}
+// if (storedMessages) messages = storedMessages; 
+// if(!messages) {
+// messages = messageData; 
+//   localStorage.setItem("messages", JSON.stringify(messages))
+//}
 
 export const messageSlice = createSlice ({
     name: 'messages',
@@ -23,7 +23,7 @@ export const messageSlice = createSlice ({
        addMessages: (state, action) => {
         console.log(action.payload); 
         state.messages.push(action.payload);
-        localStorage.setItem('storedMessages', JSON.stringify(state.messages));
+       // localStorage.setItem('storedMessages', JSON.stringify(state.messages));
     },
     deleteMessages: (state,action) => {
       state.messages.splice(action.payload, 1)
