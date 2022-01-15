@@ -126,9 +126,9 @@ function Navigation() {
                 </Link>
               )}
 
-              <Link className={"link " + test} to="/test">
+              {/* <Link className={"link " + test} to="/test">
                 test
-              </Link>
+              </Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
