@@ -1,93 +1,114 @@
-
-import React, {useState} from 'react';
-
-import { Container, Button, Form, Modal, Card } from 'react-bootstrap';
-import { useDispatch,useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { addMessages, selectMessages } from '../../state/messageSlice';
-import Admin from '../Admin'; 
-import {  selectContent } from '../../state/contentSlice';//addContent,
-
-const PMChatBox = () => 
-{
-    //grab index from the url of the parent component don't need to pass it as it is already here
-    const {index} = useParams();
-
-    const dispatch = useDispatch(); 
-    const messageList = useSelector(selectMessages); // get list of messages from redux
-    const storeMessageList = () => dispatch(addMessages([...messageList, message]));
-  // local state (component and children)
-  const [message, setMessage] = useState({}); 
-
-   const onSubmit = (e) => {
-       e.preventDefault(); 
-
-       //prevent empty Messages 
-       if (message.name && message.message) {
-           //or duplicate message
-           if (message !== messageList[messageList.length -1]) {
-               storeMessageList();
-           }
-       }
-       //reset the form and component state 
-       setMessage({});
-       e.target.reset(); 
-   }
-
-   const updateField = (e) => {
-     setMessage({
-        ...message,
-        index: index,
-        [e.target.name]: e.target.value
-     })
-   }
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectLocalUserInfo, selectUsers } from '../../state/usersSlice'
+import { useLocation } from 'react-router-dom';
+import './PM.css';
+import { selectMessages, addMessages, deleteMessages } from '../../state/messageSlice';
 
 
-return (
-<>
-<Container className='messageForm'>
-            
-                
-            <header>
-                Leave a message: 
-            </header>
-            <div eventKey="e">
-            <Form onSubmit={onSubmit}>
-              <Form.Group className ="mb-3" controlId='exampleForm.ControlInput1'>
-                  {/* obviously instead of entry names it will be the logged in person and 
-                      the person of the pm button that is clicked if it is not the same person maybe
-                      it makes no sense to pm yourself 
-                  */}
-                    <Form.Control name="name" placeholder="name" onChange={updateField}/>   
-             </Form.Group>   
-              <Form.Group className ="mb-3" controlId='exampleForm.ControlInput2'>
-                  <Form.Control as="textarea" name="message" placeholder="message" onChange={updateField}/>
-               </Form.Group>
-              
-                 <Button type="Submit">Submit</Button>
-            </Form>
-              </div>
+const PMChatBox = () => {
 
-<div className="messageBox">
-      {messageList.map((entry,i) => {
-          if (entry.index === index){// this is to make sure the messages only land on the correct blog
-          // 
-          return (
-         
-             
-          <Card key={i} className="mt-2 message">
-              <Card.Header className="text-light bg-secondary d-flex"> {entry.name} says: </Card.Header>
-              <Card.Text className="p-3 d-flex">{entry.message}</Card.Text>
-          </Card>
-       
-  
-      )  }}
-      )}
-</div>            
+  const users = useSelector(selectUsers);
+  const localUser = useSelector(selectLocalUserInfo);
+  const location = useLocation()
+ // console.log(location.pathname)
+  const userName = location.pathname.substr(4, 65);
+  //console.log(userName)
+  const userInfo = users.find((user) => user.username === userName)
+ // console.log(userInfo)
+  const localUserInfo = users.find((user) => user._id === localUser.user_id);
+  console.log(localUserInfo)
 
-  </Container>
-</>
-); 
+  const messages = useSelector(selectMessages);
+  console.log(messages)
+  const [messageData, setMessageData] = useState();
+  const dispatch = useDispatch();
+
+  const submit = (e) => {
+
+    e.preventDefault()
+    console.log()
+    dispatch(addMessages({ _id: localUserInfo._id, message: messageData }))
+    setMessageData('')
+  }
+
+
+  return (
+
+
+    !userInfo ? <div></div> :
+      <>
+        <div className='PMroom'>
+          {userInfo.username} conversation  {/* pm room  */}
+
+        </div>
+        <div className='chatbox'>
+          {!messages ? <div></div> :
+
+            <div>
+              {messages.map((message, i) => {
+                const user = users.find((e) => e._id === message._id)
+
+
+                return (
+                  !user ? <div></div> :
+                    <div key={`message${i}`}>
+                      <div className="message-user-info">
+
+                        <img
+                          key={`modal${i}`}
+                          className="message-avatar user-button"
+                          src={user.avatar}
+                          alt=""
+                          style={{ border: `2px solid ${user.color}` }}
+                        />
+
+
+
+                        <div className="message-block">
+                          <h5>{user.username}</h5>
+                          <div
+                            className="message-text"
+                            style={{
+                              border: `2px solid ${user.color}`,
+                              color: `${localUser.msgBrightness}`,
+                              fontSize: `${localUser.msgDensity}px`,
+                            }}
+                          >
+                            {message.message}
+                          </div>
+                        </div>
+
+                      </div>
+                      <br /><br />
+                    </div>
+
+                )
+
+              }
+              )}
+
+            </div>}</div>
+
+        <div className='send-pm-form'>
+          <form onSubmit={submit}
+          >
+            <input
+              name='message'
+              onChange={(e) => setMessageData(e.target.value)}
+              className='message'
+              id="inputID"
+              placeholder="Message"
+              type="text"
+              color="white"
+              value={messageData}
+            />
+          </form>
+
+        </div>
+
+      </>
+  );
 }
 
 
