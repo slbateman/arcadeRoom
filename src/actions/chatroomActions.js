@@ -9,7 +9,6 @@ import {
 export const getChatrooms = () => async (dispatch) => {
   try {
     const { data } = await api.readChatrooms();
-    console.log(data)
     dispatch(allChatrooms(data));
   } catch (error) {
     console.log(error);
@@ -28,7 +27,6 @@ export const postChatroom = (newChatroom) => async (dispatch) => {
 export const patchChatroom = (id, updatedChatroom) => async (dispatch) => {
     try {
         await api.updateChatroom(id, updatedChatroom)
-
     } catch (error) {
         console.log(error)
     }
