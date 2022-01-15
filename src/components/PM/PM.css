@@ -1,0 +1,21 @@
+.chatbox{
+    margin: auto; 
+    margin-top: 10px;
+    width: 25rem; 
+    height: calc(100vh - 200px);
+    border: 1px solid #ffffff; 
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+ .PMroom{
+     margin-top: 30px;
+    text-align: center;
+} 
+
+.send-pm-form{
+    margin:auto; 
+    margin-top: 10px;
+    width: 22rem; 
+}
+.message{}

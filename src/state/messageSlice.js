@@ -22,7 +22,7 @@ export const messageSlice = createSlice ({
     reducers: {
        addMessages: (state, action) => {
         console.log(action.payload); 
-        state.messages = action.payload;
+        state.messages.push(action.payload);
         localStorage.setItem('storedMessages', JSON.stringify(state.messages));
     },
     deleteMessages: (state,action) => {

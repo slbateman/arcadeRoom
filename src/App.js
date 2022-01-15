@@ -56,7 +56,7 @@ function App() {
         <Route path="/user/*" element={<User />} />
         {/* <Route path="/test" element={<Test />} /> */}
         <Route path="/profiles/*" element={<Profiles />} />
-        <Route path="/pms/*" element={<PMChatBox />} />
+        <Route path="/pm/*" element={<PMChatBox />} />
       </Routes>
     </div>
   );
