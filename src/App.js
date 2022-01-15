@@ -18,6 +18,7 @@ import { getUsers, postUser } from "./actions/userActions";
 import { getChatrooms } from "./actions/chatroomActions";
 import { selectLocalUserInfo } from "./state/usersSlice";
 import { getPMs } from "./actions/pmActions"
+import Profiles from "./components/Profiles";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/user/*" element={<User />} />
         {/* <Route path="/test" element={<Test />} /> */}
+        <Route path="/profiles/*" element={<Profiles />} />
       </Routes>
     </div>
   );

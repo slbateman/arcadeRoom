@@ -11,20 +11,13 @@ export const pmSlice = createSlice({
 
     reducers: {
         allPMs: (state,action) => {
-            console.log(action.payload)
             state.pms = action.payload
-            console.log(state.pms)
         },
         addPM: (state, action) => {
-            console.log(action.payload)
-
             state.pms.push(action.payload)
-
             localStorage.setItem('pms', JSON.stringify(state.pm))
         },
         editPM: (state, action) => {
-            //this only works if you send the entire pm data
-            state.pms.map((data) => (data._id === action.payload._id ? action.payload : data))
         },
         addMessages: (state, action) => {
             const index = state.pms.findIndex((e) => e._id === action.payload._id)
