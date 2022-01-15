@@ -1,22 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './chat.css'
-import { useSelector, useDispatch } from 'react-redux'
-import { selectChatroom, addChatroom } from '../../state/chatroomSlice'
+import { useSelector } from 'react-redux'
 import { UserModal } from './UserModal'
 import { selectUsers, selectLocalUserInfo } from '../../state/usersSlice'
-import { Button } from 'react-bootstrap'
 
 // user/userSettings
 // create a modal to send the user to either the users profile or a personal message room
 
 function MessageList({ chatroom }) {
-
-    const chatrooms = useSelector(selectChatroom)
     const users = useSelector(selectUsers)
     const localUserInfo = useSelector(selectLocalUserInfo)
     const localUser = users.find((e) => e._id === localUserInfo.user_id)
     const messageElement = useRef(null)
-    const obj = document.getElementById("messageBox");
     const [modalUser, setModalUser] = useState()
 
     const [show, setShow] = useState(false);
@@ -35,7 +30,7 @@ function MessageList({ chatroom }) {
         <div className='message-list' ref = {messageElement} id='messageBox' >
             <div>
                 
-                <UserModal  show={show} close={closeModalHandler} userID={modalUser}/>
+                <UserModal  show={show} close={closeModalHandler} modalUser={modalUser} localUser={localUser}/>
                 
                 {chatroom.messages.map((data, i) => {
                     const user = users.find((e) => e._id === data.user_id)
@@ -49,7 +44,7 @@ function MessageList({ chatroom }) {
                                 <img 
                                     key={`modal${i}`}
                                     className="message-avatar user-button"
-                                    onClick={(x) => {setShow(true); setModalUser(user._id)}}
+                                    onClick={(x) => {setShow(true); setModalUser(user)}}
                                     src={user.avatar}
                                     alt=""
                                     style={{ border: `2px solid ${user.color}` }}

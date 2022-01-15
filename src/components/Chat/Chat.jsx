@@ -20,7 +20,7 @@ function Chat() {
     const chatrooms = useSelector(selectChatroom);
     const location = useLocation()
     const currentUrl = location.pathname
-    const chatroomName = currentUrl.substr(6,20)
+    const chatroomName = currentUrl.substr(6,60)
     const chatroom = !chatrooms ? null : chatrooms.find((e) => e.name === chatroomName)
     
 

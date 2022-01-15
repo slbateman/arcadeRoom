@@ -11,20 +11,13 @@ export const chatroomSlice = createSlice({
 
     reducers: {
         allChatrooms: (state,action) => {
-            console.log(action.payload)
             state.chatroom = action.payload
-            console.log(state.chatroom)
         },
         addChatroom: (state, action) => {
-            console.log(action.payload)
-
             state.chatroom.push(action.payload)
-
             localStorage.setItem('chatroom', JSON.stringify(state.chatroom))
         },
         editChatroom: (state, action) => {
-            //this only works if you send the entire chatroom data
-            state.chatroom.map((data) => (data._id === action.payload._id ? action.payload : data))
         },
         addMessages: (state, action) => {
             const index = state.chatroom.findIndex((e) => e._id === action.payload._id)

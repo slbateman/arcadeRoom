@@ -9,7 +9,6 @@ import {
 export const getPMs = () => async (dispatch) => {
   try {
     const { data } = await api.readPMs();
-    console.log(data)
     dispatch(allPMs(data));
   } catch (error) {
     console.log(error);
@@ -28,7 +27,6 @@ export const postPM = (newPM) => async (dispatch) => {
 export const patchPM = (id, updatedPM) => async (dispatch) => {
     try {
         await api.updatePM(id, updatedPM)
-
     } catch (error) {
         console.log(error)
     }
