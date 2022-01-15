@@ -36,8 +36,8 @@ export const UserModal = ({ show, close, modalUser, localUser }) => {
             />
             <h4>{modalUser.username}</h4>
             <div className="button-block" >
-              <Link className="link" to={`../profiles/${modalUser.username}`}>
-                <div className="message-button">view profile</div>
+              <Link className="message-button link" to={`../profiles/${modalUser.username}`}>
+                view profile
               </Link>
               <div
                 className="message-button link"
