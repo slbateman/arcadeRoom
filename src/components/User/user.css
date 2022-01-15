@@ -101,15 +101,22 @@ h3 {
   cursor: pointer;
   text-align: center;
   color: #4f4f4f;
-  width: 150px;
-  height: 26px;
+  width: 200px;
+  height: 36px;
   background-color: #befe3b;
-  border-radius: 13px;
-  margin-left: 250px;
+  border-radius: 20px;
 }
 
 .message-button:hover {
   box-shadow: 0px 0px 8px white;
+}
+
+.button-block {
+  display:inline-flex;
+}
+
+.message-button-margin {
+  margin-left: 250px;
 }
 
 /* width */

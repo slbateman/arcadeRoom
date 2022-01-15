@@ -1,17 +1,21 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
+import { addPM } from '../state/pmSlice'
 import { selectLocalUserInfo, selectUsers } from '../state/usersSlice'
 
 const Profiles = () => {
     const users = useSelector(selectUsers)
     const localUserInfo = useSelector(selectLocalUserInfo)
+    const dispatch = useDispatch()
     const location = useLocation()
     const profile = location.pathname.substr(10, 65)
     const localUser = !users ? null : users.find((e)=> e._id === localUserInfo.user_id)
     const profileInfo = !users ? null : users.find((e)=> e.username === profile)
 
-    const newConvo = () => {}
+    const newConvo = () => {
+      dispatch(addPM({users: [profileInfo._id, localUser._id]}))
+    }
 
     return (
         !profileInfo ? <div></div> :
@@ -30,7 +34,7 @@ const Profiles = () => {
           <div className="user-profile-badges">badges: </div>
         </div>
       </div>
-      <div className='message-button' onClick={()=>{newConvo()}} >send message</div>
+      <div className='message-button-margin'><div className='message-button link' onClick={()=>{newConvo()}} >send message</div></div>
       <div className="user-profile-bio">
         <h3
           className="user-profile-bio-label"
