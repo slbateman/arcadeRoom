@@ -34,7 +34,7 @@ function SendMessageForm({chatroom}) {
 
 
     return (
-        <div className='send-pm-form'>
+        <div className='send-message-form'>
             <form onSubmit={submit}>
                 <input 
                 name='message'
