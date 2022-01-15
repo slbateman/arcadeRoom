@@ -9,7 +9,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addMessages, selectMessages } from '../state/messageSlice';
 import Admin from './Admin'; 
-import { addContent, selectContent } from '../state/contentSlice';
+import {  selectContent } from '../state/contentSlice';//addContent,
 
 const PrivateMessages = () => {
     const data = useSelector(selectContent);

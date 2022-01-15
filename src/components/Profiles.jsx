@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { addPM } from '../state/pmSlice'
 import { selectLocalUserInfo, selectUsers } from '../state/usersSlice'
-
+import { Link } from "react-router-dom";
 const Profiles = () => {
     const users = useSelector(selectUsers)
     const localUserInfo = useSelector(selectLocalUserInfo)
@@ -34,7 +34,8 @@ const Profiles = () => {
           <div className="user-profile-badges">badges: </div>
         </div>
       </div>
-      <div className='message-button-margin'><div className='message-button link' onClick={()=>{newConvo()}} >send message</div></div>
+      <div className='message-button-margin'><div className='message-button link' onClick={()=>{newConvo()}} >
+      <Link className="link" to = {`../pm/${profileInfo.username}`}> send message</ Link></div></div>
       <div className="user-profile-bio">
         <h3
           className="user-profile-bio-label"

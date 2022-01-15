@@ -26,7 +26,7 @@ const info = [
 
   {
     id: 1,
-    name: "Sloth",
+    name: "sloth",
     email: "",
     img: sloth,
     color: "white",
@@ -36,7 +36,7 @@ const info = [
 
   {
     id: 2,
-    name: "Slobat",
+    name: "slobat",
     email: "stevelbateman@gmail.com",
     img: bat,
     color: "#befe3b",

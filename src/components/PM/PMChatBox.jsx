@@ -1,7 +1,48 @@
 
+import React, {useState} from 'react';
+
+import { Container, Button, Form, Modal, Card } from 'react-bootstrap';
+import { useDispatch,useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { addMessages, selectMessages } from '../../state/messageSlice';
+import Admin from '../Admin'; 
+import {  selectContent } from '../../state/contentSlice';//addContent,
 
 const PMChatBox = () => 
 {
+    //grab index from the url of the parent component don't need to pass it as it is already here
+    const {index} = useParams();
+
+    const dispatch = useDispatch(); 
+    const messageList = useSelector(selectMessages); // get list of messages from redux
+    const storeMessageList = () => dispatch(addMessages([...messageList, message]));
+  // local state (component and children)
+  const [message, setMessage] = useState({}); 
+
+   const onSubmit = (e) => {
+       e.preventDefault(); 
+
+       //prevent empty Messages 
+       if (message.name && message.message) {
+           //or duplicate message
+           if (message !== messageList[messageList.length -1]) {
+               storeMessageList();
+           }
+       }
+       //reset the form and component state 
+       setMessage({});
+       e.target.reset(); 
+   }
+
+   const updateField = (e) => {
+     setMessage({
+        ...message,
+        index: index,
+        [e.target.name]: e.target.value
+     })
+   }
+
+
 return (
 <>
 <Container className='messageForm'>

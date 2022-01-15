@@ -60,8 +60,7 @@ function AboutUs() {
       style={{ height: '18rem', width: '20rem', border: `3px solid ${data.color}` }}
       />
  
- 
-  <div className='mx-auto cardTitle' ><Link to={`/profile/${data.name}`}>{data.name}</Link></div>
+  <div className='mx-auto cardTitle' ><Link to={`/profiles/${data.name}`}>{data.name}</Link></div>
   <div className='cardText'>  {data.blurb}</div>
 
     </Col>
