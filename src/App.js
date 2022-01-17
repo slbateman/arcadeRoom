@@ -20,6 +20,7 @@ import { selectLocalUserInfo } from "./state/usersSlice";
 import { getPMs } from "./actions/pmActions"
 import Profiles from "./components/Profiles";
 import PMChatBox from "./components/PM/PMChatBox";
+import socket from "./socket/socketActions"
 
 function App() {
   const dispatch = useDispatch();
