@@ -4,6 +4,7 @@ const userSchema = mongoose.Schema({
   socket_id: {type: String, default: ""},
   username: { type: String, required: true },
   password: { type: String},
+  active: {type: Boolean, default: false},
   email: { type: String, default: "" },
   avatar: {
     type: String,

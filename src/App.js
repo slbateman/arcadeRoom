@@ -16,11 +16,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUsers, postUser } from "./actions/userActions";
 import { getChatrooms } from "./actions/chatroomActions";
-import { selectLocalUserInfo } from "./state/usersSlice";
-import { getPMs } from "./actions/pmActions"
+import {
+  editUserActive,
+  editUserSocket_id,
+  selectLocalUserInfo,
+  // selectUsers,
+} from "./state/usersSlice";
+import { getPMs } from "./actions/pmActions";
 import Profiles from "./components/Profiles";
 import PMChatBox from "./components/PM/PMChatBox";
-import socket from "./socket/socketActions"
+import socket from "./socket/socket";
+import { updateUser } from "./api/userAPI";
+import { addMessages } from "./state/chatroomSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,23 +35,51 @@ function App() {
   const localUserInfo = useSelector(selectLocalUserInfo);
 
   useEffect(() => {
+    dispatch(getUsers());
+    dispatch(getChatrooms());
+    dispatch(getPMs());
+  }, []);
+
+  useEffect(() => {
     if (!localUserInfo.user_id) {
       const randomNumber = Math.floor(Math.random() * 100000000000000);
-      // if (!users.find((e) => e.username === `user${randomNumber}`)) {
-        dispatch(
-          postUser({
-            username: `user${randomNumber}`,
-            password: "",
-          })
-        );
+      // if (users.findIndex((e) => e.username === `user${randomNumber}`) === -1) {
+      dispatch(
+        postUser({
+          username: `user${randomNumber}`,
+          password: "",
+        })
+      );
       // }
     }
   }, []);
 
   useEffect(() => {
-    dispatch(getUsers());
-    dispatch(getChatrooms())
-    dispatch(getPMs())
+    if (socket.connected) {
+      const userData = {
+        _id: localUserInfo.user_id,
+        socket_id: socket.id,
+        active: true,
+      };
+      socket.emit("userConnection", userData);
+      updateUser(userData._id, {
+        active: userData.active,
+        socket_id: userData.socket_id,
+      });
+    }
+  }, [localUserInfo]);
+
+  // Socket.On actions
+  useEffect(() => {
+    socket.on("userConnection", (userData) => {
+      console.log(userData);
+      dispatch(editUserActive(userData));
+      dispatch(editUserSocket_id(userData));
+    });
+    socket.on("sendChatroomMessage", (messageData) => {
+      console.log(messageData);
+      dispatch(addMessages(messageData));
+    });
   }, []);
 
   return (

@@ -37,7 +37,7 @@ function MessageList({ chatroom }) {
                     
                     
                     return (
-                        !user ? <div></div> :
+                        !user ? <div key={`message${i}`}></div> :
                             <div key={`message${i}`}>
                             <div className="message-user-info">
                                 
