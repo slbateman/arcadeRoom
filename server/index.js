@@ -36,6 +36,16 @@ app.use("/api", router);
 io.on("connection", (socket) => {
   console.log(`${socket.id} connected`);
 
+  socket.on("userConnection", (userData) => {
+    socket.broadcast.emit("userConnection", userData)
+  })
+
+  socket.on("sendChatroomMessage", (messageData) => {
+    console.log(messageData)
+    socket.broadcast.emit("sendChatroomMessage", messageData)
+  })
+  
+
   // socket.emit("greeting", "Welcome")
   // io.emit("greeting", "look who showed up, everyone!")
   //   socket.broadcast.emit("greeting", "pretend you like them")

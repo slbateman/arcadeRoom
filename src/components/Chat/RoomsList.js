@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './chat.css'
 import './Modal.css'
-import { Form, InputGroup, FormControl, Button } from "react-bootstrap"
+import { Button } from "react-bootstrap"
 import { Modal } from './Modal';
 import { useSelector, useDispatch} from 'react-redux'
-import { selectChatroom, addChatroom } from '../../state/chatroomSlice'
+import { selectChatroom } from '../../state/chatroomSlice'
 import { selectLocalUserInfo } from '../../state/usersSlice'
 import { Link } from 'react-router-dom'
 import { postChatroom } from '../../actions/chatroomActions';
@@ -50,8 +50,8 @@ function RoomsList({chatroom}) {
                 </div>
                 <div className=' text-color-pink'>
                     
-                        {chatrooms.map((room) => (
-                        <Link to={`/chat/${room.name}`}>
+                        {chatrooms.map((room, i) => (
+                        <Link key={`room${i}`} to={`/chat/${room.name}`}>
                         <div>{room.name}</div>
                         </Link>
                         )

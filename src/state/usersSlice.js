@@ -40,7 +40,6 @@ export const usersSlice = createSlice({
           loggedIn: true,
         };
       }
-      localStorage.setItem("users", JSON.stringify(state.users));
       localStorage.setItem(
         "localUserInfo",
         JSON.stringify(state.localUserInfo)
@@ -48,38 +47,66 @@ export const usersSlice = createSlice({
     },
     editUser: (state, action) => {},
     removeUser: (state, action) => {
-      state.users.splice(state.users.findIndex((e) => e._id === action.payload, 1));
+      state.users.splice(
+        state.users.findIndex((e) => e._id === action.payload, 1)
+      );
       localStorage.setItem("users", JSON.stringify(state.users));
     },
+    editUserActive: (state, action) => {
+      const index = state.users.findIndex(
+        (user) => user._id === action.payload._id
+      );
+      state.users[index].active = action.payload.active;
+    },
+    editUserSocket_id: (state, action) => {
+      const index = state.users.findIndex(
+        (user) => user._id === action.payload._id
+      );
+      state.users[index].socket_id = action.payload.socket_id;
+    },
     editUserAvatar: (state, action) => {
-      const index = state.users.findIndex((user) => user._id ===action.payload._id)
-      state.users[index].avatar = action.payload.avatar
-      updateUser(action.payload._id, {avatar: action.payload.avatar})
+      const index = state.users.findIndex(
+        (user) => user._id === action.payload._id
+      );
+      state.users[index].avatar = action.payload.avatar;
+      updateUser(action.payload._id, { avatar: action.payload.avatar });
     },
     editUserBio: (state, action) => {
-      const index = state.users.findIndex((user) => user._id ===action.payload._id)
-      state.users[index].bio = action.payload.bio
-      updateUser(action.payload._id, {bio: action.payload.bio})
+      const index = state.users.findIndex(
+        (user) => user._id === action.payload._id
+      );
+      state.users[index].bio = action.payload.bio;
+      updateUser(action.payload._id, { bio: action.payload.bio });
     },
     editUserEmail: (state, action) => {
-      const index = state.users.findIndex((user) => user._id ===action.payload._id)
-      state.users[index].email = action.payload.email
-      updateUser(action.payload._id, {email: action.payload.email})
+      const index = state.users.findIndex(
+        (user) => user._id === action.payload._id
+      );
+      state.users[index].email = action.payload.email;
+      updateUser(action.payload._id, { email: action.payload.email });
     },
     editUserColor: (state, action) => {
-      const index = state.users.findIndex((user) => user._id ===action.payload._id)
-      state.users[index].color = action.payload.color
-      updateUser(action.payload._id, {color: action.payload.color})
+      const index = state.users.findIndex(
+        (user) => user._id === action.payload._id
+      );
+      state.users[index].color = action.payload.color;
+      updateUser(action.payload._id, { color: action.payload.color });
     },
     editUserMsgDensity: (state, action) => {
-      const index = state.users.findIndex((user) => user._id ===action.payload._id)
-      state.users[index].msgDensity = action.payload.msgDensity
-      updateUser(action.payload._id, {msgDensity: action.payload.msgDensity})
+      const index = state.users.findIndex(
+        (user) => user._id === action.payload._id
+      );
+      state.users[index].msgDensity = action.payload.msgDensity;
+      updateUser(action.payload._id, { msgDensity: action.payload.msgDensity });
     },
     editUserMsgBrightness: (state, action) => {
-      const index = state.users.findIndex((user) => user._id ===action.payload._id)
-      state.users[index].msgBrightness = action.payload.msgBrightness
-      updateUser(action.payload._id, {msgBrightness: action.payload.msgBrightness})
+      const index = state.users.findIndex(
+        (user) => user._id === action.payload._id
+      );
+      state.users[index].msgBrightness = action.payload.msgBrightness;
+      updateUser(action.payload._id, {
+        msgBrightness: action.payload.msgBrightness,
+      });
     },
   },
 });
@@ -90,6 +117,8 @@ export const {
   addUser,
   editUser,
   removeUser,
+  editUserActive,
+  editUserSocket_id,
   editUserAvatar,
   editUserBio,
   editUserEmail,
