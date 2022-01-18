@@ -132,3 +132,14 @@
     cursor: pointer;
     box-shadow: 0px 0px 15px #FFFFFF;;
 }
+
+.list-user {
+    display: inline-flex;
+}
+
+.list-user-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: contain;
+}
