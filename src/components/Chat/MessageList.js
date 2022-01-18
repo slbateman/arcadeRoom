@@ -16,6 +16,7 @@ function MessageList({ chatroom }) {
 
     const [show, setShow] = useState(false);
     const closeModalHandler = () => setShow(false);
+    
 
     useEffect(() => {
         if(chatroom) {
