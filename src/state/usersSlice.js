@@ -57,26 +57,27 @@ export const usersSlice = createSlice({
         (user) => user._id === action.payload._id
       );
       state.users[index].active = action.payload.active;
-    },
-    editUserSocket_id: (state, action) => {
-      const index = state.users.findIndex(
-        (user) => user._id === action.payload._id
-      );
       state.users[index].socket_id = action.payload.socket_id;
+    },
+    editDisconnect: (state, action) => {
+      const index = state.users.findIndex(
+        (user) => user.socket_id === action.payload
+      );
+      state.users[index].active = false;
+      state.users[index].socket_id = "";
+      updateUser(state.users[index]._id, {socket_id: "", active: false})
     },
     editUserAvatar: (state, action) => {
       const index = state.users.findIndex(
         (user) => user._id === action.payload._id
       );
       state.users[index].avatar = action.payload.avatar;
-      updateUser(action.payload._id, { avatar: action.payload.avatar });
     },
     editUserBio: (state, action) => {
       const index = state.users.findIndex(
         (user) => user._id === action.payload._id
       );
       state.users[index].bio = action.payload.bio;
-      updateUser(action.payload._id, { bio: action.payload.bio });
     },
     editUserEmail: (state, action) => {
       const index = state.users.findIndex(
@@ -90,7 +91,6 @@ export const usersSlice = createSlice({
         (user) => user._id === action.payload._id
       );
       state.users[index].color = action.payload.color;
-      updateUser(action.payload._id, { color: action.payload.color });
     },
     editUserMsgDensity: (state, action) => {
       const index = state.users.findIndex(
@@ -118,7 +118,7 @@ export const {
   editUser,
   removeUser,
   editUserActive,
-  editUserSocket_id,
+  editDisconnect,
   editUserAvatar,
   editUserBio,
   editUserEmail,

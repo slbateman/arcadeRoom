@@ -41,10 +41,20 @@ io.on("connection", (socket) => {
   })
 
   socket.on("sendChatroomMessage", (messageData) => {
-    console.log(messageData)
     socket.broadcast.emit("sendChatroomMessage", messageData)
   })
+
+  socket.on("updateUserColor", (colorData) => {
+    socket.broadcast.emit("updateUserColor", colorData)
+  })
   
+  socket.on("updateUserAvatar", (avatarData) => {
+    socket.broadcast.emit("updateUserAvatar", avatarData)
+  })
+
+  socket.on("updateUserBio", (bioData) => {
+    socket.broadcast.emit("updateUserBio", bioData)
+  })
 
   // socket.emit("greeting", "Welcome")
   // io.emit("greeting", "look who showed up, everyone!")
@@ -70,10 +80,10 @@ io.on("connection", (socket) => {
   //   })
 
   // Here is where we handle the disconnect of a socket.
-  //   socket.on("disconnect", (userList) => {
-  //     console.log("user disconnected");
-  //     //io.emit("userLeft", ${socket.id} disconnected);
-  //   });
+    socket.once("disconnect", (reason) => {
+      console.log(`${socket.id} disconnected due to ${reason}`);
+      io.emit("userDisconnected", socket.id, );
+    });
 });
 
 //start server

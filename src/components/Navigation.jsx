@@ -10,7 +10,6 @@ import { useLocation, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import {
   editUserActive,
-  editUserSocket_id,
   selectLocalUserInfo,
   selectUsers,
 } from "../state/usersSlice";
@@ -31,7 +30,6 @@ function Navigation() {
       socket_id: "",
       active: false,
     };
-    dispatch(editUserSocket_id(userData));
     dispatch(editUserActive(userData));
     updateUser(userData._id, {
       active: userData.active,

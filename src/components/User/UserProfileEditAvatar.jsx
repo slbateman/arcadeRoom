@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
+import { updateUser } from "../../api/userAPI";
+import socket from "../../socket/socket";
 import {
   selectUsers,
   selectLocalUserInfo,
@@ -32,7 +34,10 @@ function UserProfileEditAvatar({ showEditAvatar, setShowEditAvatar }) {
 
   const saveAvatar = (e) => {
     e.preventDefault();
-    dispatch(editUserAvatar({ _id: localUserInfo.user_id, avatar: avatar }));
+    const avatarData = { _id: localUserInfo.user_id, avatar: avatar }
+    dispatch(editUserAvatar(avatarData));
+    socket.emit("updateUserAvatar", avatarData)
+    updateUser(localUserInfo.user_id, {avatar: avatar})
     closeEditAvatar();
   };
 
