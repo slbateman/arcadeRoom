@@ -17,10 +17,13 @@ import { useEffect } from "react";
 import { getUsers, postUser } from "./actions/userActions";
 import { getChatrooms } from "./actions/chatroomActions";
 import {
+  editDisconnect,
   editUserActive,
-  editUserSocket_id,
+  editUserAvatar,
+  editUserBio,
+  editUserColor,
   selectLocalUserInfo,
-  // selectUsers,
+  selectUsers,
 } from "./state/usersSlice";
 import { getPMs } from "./actions/pmActions";
 import Profiles from "./components/Profiles";
@@ -31,7 +34,7 @@ import { addMessages } from "./state/chatroomSlice";
 
 function App() {
   const dispatch = useDispatch();
-  // const users = useSelector(selectUsers);
+  const users = useSelector(selectUsers);
   const localUserInfo = useSelector(selectLocalUserInfo);
 
   useEffect(() => {
@@ -72,14 +75,23 @@ function App() {
   // Socket.On actions
   useEffect(() => {
     socket.on("userConnection", (userData) => {
-      console.log(userData);
       dispatch(editUserActive(userData));
-      dispatch(editUserSocket_id(userData));
+    });
+    socket.on("userDisconnected", (socket_id) => {
+      dispatch(editDisconnect(socket_id))
     });
     socket.on("sendChatroomMessage", (messageData) => {
-      console.log(messageData);
       dispatch(addMessages(messageData));
     });
+    socket.on("updateUserColor", (colorData) => {
+      dispatch(editUserColor(colorData))
+    })
+    socket.on("updateUserAvatar", (avatarData) => {
+      dispatch(editUserAvatar(avatarData))
+    })
+    socket.on("updateUserBio", (bioData) => {
+      dispatch(editUserBio(bioData))
+    })
   }, []);
 
   return (

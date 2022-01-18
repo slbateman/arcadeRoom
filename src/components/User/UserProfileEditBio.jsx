@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
+import { updateUser } from "../../api/userAPI";
+import socket from "../../socket/socket";
 import {
   selectUsers,
   selectLocalUserInfo,
@@ -26,9 +28,10 @@ function UserProfileEditBio({ showEditBio, setShowEditBio }) {
           <Form
             onSubmit={(e) => {
               e.preventDefault();
-              dispatch(
-                editUserBio({ _id: localUserInfo.user_id, bio: bioText })
-              );
+              const bioData = { _id: localUserInfo.user_id, bio: bioText };
+              dispatch(editUserBio(bioData));
+              socket.emit("updateUserBio", bioData);
+              updateUser(localUserInfo.user_id, { bio: bioText });
               closeEditBio();
             }}
           >
