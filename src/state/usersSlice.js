@@ -29,6 +29,10 @@ export const usersSlice = createSlice({
         JSON.stringify(state.localUserInfo)
       );
     },
+    addRemoteUser: (state, action) => {
+
+      // state.users.push(action.payload)
+    },
     addUser: (state, action) => {
       state.users.push(action.payload);
       if (action.payload.password === "") {
@@ -114,6 +118,7 @@ export const usersSlice = createSlice({
 export const {
   allUsers,
   loginUser,
+  addRemoteUser,
   addUser,
   editUser,
   removeUser,

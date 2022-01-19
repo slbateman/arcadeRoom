@@ -23,7 +23,7 @@ import {
   editUserBio,
   editUserColor,
   selectLocalUserInfo,
-  // selectUsers,
+  selectUsers,
 } from "./state/usersSlice";
 import { getPMs } from "./actions/pmActions";
 import Profiles from "./components/Profiles";
@@ -34,7 +34,7 @@ import { addMessages } from "./state/chatroomSlice";
 
 function App() {
   const dispatch = useDispatch();
-  // const users = useSelector(selectUsers);
+  const users = useSelector(selectUsers);
   const localUserInfo = useSelector(selectLocalUserInfo);
 
   useEffect(() => {
@@ -73,11 +73,22 @@ function App() {
     }
   }, [localUserInfo]);
 
+  useEffect(() => {
+    if (users.length > 0) {
+      socket.on("userConnection", (userData) => {
+        const user = users.find((e) => e._id === userData._id);
+        if (!user) {
+          dispatch(getUsers());
+          dispatch(editUserActive(userData));
+        } else {
+          dispatch(editUserActive(userData));
+        }
+      });
+    }
+  }, [users]);
+
   // Socket.On actions
   useEffect(() => {
-    socket.on("userConnection", (userData) => {
-      dispatch(editUserActive(userData));
-    });
     socket.on("userDisconnected", (socket_id) => {
       dispatch(editDisconnect(socket_id));
     });

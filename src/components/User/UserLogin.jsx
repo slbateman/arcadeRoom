@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editUserActive, loginUser, selectLocalUserInfo, selectUsers } from "../../state/usersSlice";
 import { updateUser } from "../../api/userAPI";
+import socket from "../../socket/socket";
 
 function UserLogin() {
   const localUserInfo = useSelector(selectLocalUserInfo)
@@ -31,6 +32,7 @@ function UserLogin() {
         active: false,
       };
       dispatch(editUserActive(userData));
+      socket.emit("userLogout")
       updateUser(userData._id, {
         active: userData.active,
         socket_id: userData.socket_id,

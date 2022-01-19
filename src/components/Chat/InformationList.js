@@ -21,10 +21,8 @@ function InformationList({ chatroom }) {
   if (chatroom) {
     chatroom.messages.map((message) => {
       if (thisRoomUsers.includes(message.user_id)) {
-        console.log("userID already in array");
       } else {
         thisRoomUsers.push(message.user_id);
-        console.log(thisRoomUsers);
       }
       return thisRoomUsers;
     });
@@ -34,10 +32,8 @@ function InformationList({ chatroom }) {
     if (chatroom) {
       chatroom.messages.map((message) => {
         if (thisRoomUsers.includes(message.user_id)) {
-          console.log("userID already in array");
         } else {
           thisRoomUsers.push(message.user_id);
-          console.log(thisRoomUsers);
         }
         return thisRoomUsers;
       });
@@ -56,10 +52,11 @@ function InformationList({ chatroom }) {
       />
       <div className="space text-color-pink big-text">This Chatroom</div>
       <div className="this-room-list">
-        {thisRoomUsers.map((user_id) => {
+        {thisRoomUsers.map((user_id, i) => {
           const user = users.find((user) => user._id === user_id);
-          return (
-            <div>
+          if (!user) return <div key={`thisRoom${i}`} ></div>
+          else return (
+            <div key={`thisRoom${i}`} >
               <div className="list-user">
                 <img
                   className="list-user-avatar"
@@ -85,10 +82,10 @@ function InformationList({ chatroom }) {
       </div>
       <div className="space text-color big-text">Active Users</div>
       <div className="this-room-list">
-        {users.map((user) => {
+        {users.map((user, i) => {
           if (user.active)
             return (
-              <div>
+              <div key={`active${i}`} >
                 <div className="list-user">
                   <img
                     className="list-user-avatar"
@@ -114,10 +111,10 @@ function InformationList({ chatroom }) {
       </div>
       <div className="space text-color-purple big-text">Inactive Users</div>
       <div className="this-room-list">
-        {users.map((user) => {
+        {users.map((user, i) => {
           if (!user.active && user.password !== "")
             return (
-              <div>
+              <div key={`inactive${i}`} >
                 <div className="list-user">
                   <img
                     className="list-user-avatar"
