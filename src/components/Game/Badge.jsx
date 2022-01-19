@@ -2,7 +2,7 @@ import React from 'react';
 import '../Components.css';
 
 import badges from './badgeInfo'; 
-//const color = badges[0].color; 
+//const color = "brown"; 
 //const pic = badges[0].badge1; 
 
  function Badge(pic, color) {
