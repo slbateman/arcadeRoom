@@ -57,6 +57,7 @@
     width: 150px;
     height: calc(100vh - 80px);
     overflow-y: scroll;
+    overflow-x: hidden;
     margin-left: 5px;
     border-style: solid;
     border-width: 0px;
@@ -138,6 +139,7 @@
 }
 
 .list-user-avatar {
+    cursor: pointer;
     width: 20px;
     height: 20px;
     border-radius: 50%;
