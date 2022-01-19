@@ -77,8 +77,9 @@ function AboutUs() {
 
 
 
-{/* <AllBadges/> */}
-<Badge pic = {badges[0].badge1} color = {badges.color}/>
+{/*  <Badge pic = {badges[0].badge0} color = {"brown"}/>*/}
+
+<AllBadges/>
         </div>
     );
 }
