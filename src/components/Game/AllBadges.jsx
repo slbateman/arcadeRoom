@@ -12,7 +12,7 @@ export default function AllBadges() {
             Badges: 
             {badges.map((badge, i) => {
  return ( 
-            <Badge key={i} Badge pic = {badge.badge[i]} color = {color}/>
+            <Badge key={i} pic = {badge.badge[i]} color = {color}/>
        
         );
     })}

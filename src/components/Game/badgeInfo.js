@@ -18,19 +18,19 @@ const badges =
         //frog badges
         // lv 0-100
         color: "brown", 
-        badge1: frog1, //lv 0 -25
-        badge2: frog2, //lv 25-50
-        badge3: frog3, //lv 50-75
-        badge4: frog4  //lv 75-100
+        badge0: frog1, //lv 0 -25
+        badge1: frog2, //lv 25-50
+        badge2: frog3, //lv 50-75
+        badge3: frog4  //lv 75-100
     },
     {
         //bug badges 
         //lv 100-500
         color: "grey", 
-        badge1: bug1, //lv 101-200
-        badge2: bug2, //lv 200-300
-        badge3: bug3, //lv 300-400
-        badge4: bug4  //lv 400-500
+        badge0: bug1, //lv 101-200
+        badge1: bug2, //lv 200-300
+        badge2: bug3, //lv 300-400
+        badge3: bug4  //lv 400-500
     },
     {
         //plant badges 

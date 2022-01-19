@@ -13,7 +13,7 @@ import { selectContent } from '../state/contentSlice';
 
 import AllBadges from './Game/AllBadges';
 import Badge from './Game/Badge';
-
+import badges from './Game/badgeInfo'; 
 //mx-auto
 function AboutUs() {
   const info = useSelector(selectContent);
@@ -77,8 +77,8 @@ function AboutUs() {
 
 
 
-<AllBadges/>
-    
+{/* <AllBadges/> */}
+<Badge pic = {badges[0].badge1} color = {badges.color}/>
         </div>
     );
 }
