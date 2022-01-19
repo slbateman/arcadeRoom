@@ -102,12 +102,11 @@ export default badges;
 // badge3 a treasure chest
 // badge4 a crown 
 
-//other possible badges? 
-//administration badges
-//founder badge
-//moderator badge
-//admin badge 
-//
+//other possible badges?
+//founder badge a pine, a bat or a tree  
+//admin badges an open book 
+//moderator badge a quill
+//programming badge? 
 
 //so currently there are 
 // 4types X 4stages X fourranks = 64 badges total
