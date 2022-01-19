@@ -6,7 +6,11 @@
 /* .aMessage{
     padding-top: 5rem;
 } */
+.abadge{
 
+    object-fit: contain;
+    border-radius: 50%;
+}
 .PMButton{
     background-color: grey;
     height: 1.5rem;
