@@ -35,17 +35,28 @@ export const UserModal = ({ show, close, modalUser, localUser }) => {
               style={{ border: `2px solid ${modalUser.color}` }}
             />
             <h4>{modalUser.username}</h4>
-            <div className="button-block" >
-              <Link className="message-button link" to={`../profiles/${modalUser.username}`}>
-                view profile
-              </Link>
+            <div className="button-block">
+              {modalUser.password === "" ? (
+                <div></div>
+              ) : (
+                <Link
+                  className="message-button link"
+                  to={`../profiles/${modalUser.username}`}
+                >
+                  view profile
+                </Link>
+              )}
+
               <div
                 className="message-button link"
                 onClick={() => {
                   newConvo();
                 }}
               >
-               <Link className="link" to = {`../pm/${modalUser.username}`}> send message</Link>
+                <Link className="link" to={`../pm/${modalUser.username}`}>
+                  {" "}
+                  send message
+                </Link>
               </div>
             </div>
           </div>
