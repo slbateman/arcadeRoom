@@ -18,6 +18,7 @@ const userSchema = mongoose.Schema({
   msgBrightness: { type: String, default: "#ffffff" },
   charTotal: { type: Number, default: 0 },
   msgTotal: { type: Number, default: 0 },
+  //pmsTotal: { type: Number, default: 0 },
   rmsCreated: { type: Number, default: 0 },
   rmsDeleted: { type: Number, default: 0 },
   badges: { type: Array },
@@ -25,6 +26,12 @@ const userSchema = mongoose.Schema({
     type: String,
     default: new Date().toISOString,
   },
+
+  //level: {type: Number, default: 0},
+  //exp: {type: Number, default: 0},
+  //leaderBoard: {type: Array},
+  //highScorer: {type: String, default: "Slobat"}
+  //currentHighScore: { type: Number, default: 0 },
 });
 
 const Users = mongoose.model("user", userSchema);

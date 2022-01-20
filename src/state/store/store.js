@@ -7,14 +7,17 @@ import usersReducer from '../usersSlice';
 import chatroomReducer from '../chatroomSlice';
 import pmReducer from '../pmSlice';
 //import gameReducer from '../gameSlice'; 
+import badgeReducer from '../badgeSlice'; 
 
  const store = configureStore({
     reducer:{
-        content: contentReducer,
-        messages: messageReducer,
+        content: contentReducer,//about page content 
+        messages: messageReducer,//pm messages 
+        pms: pmReducer,
         users: usersReducer,
         chatroom: chatroomReducer,
-        pms: pmReducer,
+      
+        badges: badgeReducer,
         //game: gameReducer, 
     }
 });
