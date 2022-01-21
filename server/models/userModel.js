@@ -29,6 +29,7 @@ const userSchema = mongoose.Schema({
 
   //level: {type: Number, default: 0},
   //exp: {type: Number, default: 0},
+  //levelreq: {type: Number, default: 0},
   //leaderBoard: {type: Array},
   //highScorer: {type: String, default: "Slobat"}
   //currentHighScore: { type: Number, default: 0 },

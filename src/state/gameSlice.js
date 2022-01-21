@@ -14,22 +14,21 @@ export const gameSlice = createSlice ({
 getcharacterCount: (state, action) => {}
   getmessageCount: (state, action) => {}
    getroomCount: (state, action) => {}
-  
-  getcurrentLevel
+  getcurrentLevel: (state, action) => {}
+  getexp: (state, action) => {}
 
    addcharacterCount: (state, action) => {}
   addmessageCount: (state, action) => {}
    addroomCount: (state, action) => {}
-   addcurrentLevel
+   addcurrentLevel: (state, action) => {}
    
    
    incrementCount(state,action) => {}
-   getLevel(state, action)
-  
-   resetCounts
-
-   resetLevel 
-   reset exp
+   
+   resetCounts: (state, action) => {}
+   resetLevel: (state, action) => {}
+   reset exp: (state, action) => {}
+   resetEverything: (state, action) => {}
 
     calculate level function: 
     get counts
