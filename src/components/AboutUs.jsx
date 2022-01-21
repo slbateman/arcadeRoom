@@ -11,8 +11,8 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectContent } from '../state/contentSlice';
 
-import AllBadges from './Game/AllBadges';
-import Badge from './Game/Badge';
+//import AllBadges from './Game/AllBadges';
+//import Badge from './Game/Badge';
 import badges from './Game/badgeInfo'; 
 //mx-auto
 function AboutUs() {
@@ -77,9 +77,9 @@ function AboutUs() {
 
 
 
-{/*  <Badge pic = {badges[0].badge0} color = {"brown"}/>*/}
+{/* <AllBadges/> <Badge pic = {badges[0].badge0} color = {"brown"}/>*/}
 
-<AllBadges/>
+
         </div>
     );
 }

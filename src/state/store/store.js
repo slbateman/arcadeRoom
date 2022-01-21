@@ -7,7 +7,7 @@ import usersReducer from '../usersSlice';
 import chatroomReducer from '../chatroomSlice';
 import pmReducer from '../pmSlice';
 //import gameReducer from '../gameSlice'; 
-import badgeReducer from '../badgeSlice'; 
+
 
  const store = configureStore({
     reducer:{
@@ -16,8 +16,6 @@ import badgeReducer from '../badgeSlice';
         pms: pmReducer,
         users: usersReducer,
         chatroom: chatroomReducer,
-      
-        badges: badgeReducer,
         //game: gameReducer, 
     }
 });

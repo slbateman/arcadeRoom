@@ -1,7 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 //          f f f f  b b b b  p p p p   r r r r
-//          0 1 2 3  0 1 2 3  0 1 2 3   0 1 2 3
-let game = [0,0,0,0, 0,0,0,0, 0,0,0,0,  0,0,0,0]; 
+//          1 2 3 4  1 2 3 4  1 2 3 4   1 2 3 4 
+let game = []; 
+//let game = [0,0,0,0, 0,0,0,0, 0,0,0,0,  0,0,0,0]; 
 
 export const gameSlice = createSlice ({
     name: 'game',
@@ -43,10 +44,20 @@ getcharacterCount: (state, action) => {}
     do nothing 
     else getBadge(badgeNum) 
   
-    checkifhavebadge function
-    if person.badarray(badgenum) = 1
-       true
-       else false 
+   function checkifhavebadge (i) 
+   let array = [i,0,0]; 
+   num = badgeArray[i]
+    if  (num !== 0)
+       array[1]= num-1 
+       array[2]= 1
+      return array
+      
+    function displaybadges  
+     opArray = checkifhavebadge(i)
+      haveBadge =  opArray[2]
+      if(haveBadge = true) 
+         return 
+         <badge array = {opArray}/> 
 
 */
     }

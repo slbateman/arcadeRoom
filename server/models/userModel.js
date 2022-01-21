@@ -21,18 +21,22 @@ const userSchema = mongoose.Schema({
   //pmsTotal: { type: Number, default: 0 },
   rmsCreated: { type: Number, default: 0 },
   rmsDeleted: { type: Number, default: 0 },
-  badges: { type: Array },
   createdAt: {
     type: String,
     default: new Date().toISOString,
   },
-
+    badges: { type: Array, default: [0,0,0,0, 0,0,0,0, 0,0,0,0,  0,0,0,0] },
+    
   //level: {type: Number, default: 0},
   //exp: {type: Number, default: 0},
-  //levelreq: {type: Number, default: 0},
-  //leaderBoard: {type: Array},
+  //levelReq: {type: Number, default: 0},
+  //rankPoints: { type: Number, default: 0 }, 
+  //score: { type: Number, default: 0 }, 
+
+  // leaderBoard: { type: Array },
   //highScorer: {type: String, default: "Slobat"}
   //currentHighScore: { type: Number, default: 0 },
+ 
 });
 
 const Users = mongoose.model("user", userSchema);
