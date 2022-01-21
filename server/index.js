@@ -5,8 +5,19 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import router from "./routes/router.js";
 
+//for heroku
+import path from 'path';
+import { fileURLToPath } from "url";
+
 const app = express();
-const PORT = 5000;
+
+// for heroku 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static( path.dirname(__dirname, '../src/build'))) 
+
+//hiroku port
+const PORT = (process.env.PORT || 5000);
 const CONNECTION =
   "mongodb+srv://generic:uHMedEbE4s4Qvit@cluster0.dfhml.mongodb.net/chatroomDB?retryWrites=true&w=majority";
 const httpServer = createServer(app);
@@ -16,6 +27,11 @@ mongoose.connect(CONNECTION, (err) => {
   if (err) throw err;
   console.log("connected to chatroomDB");
 });
+
+
+
+
+
 
 //middlewares
 app.use(express.json({ extended: true }));
