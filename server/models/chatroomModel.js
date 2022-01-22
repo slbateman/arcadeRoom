@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 const chatroomSchema = mongoose.Schema({
   name: { type: String, required: true },
   owner: { type: String, required: true},
+  passcode: {type: String, default: ""},
+  active: {type: Boolean, default: false},
   description: { type: String, default: "" },
   color: {type: String, default: "#ffffff"},
   passcode: {type: String, default: ''},

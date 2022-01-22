@@ -24,7 +24,7 @@ function MessageList({ chatroom, remove }) {
     const [show2, setShow2] = useState(false);
     const closeModalHandler2 = () => setShow2(false);
     
-    
+
     useEffect(() => {
         if(chatroom) {
             const objDiv = document.getElementById("messageBox");
@@ -46,6 +46,7 @@ function MessageList({ chatroom, remove }) {
                     
                     return (
                         !user ? <div></div> : chatroom.passcode !== '' && !chatroom.access.includes(localUserInfo.user_id) ? <div></div> :
+
                             <div key={`message${i}`}>
                             <div className="message-user-info">
                                 

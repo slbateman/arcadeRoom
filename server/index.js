@@ -5,8 +5,19 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import router from "./routes/router.js";
 
+//for heroku
+import path from 'path';
+import { fileURLToPath } from "url";
+
 const app = express();
-const PORT = 5000;
+
+// for heroku 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static( path.dirname(__dirname, '../src/build'))) 
+
+//hiroku port
+const PORT = (process.env.PORT || 5000);
 const CONNECTION =
   "mongodb+srv://generic:uHMedEbE4s4Qvit@cluster0.dfhml.mongodb.net/chatroomDB?retryWrites=true&w=majority";
 const httpServer = createServer(app);
@@ -16,6 +27,11 @@ mongoose.connect(CONNECTION, (err) => {
   if (err) throw err;
   console.log("connected to chatroomDB");
 });
+
+
+
+
+
 
 //middlewares
 app.use(express.json({ extended: true }));
@@ -35,6 +51,34 @@ app.use("/api", router);
 //socket
 io.on("connection", (socket) => {
   console.log(`${socket.id} connected`);
+
+  socket.on("userConnection", (userData) => {
+    socket.broadcast.emit("userConnection", userData)
+  })
+
+  socket.on("sendChatroomMessage", (messageData) => {
+    socket.broadcast.emit("sendChatroomMessage", messageData)
+  })
+
+  socket.on("updateUserColor", (colorData) => {
+    socket.broadcast.emit("updateUserColor", colorData)
+  })
+  
+  socket.on("updateUserAvatar", (avatarData) => {
+    socket.broadcast.emit("updateUserAvatar", avatarData)
+  })
+
+  socket.on("updateUserBio", (bioData) => {
+    socket.broadcast.emit("updateUserBio", bioData)
+  })
+
+  socket.on("sendPMMessage", (messageData) => {
+    socket.broadcast.emit("sendPMMessage", messageData)
+  })
+
+  socket.on("newPM", () => {
+    socket.broadcast.emit("newPM")
+  })
 
   // socket.emit("greeting", "Welcome")
   // io.emit("greeting", "look who showed up, everyone!")
@@ -60,10 +104,10 @@ io.on("connection", (socket) => {
   //   })
 
   // Here is where we handle the disconnect of a socket.
-  //   socket.on("disconnect", (userList) => {
-  //     console.log("user disconnected");
-  //     //io.emit("userLeft", ${socket.id} disconnected);
-  //   });
+    socket.once("disconnect", (reason) => {
+      console.log(`${socket.id} disconnected due to ${reason}`);
+      io.emit("userDisconnected", socket.id, );
+    });
 });
 
 //start server

@@ -7,11 +7,21 @@ import { selectLocalUserInfo } from '../../state/usersSlice'
 function SendMessageForm({chatroom}) {
 
     const dispatch = useDispatch();
+  
     const submit = (e) => {
-        e.preventDefault()
-        dispatch(addMessages({_id: chatroom._id, messages: [...chatroom.messages, {user_id: localUserInfo.user_id, message: messageData}]}))
-        setMessageData('')
-    }
+      e.preventDefault();
+      const messageSubmitData = {
+        _id: chatroom._id,
+        messages: [
+          ...chatroom.messages,
+          { user_id: localUserInfo.user_id, message: messageData },
+        ],
+      };
+      dispatch(addMessages(messageSubmitData));
+      updateChatroom(messageSubmitData._id, {messages: messageSubmitData.messages})
+      socket.emit("sendChatroomMessage", messageSubmitData)
+      setMessageData("");
+    };
     
     const localUserInfo = useSelector(selectLocalUserInfo)
 
@@ -37,5 +47,4 @@ function SendMessageForm({chatroom}) {
     )
 }
 
-
-export default SendMessageForm
+export default SendMessageForm;

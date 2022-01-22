@@ -4,6 +4,7 @@ const userSchema = mongoose.Schema({
   socket_id: {type: String, default: ""},
   username: { type: String, required: true },
   password: { type: String},
+  active: {type: Boolean, default: false},
   email: { type: String, default: "" },
   avatar: {
     type: String,
@@ -15,15 +16,23 @@ const userSchema = mongoose.Schema({
   color: { type: String, default: "#ffffff" },
   msgDensity: { type: Number, default: 16 },
   msgBrightness: { type: String, default: "#ffffff" },
+
   charTotal: { type: Number, default: 0 },
   msgTotal: { type: Number, default: 0 },
+  //pmsTotal: { type: Number, default: 0 },
   rmsCreated: { type: Number, default: 0 },
   rmsDeleted: { type: Number, default: 0 },
-  badges: { type: Array },
   createdAt: {
     type: String,
     default: new Date().toISOString,
   },
+    
+  badges: { type: Array, default: [0,0,0,0, 0,0,0,0, 0,0,0,0,  0,0,0,0] }, 
+  level: {type: Number, default: 0},
+  exp: {type: Number, default: 0},
+  levelReq: {type: Number, default: 0},
+  rank: { type: Array, default: [0,0,0,0]},
+//  score: { type: Number, default: 0 }, not needed unless making more advance scoring system, just use level 
 });
 
 const Users = mongoose.model("user", userSchema);

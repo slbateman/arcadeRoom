@@ -8,8 +8,13 @@ import { Navbar, NavDropdown, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { selectLocalUserInfo, selectUsers } from "../state/usersSlice";
+import {
+  editUserActive,
+  selectLocalUserInfo,
+  selectUsers,
+} from "../state/usersSlice";
 import { postUser } from "../actions/userActions";
+import { updateUser } from "../api/userAPI";
 
 function Navigation() {
   const dispatch = useDispatch();
@@ -20,6 +25,16 @@ function Navigation() {
 
   const logout = () => {
     const randomNumber = Math.floor(Math.random() * 100000000000000);
+    const userData = {
+      _id: localUserInfo.user_id,
+      socket_id: "",
+      active: false,
+    };
+    updateUser(userData._id, {
+      active: userData.active,
+      socket_id: userData.socket_id,
+    });
+    dispatch(editUserActive(userData));
     dispatch(
       postUser({
         username: `user${randomNumber}`,
@@ -35,7 +50,7 @@ function Navigation() {
 
   const navigate = useNavigate();
 
-  const [test, setTest] = useState("");
+  // const [test, setTest] = useState("");
 
   useEffect(() => {
     if (location === "/chat") {

@@ -92,3 +92,7 @@
   .back-drop {
     z-index: 9999;
   }
+
+  .button-block {
+    display: inline-flex;
+  }

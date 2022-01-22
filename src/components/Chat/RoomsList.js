@@ -56,6 +56,7 @@ function RoomsList({setRemove, remove, chatroom}) {
                 </div>
                 <div className=' text-color-pink'>
                     
+
                         {chatrooms.map((room) => (
                         <Link style={{color: 'white', textDecoration: 'none'} } to={`/chat/${room.name}`}>
                         <div onClick={() => {setRemove(false); !room.access.includes(localUserInfo.user_id) ? (room.passcode === '' ? setShow2(false) : setShow2(true)) : setShow2(false) }}>{room.name} 

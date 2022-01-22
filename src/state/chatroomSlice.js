@@ -1,7 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { updateChatroom } from '../api/chatroomAPI';
 let chatroom = []
-
 
 export const chatroomSlice = createSlice({
     name: 'chatroom',
@@ -27,7 +25,9 @@ export const chatroomSlice = createSlice({
         addMessages: (state, action) => {
             const index = state.chatroom.findIndex((e) => e._id === action.payload._id)
             state.chatroom[index].messages = action.payload.messages
+
             updateChatroom(action.payload._id, {messages: action.payload.messages})
+
         },
         addUserAccess: (state, action) => {
             const index = state.chatroom.findIndex((e) => e._id === action.payload._id)
@@ -35,9 +35,7 @@ export const chatroomSlice = createSlice({
             updateChatroom(action.payload._id, {access: action.payload.access})
         },
         removeChatroom: (state, action) => {
-
             state.chatroom.splice(state.chatroom.findIndex((e) => e._id === action.payload), 1);
-
         }
     }
 })

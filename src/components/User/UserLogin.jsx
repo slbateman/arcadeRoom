@@ -7,9 +7,12 @@ import { Link } from "react-router-dom";
 import { Form, InputGroup, FormControl, Button } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, selectUsers } from "../../state/usersSlice";
+import { editUserActive, loginUser, selectLocalUserInfo, selectUsers } from "../../state/usersSlice";
+import { updateUser } from "../../api/userAPI";
+import socket from "../../socket/socket";
 
 function UserLogin() {
+  const localUserInfo = useSelector(selectLocalUserInfo)
   const users = useSelector(selectUsers);
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
@@ -23,6 +26,17 @@ function UserLogin() {
     if (!user) return alert("user not found");
     if (user.password === "") alert("you cannot login as an anonymous user")
     if (password === user.password) {
+      const userData = {
+        _id: localUserInfo.user_id,
+        socket_id: "",
+        active: false,
+      };
+      dispatch(editUserActive(userData));
+      socket.emit("userLogout")
+      updateUser(userData._id, {
+        active: userData.active,
+        socket_id: userData.socket_id,
+      });
       dispatch(
         loginUser({
           user_id: user._id,

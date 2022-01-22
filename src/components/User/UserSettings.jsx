@@ -6,6 +6,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../../api/userAPI";
+import socket from "../../socket/socket";
 import {
   selectUsers,
   selectLocalUserInfo,
@@ -74,7 +76,10 @@ function UserSettings() {
   ];
 
   const updateColor = (color) => {
-    dispatch(editUserColor({ _id: localUserInfo.user_id, color: color }));
+    const colorData = { _id: localUserInfo.user_id, color: color }
+    dispatch(editUserColor(colorData));
+    socket.emit("updateUserColor", colorData);
+    updateUser(localUserInfo.user_id, {color: color})
   };
 
   useEffect(() => {
@@ -83,13 +88,6 @@ function UserSettings() {
       setMsgDensity(user.msgDensity);
     }
   }, [user]);
-
-  // useEffect(() => {
-  //   if (user) {
-  //     updateMsgDensity();
-  //     updateMsgBrightness();
-  //   }
-  // }, [msgDensity, msgBrightness]);
 
   return !user ? (
     <div></div>

@@ -58,6 +58,7 @@
     width: 150px;
     height: calc(100vh - 80px);
     overflow-y: scroll;
+    overflow-x: hidden;
     margin-left: 5px;
     border-style: solid;
     border-width: 0px;
@@ -134,6 +135,7 @@
     box-shadow: 0px 0px 15px #FFFFFF;;
 }
 
+
 .imgSize {
     block-size: 20px;
     border-radius: 50%;
@@ -147,4 +149,22 @@
 .imgSize2 {
     block-size: 20px;
     border-radius: 50%;
+
+.list-user {
+    display: inline-flex;
+}
+
+.list-user-avatar {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: contain;
+}
+.list-user-name {
+    margin-left: 5px;
+}
+
+.this-room-list {
+    margin-left: 10px;
 }

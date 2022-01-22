@@ -1,20 +1,20 @@
 //Chat.jsx
-//Chatroom Assignment 
+//Chatroom Assignment
 //Array Bootcamp Fall 2021
+
 //Katie Greenwald, Steve Bateman, Bowen Condelario 
 
-import React, { useState } from 'react';
-import './chat.css'
-import InformationList from './InformationList';
-import RoomsList from './RoomsList';
-import MessageList from './MessageList';
-import SendMessageForm from './SendMessageForm';
-import ChatRoomName from './ChatRoomName';
-import { useSelector} from 'react-redux'
-import { selectChatroom} from '../../state/chatroomSlice'
-import { useLocation } from 'react-router-dom';
-import './Modal.css'
-
+import React from "react";
+import "./chat.css";
+import InformationList from "./InformationList";
+import RoomsList from "./RoomsList";
+import MessageList from "./MessageList";
+import SendMessageForm from "./SendMessageForm";
+import ChatRoomName from "./ChatRoomName";
+import { useSelector } from "react-redux";
+import { selectChatroom } from "../../state/chatroomSlice";
+import { useLocation } from "react-router-dom";
+import "./Modal.css";
 
 function Chat() {
     const chatrooms = useSelector(selectChatroom);
@@ -42,4 +42,4 @@ function Chat() {
     )
 }
 
-export default Chat
+export default Chat;
