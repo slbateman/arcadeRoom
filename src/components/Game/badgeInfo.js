@@ -22,28 +22,20 @@ const badges =
         //frog badges
         id: 0,
         color: colors[0],
-        badge0: frog1, 
-        badge1: frog2, 
-        badge2: frog3, 
-        badge3: frog4,  
+        badge: [ frog1, frog2, frog3, frog4],  
+      
     },
     {
         //bug badges 
         id: 1,
         color: colors[1],
-        badge0: bug1, 
-        badge1: bug2, 
-        badge2: bug3, 
-        badge3: bug4  
+        badge: [ bug1, bug2, bug3, bug4],  
     },
     {
         //plant badges 
         id: 2,
         color: colors[2],
-        badge0: plant1, 
-        badge1: plant2, 
-        badge2: plant3,
-        badge3: plant4 
+        badge: [plant1, plant2, plant3, plant4],  
     },
 
 
@@ -51,10 +43,7 @@ const badges =
         //ranking badges
         id: 3,
         color: colors[3],
-        badge0: rank1, 
-        badge1: rank2, 
-        badge2: rank3,  
-        badge3: rank4  
+        badge: [ rank1, rank2, rank3, rank4],  
     },
 ]; 
 

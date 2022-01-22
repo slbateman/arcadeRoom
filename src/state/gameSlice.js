@@ -40,10 +40,16 @@ getcharacterCount: (state, action) => {}
 
     achiement function: 
     if level >= achievementNum then
-    if checkIfHaveBadge = true
+    if checkIfHaveBadge(badgeNum)  = true
     do nothing 
     else getBadge(badgeNum) 
-  
+
+
+    function getBadge (badgeNum)
+ badgeNums =  [1, 2, 3, 4,  1, 2, 3, 4,  1, 2, 3, 4,   1, 2, 3, 4] 
+  badges[badgeNum] =badgeNums[badgeNum]
+
+
    function checkifhavebadge (i) 
    let array = [i,0,0]; 
    num = badgeArray[i]
