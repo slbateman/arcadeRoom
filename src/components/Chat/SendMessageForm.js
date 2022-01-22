@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import './chat.css'
 import { useSelector, useDispatch} from 'react-redux'
 import { addMessages } from '../../state/chatroomSlice'
-import { roomName } from './RoomsList'
 import { selectLocalUserInfo } from '../../state/usersSlice'
 
 function SendMessageForm({chatroom}) {
@@ -16,21 +15,8 @@ function SendMessageForm({chatroom}) {
     
     const localUserInfo = useSelector(selectLocalUserInfo)
 
-    // const submit = (e) => {
-    //     e.preventDefault()
-    //     addMessage(messageData)
-        
-    // }
-
-    const [] = useState(null);
-    const [messageData, setMessageData] = useState('');
     
-
-    // function getMessage(e) {
-    //     setMessageData({...messageData, [e.target.name]: e.target.value})
-    //     console.log(messageData)
-    // }
-
+    const [messageData, setMessageData] = useState('');
 
 
     return (
