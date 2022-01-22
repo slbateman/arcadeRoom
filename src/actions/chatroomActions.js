@@ -34,8 +34,8 @@ export const patchChatroom = (id, updatedChatroom) => async (dispatch) => {
 
 export const deleteChatroom = (id) => async (dispatch) => {
     try {
-        const {data} = await api.deleteChatroom(id)
-        dispatch(removeChatroom(data))
+        await api.deleteChatroom(id)
+        dispatch(removeChatroom(id))
     } catch (error) {
         console.log(error)
     }

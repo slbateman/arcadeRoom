@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 
 export const Modal = ({ show, close, submit }) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState('');
 
-  function getName(e) {
-    setData(e.target.value)
-    console.log(data)
+  function clear() {
+    setData('')
   }
 
   return (
@@ -17,14 +16,14 @@ export const Modal = ({ show, close, submit }) => {
     >
       <div className="modal-header">
         <p></p>
-        <span onClick={close} className="close-modal-btn">x</span>
+        <span onClick={(x) => {clear(); close()}} className="close-modal-btn">x</span>
       </div>
       <div className="modal-content">
         <div className="modal-body">
           <h4>New chat</h4>
           <form onSubmit={() => { submit(data); close(); }}>
             <input
-              onChange={getName}
+              onChange={(e) => setData(e.target.value)}
               type="text"
               placeholder='Room Name'
             />

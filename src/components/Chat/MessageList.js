@@ -3,19 +3,26 @@ import './chat.css'
 import { useSelector } from 'react-redux'
 import { UserModal } from './UserModal'
 import { selectUsers, selectLocalUserInfo } from '../../state/usersSlice'
+import removeImg from '../../images/remove.png'
+import { RemoveChatModal } from './RemoveChatModal'
 
 // user/userSettings
 // create a modal to send the user to either the users profile or a personal message room
 
-function MessageList({ chatroom }) {
+function MessageList({ chatroom, remove }) {
     const users = useSelector(selectUsers)
     const localUserInfo = useSelector(selectLocalUserInfo)
     const localUser = users.find((e) => e._id === localUserInfo.user_id)
     const messageElement = useRef(null)
     const [modalUser, setModalUser] = useState()
 
+    const submit = (data) => {
+        closeModalHandler()
+    }
     const [show, setShow] = useState(false);
     const closeModalHandler = () => setShow(false);
+    const [show2, setShow2] = useState(false);
+    const closeModalHandler2 = () => setShow2(false);
     
 
     useEffect(() => {
@@ -28,7 +35,7 @@ function MessageList({ chatroom }) {
 
     return (
         !chatroom ? <div></div> :
-        <div className='message-list' ref = {messageElement} id='messageBox' >
+        <div className='message-list' style={{borderColor: `${chatroom.color}`}} ref = {messageElement} id='messageBox' >
             <div>
                 
                 <UserModal  show={show} close={closeModalHandler} modalUser={modalUser} localUser={localUser}/>
@@ -38,7 +45,8 @@ function MessageList({ chatroom }) {
                     
                     
                     return (
-                        !user ? <div key={`message${i}`}></div> :
+                        !user ? <div></div> : chatroom.passcode !== '' && !chatroom.access.includes(localUserInfo.user_id) ? <div></div> :
+
                             <div key={`message${i}`}>
                             <div className="message-user-info">
                                 
@@ -65,6 +73,9 @@ function MessageList({ chatroom }) {
                                     >
                                         {data.message}
                                     </div>
+                                    
+                                    
+                                    <RemoveChatModal chatroom={chatroom} show={show2} close={closeModalHandler2} submit={submit}/>
                                 </div>
                                 
                             </div>
