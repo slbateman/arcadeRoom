@@ -31,6 +31,7 @@ import PMChatBox from "./components/PM/PMChatBox";
 import socket from "./socket/socket";
 import { updateUser } from "./api/userAPI";
 import { addMessages } from "./state/chatroomSlice";
+import { addPMMessages } from "./state/pmSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -79,7 +80,7 @@ function App() {
         const user = users.find((e) => e._id === userData._id);
         if (!user) {
           dispatch(getUsers());
-          dispatch(editUserActive(userData));
+          // dispatch(editUserActive(userData));
         } else {
           dispatch(editUserActive(userData));
         }
@@ -104,6 +105,10 @@ function App() {
     socket.on("updateUserBio", (bioData) => {
       dispatch(editUserBio(bioData));
     });
+    socket.on("sendPMMessage", (messageData) => {
+      dispatch(addPMMessages(messageData));
+    });
+    socket.on("newPM", () => {dispatch(getPMs())})
   }, []);
 
   return (

@@ -72,6 +72,14 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("updateUserBio", bioData)
   })
 
+  socket.on("sendPMMessage", (messageData) => {
+    socket.broadcast.emit("sendPMMessage", messageData)
+  })
+
+  socket.on("newPM", () => {
+    socket.broadcast.emit("newPM")
+  })
+
   // socket.emit("greeting", "Welcome")
   // io.emit("greeting", "look who showed up, everyone!")
   //   socket.broadcast.emit("greeting", "pretend you like them")
