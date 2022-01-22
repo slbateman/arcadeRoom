@@ -326,7 +326,6 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .pm-list {
-  display: inline-flex;
   width: 250px;
   height: calc(100vh - 170px);
   margin-top: 50px;
@@ -334,6 +333,21 @@ input[type="range"]::-webkit-slider-thumb {
   border: 2px solid #6bf4ff;
   border-radius: 10px;
   overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.pm-list-pm {
+  display: inline-flex;
+  height: 37px;
+  margin: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.pm-list-pm:hover {
+  box-shadow: 0 0 10px 0 white;
 }
 
 .pm-area {

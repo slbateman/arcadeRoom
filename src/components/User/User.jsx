@@ -44,7 +44,7 @@ function User() {
                   }
                 />
                 <Route path="/settings" element={<UserSettings />} />
-                <Route path="/messages" element={<UserMessages />} />
+                <Route path="/messages/*" element={<UserMessages />} />
                 <Route path="/leaderboard" element={<UserLeaderboard />} />
               </Routes>
             </div>
