@@ -34,7 +34,7 @@ function Chat() {
             <RoomsList chatroom = {chatroom} setRemove = {setRemove} remove = {remove}/>
             <ChatRoomName chatroom = {chatroom} setRemove = {setRemove} remove = {remove}/>
             
-            <InformationList />
+            <InformationList chatroom = {chatroom} />
             {/* <Message/> */}
             <SendMessageForm chatroom = {chatroom}/>
         </div>
