@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { updateChatroom } from '../api/chatroomAPI'
 let chatroom = []
 
 export const chatroomSlice = createSlice({

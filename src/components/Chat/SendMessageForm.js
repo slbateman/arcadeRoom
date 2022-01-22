@@ -3,6 +3,8 @@ import './chat.css'
 import { useSelector, useDispatch} from 'react-redux'
 import { addMessages } from '../../state/chatroomSlice'
 import { selectLocalUserInfo } from '../../state/usersSlice'
+import { updateChatroom } from '../../api/chatroomAPI'
+import socket from '../../socket/socket'
 
 function SendMessageForm({chatroom}) {
 

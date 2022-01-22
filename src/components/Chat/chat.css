@@ -149,6 +149,7 @@
 .imgSize2 {
     block-size: 20px;
     border-radius: 50%;
+}
 
 .list-user {
     display: inline-flex;

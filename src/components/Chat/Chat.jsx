@@ -4,7 +4,7 @@
 
 //Katie Greenwald, Steve Bateman, Bowen Condelario 
 
-import React from "react";
+import React, { useState } from "react";
 import "./chat.css";
 import InformationList from "./InformationList";
 import RoomsList from "./RoomsList";

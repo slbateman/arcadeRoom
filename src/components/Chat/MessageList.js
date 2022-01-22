@@ -3,7 +3,6 @@ import './chat.css'
 import { useSelector } from 'react-redux'
 import { UserModal } from './UserModal'
 import { selectUsers, selectLocalUserInfo } from '../../state/usersSlice'
-import removeImg from '../../images/remove.png'
 import { RemoveChatModal } from './RemoveChatModal'
 
 // user/userSettings

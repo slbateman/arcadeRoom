@@ -5,9 +5,6 @@
 import React, {useState} from 'react'
 import { useSelector } from 'react-redux'
 import './chat.css'
-import { roomName } from './RoomsList'
-import { Modal } from './Modal'
-import { Button } from 'bootstrap'
 import { selectUsers, selectLocalUserInfo } from '../../state/usersSlice'
 import edit from '../../images/edit.png'
 import removeImg from '../../images/remove.png'
@@ -43,12 +40,14 @@ function ChatRoomName({chatroom, setRemove, remove}) {
                 className="imgSize" 
                 onClick={(x) => setShow1(true)}
                 src={edit}
+                alt=''
                 /> 
                 &nbsp;
                 <img 
                 className="imgSize" 
                 onClick={ !remove ? (x) =>{setRemove(true)} : (x) =>{setRemove(false)}}
                 src={removeImg}
+                alt=''
                 />
                 &nbsp;
                 {!remove ? <div></div> : 
@@ -56,6 +55,7 @@ function ChatRoomName({chatroom, setRemove, remove}) {
                         className= "imgSize" 
                         onClick={(x) => setShow2(true)}
                         src={chatRemove}
+                        alt=''
                         />  
                 }
                 <EditModal chatroom={chatroom} show={show1} close={closeModalHandler1} submit={submit}/>
