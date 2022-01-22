@@ -31,8 +31,8 @@ const userSchema = mongoose.Schema({
   level: {type: Number, default: 0},
   exp: {type: Number, default: 0},
   levelReq: {type: Number, default: 0},
-  rankPoints: { type: Number, default: 0 }, 
-  score: { type: Number, default: 0 }, 
+  rank: { type: Array, default: [0,0,0,0]},
+//  score: { type: Number, default: 0 }, not needed unless making more advance scoring system, just use level 
 });
 
 const Users = mongoose.model("user", userSchema);
