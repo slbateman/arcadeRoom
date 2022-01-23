@@ -19,6 +19,7 @@ export const chatroomSlice = createSlice({
         addMessages: (state, action) => {
             const index = state.chatroom.findIndex((e) => e._id === action.payload._id)
             state.chatroom[index].messages = action.payload.messages
+            
         },
 
         removeChatroom: (state, action) => {

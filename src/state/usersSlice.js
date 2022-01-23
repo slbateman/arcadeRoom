@@ -49,7 +49,7 @@ export const usersSlice = createSlice({
         JSON.stringify(state.localUserInfo)
       );
     },
-    editUser: (state, action) => {},
+    editUser: (state, action) => { },
     removeUser: (state, action) => {
       state.users.splice(
         state.users.findIndex((e) => e._id === action.payload, 1)
@@ -69,7 +69,7 @@ export const usersSlice = createSlice({
       );
       state.users[index].active = false;
       state.users[index].socket_id = "";
-      updateUser(state.users[index]._id, {socket_id: "", active: false})
+      updateUser(state.users[index]._id, { socket_id: "", active: false })
     },
     editUserAvatar: (state, action) => {
       const index = state.users.findIndex(
@@ -112,6 +112,63 @@ export const usersSlice = createSlice({
         msgBrightness: action.payload.msgBrightness,
       });
     },
+    //game stuff
+    editUserMsgTotal: (state, action) => {
+      const index = state.users.findIndex(
+        (user) => user._id === action.payload._id
+      );
+      state.users[index].msgTotal = action.payload.msgTotal;
+      updateUser(action.payload._id, { msgTotal: action.payload.msgTotal });
+    },
+    editUserPmsTotal: (state, action) => {
+      const index = state.users.findIndex(
+        (user) => user._id === action.payload._id
+      );
+      state.users[index].pmsTotal = action.payload.pmsTotal;
+      updateUser(action.payload._id, { pmsTotal: action.payload.pmsTotal });
+    },
+    editUserLevel: (state, action) => {
+      const index = state.users.findIndex(
+        (user) => user._id === action.payload._id
+      );
+      state.users[index].level = action.payload.level;
+      updateUser(action.payload._id, { level: action.payload.level });
+    },
+    editUserExp: (state, action) => {
+      const index = state.users.findIndex(
+        (user) => user._id === action.payload._id
+      );
+      state.users[index].exp = action.payload.exp;
+      updateUser(action.payload._id, { exp: action.payload.exp });
+    },
+    editUserLevelReq: (state, action) => {
+      const index = state.users.findIndex(
+        (user) => user._id === action.payload._id
+      );
+      state.users[index].nextLevelReq = action.payload.nextLevelReq;
+      updateUser(action.payload._id, { nextLevelReq: action.payload.nextLevelReq });
+    },
+    editUserRank: (state, action) => {
+      const index = state.users.findIndex(
+        (user) => user._id === action.payload._id
+      );
+      state.users[index].rank = action.payload.rank;
+      updateUser(action.payload._id, { rank: action.payload.rank });
+    },
+  editBadges: (state, action) => {
+    const index = state.users.findIndex(
+      (user) => user._id === action.payload._id
+      ); 
+    state.users[index].badges = action.payload.badges
+    updateUser(action.payload._id, {badges: action.payload.badges})
+  },
+  editRankPoints: (state, action) => {
+    const index = state.users.findIndex(
+      (user) => user._id === action.payload._id
+      ); 
+    state.users[index].rankPoints = action.payload.rankPoints
+    updateUser(action.payload._id, {rankPoints: action.payload.rankPoints})
+  },
   },
 });
 
@@ -130,6 +187,14 @@ export const {
   editUserColor,
   editUserMsgDensity,
   editUserMsgBrightness,
+  editUserMsgTotal,
+  editUserPmsTotal,
+  editUserLevel,
+  editUserExp,
+  editUserLevelReq,
+  editUserRank,
+  editBadges,
+  editRankPoints,
 } = usersSlice.actions;
 
 export const selectUsers = (state) => state.users.users;

@@ -57,6 +57,8 @@ function InformationList({ chatroom }) {
           if (!user) return <div key={`thisRoom${i}`} ></div>
           else return (
             <div key={`thisRoom${i}`} >
+
+              
               <div className="list-user">
                 <img
                   className="list-user-avatar"
@@ -71,7 +73,7 @@ function InformationList({ chatroom }) {
                 />
                 <div
                   style={user.active ? { color: "white" } : { color: "grey" }}
-                >
+                > 
                   {user.username}
                 </div>
               </div>
@@ -87,6 +89,7 @@ function InformationList({ chatroom }) {
             return (
               <div key={`active${i}`} >
                 <div className="list-user">
+                 
                   <img
                     className="list-user-avatar"
                     onClick={(x) => {setShow(true); setModalUser(user)}}
@@ -100,7 +103,8 @@ function InformationList({ chatroom }) {
                   />
                   <div
                     style={user.active ? { color: "white" } : { color: "grey" }}
-                  >
+                  > 
+                 
                     {user.username}
                   </div>
                 </div>
@@ -129,7 +133,7 @@ function InformationList({ chatroom }) {
                   />
                   <div
                     style={user.active ? { color: "white" } : { color: "grey" }}
-                  >
+                  >  
                     {user.username}
                   </div>
                 </div>

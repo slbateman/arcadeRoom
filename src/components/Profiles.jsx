@@ -4,6 +4,11 @@ import { useLocation } from "react-router-dom";
 import { addPM } from "../state/pmSlice";
 import { selectLocalUserInfo, selectUsers } from "../state/usersSlice";
 import { Link } from "react-router-dom";
+
+import AllBadges from '../components/Game/AllBadges'; 
+//import UserBadges from '../components/Game/UserBadges'; 
+//
+
 const Profiles = () => {
   const users = useSelector(selectUsers);
   const localUserInfo = useSelector(selectLocalUserInfo);
@@ -32,9 +37,10 @@ const Profiles = () => {
         />
         <div>
           <h2 className="user-profile-username">{profileInfo.username}</h2>
-          <div className="user-profile-lvl">lvl: </div>
-          <div className="user-profile-rank">rank: </div>
-          <div className="user-profile-badges">badges: </div>
+          <div className="user-profile-lvl">lvl: {profileInfo.level}</div>
+          <div className="user-profile-rank">rank: {profileInfo.rank}</div>
+          <div className="user-profile-badges">badges:<AllBadges/> </div> 
+          {/* <UserBadges badges={profileInfo.badges} /> */}
         </div>
       </div>
       <div className="message-button-margin">

@@ -16,23 +16,27 @@ const userSchema = mongoose.Schema({
   color: { type: String, default: "#ffffff" },
   msgDensity: { type: Number, default: 16 },
   msgBrightness: { type: String, default: "#ffffff" },
-
-  charTotal: { type: Number, default: 0 },
-  msgTotal: { type: Number, default: 0 },
-  //pmsTotal: { type: Number, default: 0 },
-  rmsCreated: { type: Number, default: 0 },
-  rmsDeleted: { type: Number, default: 0 },
+  //charTotal: { type: Number, default: 0 },
+  //rmsCreated: { type: Number, default: 0 },
+ // rmsDeleted: { type: Number, default: 0 }, 
+//  score: { type: Number, default: 0 }, not needed unless making more advance scoring system, just use level 
   createdAt: {
     type: String,
     default: new Date().toISOString,
   },
-    
+  //game stuff
+  
   badges: { type: Array, default: [0,0,0,0, 0,0,0,0, 0,0,0,0,  0,0,0,0] }, 
+  rankPoints: { type: Array, default: [0,0,0,0]},
   level: {type: Number, default: 0},
   exp: {type: Number, default: 0},
-  levelReq: {type: Number, default: 0},
-  rank: { type: Array, default: [0,0,0,0]},
-//  score: { type: Number, default: 0 }, not needed unless making more advance scoring system, just use level 
+  msgTotal: { type: Number, default: 0 },
+  pmsTotal: { type: Number, default: 0 },  
+  nextlevelReq: {type: Number, default: 0},
+  rank: {type: Number, default: 0},
+  
+  
+
 });
 
 const Users = mongoose.model("user", userSchema);

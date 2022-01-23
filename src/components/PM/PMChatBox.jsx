@@ -30,6 +30,8 @@ const PMChatBox = () => {
     console.log()
     dispatch(addMessages({ _id: localUserInfo._id, message: messageData }))
     setMessageData('')
+
+    
   }
 
 
