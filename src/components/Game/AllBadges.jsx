@@ -12,6 +12,7 @@ const stage = 2;
    return(<Badge array = {array}/>)
 
 }
+
 export default function AllBadges() {
 
      <Test/>

@@ -6,21 +6,34 @@ import { roomName } from "./RoomsList";
 //import { selectLocalUserInfo } from "../../state/usersSlice";
 import socket from "../../socket/socket";
 import { updateChatroom } from "../../api/chatroomAPI";
-
+import { useLocation } from "react-router-dom";
 import {selectUsers, selectLocalUserInfo, editUserMsgTotal} from "../../state/usersSlice";
 
 
 function SendMessageForm({ chatroom }) {
   const dispatch = useDispatch();
-
-
+  const location = useLocation();
   const users = useSelector(selectUsers);
   const localUserInfo = useSelector(selectLocalUserInfo);
-  const user = users.find((e) => e._id === localUserInfo.user_id);
+  
+  const profile = location.pathname.substr(10, 65);
+  const localUser = !users
+    ? null
+    : users.find((e) => e._id === localUserInfo.user_id);
+  const profileInfo = !users ? null : users.find((e) => e.username === profile);
+
+  // const users = useSelector(selectUsers);
+  // const localUserInfo = useSelector(selectLocalUserInfo);
+   const user = users.find((e) => e._id === localUserInfo.user_id);
+
+
   console.log(user); 
  // console.log(user.msgTotal)
+
+//  const newBadge = () => {
+//   dispatch(editBadges({ badges: [profileInfo._id, localUser._id] }));
+// };
   const [msgTotal, setMsgTotal] = useState();
-  
   const updateMsgTotal = () => {
       dispatch(
         editUserMsgTotal({

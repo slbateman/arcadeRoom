@@ -54,7 +54,7 @@ function MessageList({ chatroom }) {
                                 
 
                                 <div className="message-block">
-                                    <h5>{user.username}</h5>
+                                    <h5>{user.username} lv{user.level}</h5>
                                     <div
                                         className="message-text"
                                         style={{
