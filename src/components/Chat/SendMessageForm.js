@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "./chat.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -106,6 +107,7 @@ function SendMessageForm({ chatroom }) {
       </form>
     </div>
   );
+
 }
 
 export default SendMessageForm;

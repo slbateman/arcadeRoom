@@ -71,7 +71,7 @@ function InformationList({ chatroom }) {
                   src={user.avatar}
                   alt=""
                 />
-                <div
+                <div className="list-user-name"
                   style={user.active ? { color: "white" } : { color: "grey" }}
                 > 
                   {user.username}
@@ -101,7 +101,7 @@ function InformationList({ chatroom }) {
                     src={user.avatar}
                     alt=""
                   />
-                  <div
+                  <div className="list-user-name"
                     style={user.active ? { color: "white" } : { color: "grey" }}
                   > 
                  
@@ -131,7 +131,7 @@ function InformationList({ chatroom }) {
                     src={user.avatar}
                     alt=""
                   />
-                  <div
+                  <div className="list-user-name"
                     style={user.active ? { color: "white" } : { color: "grey" }}
                   >  
                     {user.username}

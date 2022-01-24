@@ -14,24 +14,34 @@ function UserMenu() {
   const location = useLocation().pathname;
   const [profile, setProfile] = useState("");
   const [settings, setSettings] = useState("");
+  const [messages, setMessages] = useState("");
   const [leaderboard, setLeaderboard] = useState("");
 
   useEffect(() => {
     if (location === "/user/profile") {
       setProfile("user-menu-item-active");
       setSettings("");
+      setMessages("");
       setLeaderboard("");
     } else if (location === "/user/settings") {
       setProfile("");
       setSettings("user-menu-item-active");
+      setMessages("");
+      setLeaderboard("");
+    } else if (location === "/user/messages") {
+      setProfile("");
+      setSettings("");
+      setMessages("user-menu-item-active");
       setLeaderboard("");
     } else if (location === "/user/leaderboard") {
       setProfile("");
       setSettings("");
+      setMessages("");
       setLeaderboard("user-menu-item-active");
     } else {
       setProfile("");
       setSettings("");
+      setMessages("");
       setLeaderboard("");
     }
   }, [location]);
@@ -45,7 +55,7 @@ function UserMenu() {
         <h3>Settings</h3>
       </Link>
       <hr className="user-menu-hr"/>
-      <Link className={"user-menu-item " + settings } to="/user/messages">
+      <Link className={"user-menu-item " + messages } to="/user/messages">
         <h3>Messages</h3>
       </Link>
       <hr className="user-menu-hr"/>

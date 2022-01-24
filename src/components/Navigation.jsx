@@ -30,11 +30,11 @@ function Navigation() {
       socket_id: "",
       active: false,
     };
-    dispatch(editUserActive(userData));
     updateUser(userData._id, {
       active: userData.active,
       socket_id: userData.socket_id,
     });
+    dispatch(editUserActive(userData));
     dispatch(
       postUser({
         username: `user${randomNumber}`,

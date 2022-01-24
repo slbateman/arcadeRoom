@@ -1,13 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { addPM } from "../../state/pmSlice";
+import { postPM } from "../../actions/pmActions";
+import socket from "../../socket/socket";
 
 export const UserModal = ({ show, close, modalUser, localUser }) => {
   const dispatch = useDispatch();
 
   const newConvo = () => {
-    dispatch(addPM({ users: [modalUser._id, localUser._id] }));
+    dispatch(postPM({ users: [modalUser._id, localUser._id], messages: [] }));
+    socket.emit("newPM")
   };
   return (
     <div
@@ -46,18 +48,28 @@ export const UserModal = ({ show, close, modalUser, localUser }) => {
                   view profile
                 </Link>
               )}
-
-              <div
-                className="message-button link"
-                onClick={() => {
-                  newConvo();
-                }}
-              >
-                <Link className="link" to={`../pm/${modalUser.username}`}>
-                  {" "}
-                  send message
+              {modalUser.password === "" ? (
+                <div></div>
+              ) : (
+                <Link
+                  className="message-button link"
+                  onClick={() => {
+                    newConvo();
+                  }}
+                  to={`../user/messages`}
+                >
+                  new convo
                 </Link>
-              </div>
+              )}
+            </div>
+            <div className="modal-body">
+              <Link
+                className="message-button link"
+                to={`../pm/${modalUser.username}`}
+              > 
+                {" "}
+                send message
+              </Link>
             </div>
           </div>
         )}
