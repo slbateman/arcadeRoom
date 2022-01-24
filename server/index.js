@@ -14,7 +14,7 @@ const app = express();
 // for heroku
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-app.use(express.static(path.dirname(__dirname, "../src/build")));
+app.use(express.static(path.dirname(__dirname, "../build")));
 
 //hiroku port
 const serverPORT = process.env.PORT || 5000;
