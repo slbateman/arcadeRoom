@@ -7,7 +7,6 @@ const chatroomSchema = mongoose.Schema({
   active: {type: Boolean, default: false},
   description: { type: String, default: "" },
   color: {type: String, default: "#ffffff"},
-  passcode: {type: String, default: ''},
   access: {type: Array, user_id: {type: String}, default: []},
   messages: {
     type: Array, 

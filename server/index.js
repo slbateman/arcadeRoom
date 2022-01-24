@@ -6,20 +6,20 @@ import { Server } from "socket.io";
 import router from "./routes/router.js";
 
 //for heroku
-import path from 'path';
+import path from "path";
 import { fileURLToPath } from "url";
 
 const app = express();
 
-// for heroku 
+// for heroku
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-app.use(express.static( path.dirname(__dirname, '../src/build'))) 
+app.use(express.static(path.dirname(__dirname, "../src/build")));
 
 //hiroku port
-const PORT = (process.env.PORT || 5000);
+const PORT = process.env.PORT || 5000;
 const CONNECTION =
-  "mongodb+srv://generic:uHMedEbE4s4Qvit@cluster0.dfhml.mongodb.net/chatroomDB?retryWrites=true&w=majority";
+  "mongodb+srv://general:2Gikim2289WpHGXS@cluster0.9y20k.mongodb.net/arcadeRoomDB?retryWrites=true&w=majority";
 const httpServer = createServer(app);
 
 //connect to mongodb
@@ -27,11 +27,6 @@ mongoose.connect(CONNECTION, (err) => {
   if (err) throw err;
   console.log("connected to chatroomDB");
 });
-
-
-
-
-
 
 //middlewares
 app.use(express.json({ extended: true }));
@@ -53,61 +48,37 @@ io.on("connection", (socket) => {
   console.log(`${socket.id} connected`);
 
   socket.on("userConnection", (userData) => {
-    socket.broadcast.emit("userConnection", userData)
-  })
+    io.emit("userConnection", userData);
+  });
 
   socket.on("sendChatroomMessage", (messageData) => {
-    socket.broadcast.emit("sendChatroomMessage", messageData)
-  })
+    socket.broadcast.emit("sendChatroomMessage", messageData);
+  });
 
   socket.on("updateUserColor", (colorData) => {
-    socket.broadcast.emit("updateUserColor", colorData)
-  })
-  
+    socket.broadcast.emit("updateUserColor", colorData);
+  });
+
   socket.on("updateUserAvatar", (avatarData) => {
-    socket.broadcast.emit("updateUserAvatar", avatarData)
-  })
+    socket.broadcast.emit("updateUserAvatar", avatarData);
+  });
 
   socket.on("updateUserBio", (bioData) => {
-    socket.broadcast.emit("updateUserBio", bioData)
-  })
+    socket.broadcast.emit("updateUserBio", bioData);
+  });
 
   socket.on("sendPMMessage", (messageData) => {
-    socket.broadcast.emit("sendPMMessage", messageData)
-  })
+    socket.broadcast.emit("sendPMMessage", messageData);
+  });
 
   socket.on("newPM", () => {
-    socket.broadcast.emit("newPM")
-  })
+    socket.broadcast.emit("newPM");
+  });
 
-  // socket.emit("greeting", "Welcome")
-  // io.emit("greeting", "look who showed up, everyone!")
-  //   socket.broadcast.emit("greeting", "pretend you like them")
-
-  //   socket.on("userJoin", (room) => {
-  //     socket.join(room)
-  //   });
-
-  //send a message to everyone but the original sender
-  //   socket.on("message", (data) => {
-  //     //broadcast from the original sender socket
-  //     socket.broadcast.emit("serverMessage", data, socket.id);
-
-  //   });
-
-  //   socket.on("usermessage", (room, data) => {
-  //     socket.leave("public")
-  //     socket.join(room);
-  //     console.log(data);
-  //     socket.to(room).emit("serverMessage", data, socket.id);
-  //     io.to(socket.id).emit("PM", `message sent: ${data}`) //this is how you PM
-  //   })
-
-  // Here is where we handle the disconnect of a socket.
-    socket.once("disconnect", (reason) => {
-      console.log(`${socket.id} disconnected due to ${reason}`);
-      io.emit("userDisconnected", socket.id, );
-    });
+  socket.once("disconnect", (reason) => {
+    console.log(`${socket.id} disconnected due to ${reason}`);
+    io.emit("userDisconnected", socket.id);
+  });
 });
 
 //start server

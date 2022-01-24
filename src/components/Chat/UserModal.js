@@ -62,15 +62,6 @@ export const UserModal = ({ show, close, modalUser, localUser }) => {
                 </Link>
               )}
             </div>
-            <div className="modal-body">
-              <Link
-                className="message-button link"
-                to={`../pm/${modalUser.username}`}
-              > 
-                {" "}
-                send message
-              </Link>
-            </div>
           </div>
         )}
       </div>

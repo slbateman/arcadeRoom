@@ -9,9 +9,7 @@ import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import Chat from "./components/Chat/Chat";
-import AboutUs from "./components/AboutUs";
 import User from "./components/User/User";
-//import Test from "./components/PM/test";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUsers, postUser } from "./actions/userActions";
@@ -27,7 +25,6 @@ import {
 } from "./state/usersSlice";
 import { getPMs } from "./actions/pmActions";
 import Profiles from "./components/Profiles";
-import PMChatBox from "./components/PM/PMChatBox";
 import socket from "./socket/socket";
 import { updateUser } from "./api/userAPI";
 import { addMessages } from "./state/chatroomSlice";
@@ -80,7 +77,6 @@ function App() {
         const user = users.find((e) => e._id === userData._id);
         if (!user) {
           dispatch(getUsers());
-          // dispatch(editUserActive(userData));
         } else {
           dispatch(editUserActive(userData));
         }
@@ -108,7 +104,9 @@ function App() {
     socket.on("sendPMMessage", (messageData) => {
       dispatch(addPMMessages(messageData));
     });
-    socket.on("newPM", () => {dispatch(getPMs())})
+    socket.on("newPM", () => {
+      dispatch(getPMs());
+    });
   }, []);
 
   return (
@@ -117,11 +115,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/chat/*" element={<Chat />} />
-        <Route path="/about" element={<AboutUs />} />
         <Route path="/user/*" element={<User />} />
-        {/* <Route path="/test" element={<Test />} /> */}
         <Route path="/profiles/*" element={<Profiles />} />
-        <Route path="/pm/*" element={<PMChatBox />} />
       </Routes>
     </div>
   );

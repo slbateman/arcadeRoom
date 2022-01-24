@@ -44,35 +44,21 @@ function Navigation() {
   };
 
   const [chat, setChat] = useState("");
-  const [about, setAbout] = useState("");
   const [login, setLogin] = useState("");
   const location = useLocation().pathname;
 
   const navigate = useNavigate();
 
-  // const [test, setTest] = useState("");
-
   useEffect(() => {
     if (location === "/chat") {
       setChat("active");
-      setAbout("");
-      setLogin("");
-    } else if (location === "/about") {
-      setAbout("active");
-      setChat("");
       setLogin("");
     } else if (location === "/user/login") {
       setLogin("active");
       setChat("");
-      setAbout("");
-    } else if (location === "/test") {
-      setLogin("active");
-      setChat("");
-      setAbout("");
     } else {
       setLogin("");
       setChat("");
-      setAbout("");
     }
   }, [location]);
 
@@ -90,9 +76,6 @@ function Navigation() {
             <Nav default activeKey="/" className="ms-auto">
               <Link className={"link " + chat} to="/chat/general">
                 Chatrooms
-              </Link>
-              <Link className={"link " + about} to="/about">
-                About Us
               </Link>
               {!user ? (
                 <div></div>
@@ -140,10 +123,6 @@ function Navigation() {
                   Login
                 </Link>
               )}
-
-              {/* <Link className={"link " + test} to="/test">
-                test
-              </Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>

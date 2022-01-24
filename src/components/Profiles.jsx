@@ -5,10 +5,6 @@ import { addPM } from "../state/pmSlice";
 import { selectLocalUserInfo, selectUsers } from "../state/usersSlice";
 import { Link } from "react-router-dom";
 
-import AllBadges from '../components/Game/AllBadges'; 
-//import UserBadges from '../components/Game/UserBadges'; 
-//
-
 const Profiles = () => {
   const users = useSelector(selectUsers);
   const localUserInfo = useSelector(selectLocalUserInfo);
@@ -39,8 +35,7 @@ const Profiles = () => {
           <h2 className="user-profile-username">{profileInfo.username}</h2>
           <div className="user-profile-lvl">lvl: {profileInfo.level}</div>
           <div className="user-profile-rank">rank: {profileInfo.rank}</div>
-          <div className="user-profile-badges">badges:<AllBadges/> </div> 
-          {/* <UserBadges badges={profileInfo.badges} /> */}
+          <div className="user-profile-badges">badges: {profileInfo.badges}</div> 
         </div>
       </div>
       <div className="message-button-margin">
@@ -50,9 +45,9 @@ const Profiles = () => {
             newConvo();
           }}
         >
-          <Link className="link" to={`../pm/${profileInfo.username}`}>
+          <Link className="link" to={`../user/messages`}>
             {" "}
-            send message
+            new convo
           </Link>
         </div>
       </div>

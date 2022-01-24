@@ -32,7 +32,6 @@ function UserLogin() {
         active: false,
       };
       dispatch(editUserActive(userData));
-      socket.emit("userLogout")
       updateUser(userData._id, {
         active: userData.active,
         socket_id: userData.socket_id,

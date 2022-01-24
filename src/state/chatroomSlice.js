@@ -15,14 +15,16 @@ export const chatroomSlice = createSlice({
         addChatroom: (state, action) => {
             state.chatroom.push(action.payload)
         },
+        addMessages: (state, action) => {
+            const index = state.chatroom.findIndex((e) => e._id === action.payload._id)
+            state.chatroom[index].messages = action.payload.messages
+        },
         editChatroom: (state, action) => {
             const index = state.chatroom.findIndex((e) => e._id === action.payload._id)
             state.chatroom[index].name = action.payload.name
             state.chatroom[index].description = action.payload.description
             state.chatroom[index].color = action.payload.color
             state.chatroom[index].passcode = action.payload.passcode
-  
-
             updateChatroom(action.payload._id, {messages: action.payload.messages})
 
         },
