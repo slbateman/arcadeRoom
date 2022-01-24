@@ -17,7 +17,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(path.dirname(__dirname, "../src/build")));
 
 //hiroku port
-const PORT = process.env.PORT || 5000;
+const serverPORT = process.env.PORT || 5000;
 const CONNECTION =
   "mongodb+srv://general:2Gikim2289WpHGXS@cluster0.9y20k.mongodb.net/arcadeRoomDB?retryWrites=true&w=majority";
 const httpServer = createServer(app);
@@ -82,6 +82,6 @@ io.on("connection", (socket) => {
 });
 
 //start server
-httpServer.listen(PORT, () => {
-  console.log(`server running on port ${PORT}`);
+httpServer.listen(serverPORT, () => {
+  console.log(`server running on port ${serverPORT}`);
 });

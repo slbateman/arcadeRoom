@@ -1,9 +1,9 @@
 import axios from "axios"
 
-const API = axios.create({baseURL: "http://localhost:5000/api/pms"})
+const API = axios.create(process.env.baseURL || 5000)
 
 //PMs CRUD
-export const createPM = (newPM) => API.post('/', newPM)
-export const readPMs = () => API.get('/')
-export const updatePM = (id, updatedPM) => API.patch(`/${id}`, updatedPM)
-export const deletePM = (id) => API.delete(`/${id}`)
+export const createPM = (newPM) => API.post('/api/pms/', newPM)
+export const readPMs = () => API.get('/api/pms/')
+export const updatePM = (id, updatedPM) => API.patch(`/api/pms/${id}`, updatedPM)
+export const deletePM = (id) => API.delete(`/api/pms/${id}`)

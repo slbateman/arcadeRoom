@@ -1,8 +1,7 @@
 import io from "socket.io-client";
 import { updateUser } from "../api/userAPI";
 
-const ENDPOINT = "http://localhost:5000";
-const socket = io(ENDPOINT);
+const socket = io();
 const localUserInfo = JSON.parse(localStorage.getItem("localUserInfo"))
 
 socket.on("connect", () => {

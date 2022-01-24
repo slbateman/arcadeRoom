@@ -1,9 +1,9 @@
 import axios from "axios"
 
-const API = axios.create({ baseURL: "http://localhost:5000/api/users"})
+const API = axios.create(process.env.baseURL || 5000)
 
 //User Crud
-export const createUser = (newUser) => API.post('/', newUser)
-export const readUsers = () => API.get('/')
-export const updateUser = (id, updatedUser) => API.patch(`/${id}`, updatedUser)
-export const deleteUser = (id) => API.delete(`/${id}`)
+export const createUser = (newUser) => API.post('/api/users/', newUser)
+export const readUsers = () => API.get('/api/users/')
+export const updateUser = (id, updatedUser) => API.patch(`/api/users/${id}`, updatedUser)
+export const deleteUser = (id) => API.delete(`/api/users/${id}`)

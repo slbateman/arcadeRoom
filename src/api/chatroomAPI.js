@@ -1,9 +1,9 @@
 import axios from "axios"
 
-const API = axios.create({baseURL: "http://localhost:5000/api/chatrooms"})
+const API = axios.create(process.env.baseURL || 5000)
 
 //Chatrooms CRUD
-export const createChatroom = (newChatroom) => API.post('/', newChatroom)
-export const readChatrooms = () => API.get('/')
-export const updateChatroom = (id, updatedChatroom) => API.patch(`/${id}`, updatedChatroom)
-export const deleteChatroom = (id) => API.delete(`/${id}`)
+export const createChatroom = (newChatroom) => API.post('api/chatrooms/', newChatroom)
+export const readChatrooms = () => API.get('api/chatrooms/')
+export const updateChatroom = (id, updatedChatroom) => API.patch(`api/chatrooms/${id}`, updatedChatroom)
+export const deleteChatroom = (id) => API.delete(`api/chatrooms/${id}`)
