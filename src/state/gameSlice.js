@@ -54,7 +54,6 @@ export default gameSlice.reducer;
        levelreq += 500
 
     achiement function: 
-
     //get all level achivement badges 
     loop through i=1 i <17 i ++
     badgeNum = i-1; 
@@ -83,9 +82,10 @@ if(i>13){
 }
 
 checkIfranked(rankNum)
-   rank = getRank(ranknum) 
+   rank = rankPoints[ranknum]
    if rank != 0
    return true
+
 
     function giveBadge (badgeNum)
  badgeNums =  [1, 2, 3, 4,  1, 2, 3, 4,  1, 2, 3, 4,   1, 2, 3, 4] 
@@ -124,7 +124,7 @@ user =sortedList[i]
 user.giveRank(i)
 
 function giveRank(rankNum)
-user.rank[rankNum] =1; 
+user.rankPoints[rankNum] =1; 
 
 
 highscore 

@@ -10,12 +10,17 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectContent } from '../state/contentSlice';
-
 import AllBadges from './Game/AllBadges';
 import Badge from './Game/Badge';
+
+import { selectUsers } from '../state/usersSlice'; 
+
 //import badges from './Game/badgeInfo'; 
 //mx-auto
 function AboutUs() {
+  const users = useSelector(selectUsers);
+  console.log(users); 
+
   const info = useSelector(selectContent);
    const mfImg = info[0].art2 ; 
    const mf = info[0].mf; 
@@ -53,8 +58,10 @@ function AboutUs() {
   
   <Row className = "threes">
   {info.map((data, i) => {
- return ( 
 
+ 
+ return ( 
+   
     <Col  key={i}
     onClick={ () =>  handleClick(data.name, data.bio, data.img)}
     >
@@ -78,8 +85,9 @@ function AboutUs() {
 
 
 {/* <AllBadges/> <Badge pic = {badges[0].badge0} color = {"brown"}/>*/}
-<Badge rank = {0} stage = {0}/> 
-<AllBadges/> 
+
+
+{/*<Badge array = {[0,1,1]} />   */} <AllBadges/>
         </div>
     );
 }

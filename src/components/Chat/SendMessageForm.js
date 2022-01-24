@@ -1,52 +1,113 @@
-import React, {useState} from 'react'
-import './chat.css'
-import { useSelector, useDispatch} from 'react-redux'
-import { addMessages } from '../../state/chatroomSlice'
-import { selectLocalUserInfo } from '../../state/usersSlice'
-import { updateChatroom } from '../../api/chatroomAPI'
-import socket from '../../socket/socket'
 
-function SendMessageForm({chatroom}) {
+import React, { useState } from "react";
+import "./chat.css";
+import { useSelector, useDispatch } from "react-redux";
+import { addMessages } from "../../state/chatroomSlice";
+import { roomName } from "./RoomsList";
+//import { selectLocalUserInfo } from "../../state/usersSlice";
+import socket from "../../socket/socket";
+import { updateChatroom } from "../../api/chatroomAPI";
+import { useLocation } from "react-router-dom";
+import {selectUsers, selectLocalUserInfo, editUserMsgTotal} from "../../state/usersSlice";
 
-    const dispatch = useDispatch();
+
+function SendMessageForm({ chatroom }) {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const users = useSelector(selectUsers);
+  const localUserInfo = useSelector(selectLocalUserInfo);
   
-    const submit = (e) => {
-      e.preventDefault();
-      const messageSubmitData = {
-        _id: chatroom._id,
-        messages: [
-          ...chatroom.messages,
-          { user_id: localUserInfo.user_id, message: messageData },
-        ],
-      };
-      dispatch(addMessages(messageSubmitData));
-      updateChatroom(messageSubmitData._id, {messages: messageSubmitData.messages})
-      socket.emit("sendChatroomMessage", messageSubmitData)
-      setMessageData("");
+  const profile = location.pathname.substr(10, 65);
+  const localUser = !users
+    ? null
+    : users.find((e) => e._id === localUserInfo.user_id);
+  const profileInfo = !users ? null : users.find((e) => e.username === profile);
+
+  // const users = useSelector(selectUsers);
+  // const localUserInfo = useSelector(selectLocalUserInfo);
+   const user = users.find((e) => e._id === localUserInfo.user_id);
+
+
+  console.log(user); 
+ // console.log(user.msgTotal)
+
+//  const newBadge = () => {
+//   dispatch(editBadges({ badges: [profileInfo._id, localUser._id] }));
+// };
+  const [msgTotal, setMsgTotal] = useState();
+  const updateMsgTotal = () => {
+      dispatch(
+        editUserMsgTotal({
+          _id: localUserInfo.user_id,
+          msgTotal: msgTotal,
+        })
+      );
+    };
+//const name = user.name; 
+//console.log(name)
+  
+  const submit = (e) => {
+    e.preventDefault();
+    
+    const messageSubmitData = {
+      _id: chatroom._id,
+      messages: [
+        ...chatroom.messages,
+        { user_id: localUserInfo.user_id, message: messageData },
+      ],
     };
     
-    const localUserInfo = useSelector(selectLocalUserInfo)
+    dispatch(addMessages(messageSubmitData));
+    updateChatroom(messageSubmitData._id, {messages: messageSubmitData.messages})
+    socket.emit("sendChatroomMessage", messageSubmitData)
+    setMessageData("");
+     //e.target.value
+    let count = user.msgTotal;
+       
+   // console.log(e.target.value)
+   //console.log(count)
+     setMsgTotal(e.target.value);
+     updateMsgTotal(); 
+     count += 1; 
+  };
 
-    
-    const [messageData, setMessageData] = useState('');
+  //const localUserInfo = useSelector(selectLocalUserInfo);
 
+  // const submit = (e) => {
+  //     e.preventDefault()
+  //     addMessage(messageData)
 
-    return (
-        <div className='send-message-form'>
-            <form onSubmit={submit}>
-                <input 
-                name='message'
-                onChange={(e) => setMessageData(e.target.value)}
-                className='message'
-                id = "inputID"
-                placeholder = "Message"
-                type = "text"
-                color = "white"
-                value = {messageData}
-                />
-            </form>
-        </div>
-    )
+  // }
+
+  const [] = useState(null);
+  const [messageData, setMessageData] = useState("");
+
+  // function getMessage(e) {
+  //     setMessageData({...messageData, [e.target.name]: e.target.value})
+  //     console.log(messageData)
+  // }
+
+  return (
+    <div className="send-message-form">
+      <form onSubmit={submit}>
+        <input
+          name="message"
+          onChange={(e) => {
+            setMessageData(e.target.value)
+            // setMsgTotal(e.target.value);
+            // updateMsgTotal(); 
+          }}
+          className="message"
+          id="inputID"
+          placeholder="Message"
+          type="text"
+          color="white"
+          value={messageData}
+        />
+      </form>
+    </div>
+  );
+
 }
 
 export default SendMessageForm;

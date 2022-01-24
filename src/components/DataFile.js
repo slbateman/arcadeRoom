@@ -12,7 +12,7 @@ import art2 from "../images/mfGame.png";
 const info = [
   {
     id: 0,
-    name: "Frostypine",
+    name: "frostypine",
     email: "",
     img: frostpine,
     color: "#62eef8",

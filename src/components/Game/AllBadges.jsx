@@ -4,25 +4,30 @@ import React from 'react'
 import Badge from './Badge'
 import badges from './badgeInfo'; 
 
-export default function AllBadges() {
+const Test = () => {
+ const array = [0,1,1];
 
-
-const test = () => {
 const rank = 1; 
 const stage = 2; 
-   return(<>
-          <img
-          className="abadge"
-          style={{height: '2rem', width: '2rem', border: `3px solid ${badges[rank].color}` }}
-          src={badges[rank].badge[stage]}
-          alt="badge"
-        />
-  </>)
+   return(<Badge array = {array}/>)
+
 }
 
-test(); 
+export default function AllBadges() {
+
+     <Test/>
+
+   const array = [0,1,1];
+
+   for (let i=0; i < 3; i++){
+        <Badge array = {[i,i,i]}/>
+   }
+ 
 
     return (
+   
+
+
         <div>
 
 {badges.map((badge, i) => {
